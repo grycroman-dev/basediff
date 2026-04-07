@@ -46,8 +46,11 @@ ServerSignature Off
     Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
     
     # Content Security Policy (CSP)
-    # POVOLUJE: tvůj web, inline CSS/JS, FontAwesome, Google Fonts, Ko-fi, AOS (jsdelivr) a Google Analytics.
-    Header set Content-Security-Policy "default-src 'self' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://kit.fontawesome.com https://storage.ko-fi.com https://cdn.jsdelivr.net https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://ka-f.fontawesome.com https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://ka-f.fontawesome.com https://cdnjs.cloudflare.com; img-src 'self' data: https: https://www.google-analytics.com; connect-src 'self' https://www.google-analytics.com https://stats.g.doubleclick.net;"
+    # POVOLUJE: tvůj web, inline CSS/JS a jakékoliv zabezpečené (HTTPS) styly a scripty z ověřených CDNs.
+    Header set Content-Security-Policy "default-src 'self' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https: data:; img-src 'self' data: https:; connect-src 'self' https:;"
+
+
+
 
 </IfModule>
 
