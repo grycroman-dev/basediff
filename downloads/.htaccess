@@ -1,0 +1,2 @@
+# Soubory ke stažení pouze přes api/download.php
+Deny from all

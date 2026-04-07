@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" id="root-html" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#09090b">
+  <title>404 — BaseDiff</title>
+  <meta name="robots" content="noindex"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap&font-display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+  <link rel="stylesheet" href="/css/style.css?v=16"/>
+  <style>
+    .error-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+    .error-code {
+      font-size: clamp(6rem, 15vw, 12rem);
+      font-weight: 800;
+      letter-spacing: -.05em;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--primary), var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+    }
+    .error-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: .75rem;
+    }
+    .error-desc {
+      color: var(--text2);
+      font-size: 1rem;
+      max-width: 400px;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+    .error-btns {
+      display: flex;
+      gap: .75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+
+<div class="error-page">
+  <div>
+    <div class="error-code">404</div>
+    <h1 class="error-title" data-i18n="error_title">Page not found</h1>
+    <p class="error-desc" data-i18n="error_desc">The page you are looking for does not exist or has been moved.</p>
+    <div class="error-btns">
+      <a href="/" class="btn-primary">
+        <i class="fa-solid fa-house"></i>
+        <span data-i18n="error_home">Go to homepage</span>
+      </a>
+      <a href="/#download" class="btn-ghost">
+        <i class="fa-solid fa-download"></i>
+        <span data-i18n="error_download">Download BaseDiff</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<script src="/js/theme.js?v=4"></script>
+<script>
+  // Simple i18n for 404 page
+  var KEY = 'basediff-lang';
+  var lang = localStorage.getItem(KEY) || 'en';
+
+  var T = {
+    cs: {
+      error_title: 'Stránka nenalezena',
+      error_desc: 'Stránka, kterou hledáte, neexistuje nebo byla přesunuta.',
+      error_home: 'Přejít na úvod',
+      error_download: 'Stáhnout BaseDiff'
+    },
+    en: {
+      error_title: 'Page not found',
+      error_desc: 'The page you are looking for does not exist or has been moved.',
+      error_home: 'Go to homepage',
+      error_download: 'Download BaseDiff'
+    },
+    de: {
+      error_title: 'Seite nicht gefunden',
+      error_desc: 'Die gesuchte Seite existiert nicht oder wurde verschoben.',
+      error_home: 'Zur Startseite',
+      error_download: 'BaseDiff herunterladen'
+    }
+  };
+
+  var dict = T[lang] || T.en;
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var k = el.getAttribute('data-i18n');
+    if (dict[k]) el.textContent = dict[k];
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,1896 @@
+<!DOCTYPE html>
+<html lang="cs" id="root-html" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#09090b">
+
+  <!-- SEO Meta -->
+  <title>BaseDiff — Porovnání databázových schémat a generování skriptů</title>
+  <meta name="description" content="BaseDiff je desktopová aplikace pro porovnání a synchronizaci databázových struktur. Generuje SQL skripty (CREATE, ALTER, DROP) pro MS SQL Server a PostgreSQL. Zdarma pro Windows, Linux a macOS."/>
+  <meta name="keywords" content="database comparison, schema diff, SQL script generator, database synchronization, MS SQL Server, PostgreSQL, ALTER script, migration tool, BaseDiff, ELVAC SOLUTIONS"/>
+  <meta name="author" content="ELVAC SOLUTIONS"/>
+  <meta name="robots" content="index, follow"/>
+  <meta name="application-name" content="BaseDiff">
+  <meta name="apple-mobile-web-app-title" content="BaseDiff">
+
+  <link rel="canonical" href="https://basediff.com/"/>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://basediff.com/"/>
+  <meta property="og:title" content="BaseDiff — Porovnání schémat, generování skriptů"/>
+  <meta property="og:description" content="Porovnávejte databázová schémata a generujte aktualizační SQL skripty. Rychlý, přesný, multiplatformní nástroj pro DBA a vývojáře."/>
+  <meta property="og:image" content="https://basediff.com/og-image.png"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:locale:alternate" content="de_DE"/>
+  <meta property="og:locale:alternate" content="cs_CZ"/>
+  <meta property="og:site_name" content="BaseDiff"/>
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="BaseDiff — Porovnání schémat, generování skriptů"/>
+  <meta name="twitter:description" content="Porovnávejte databázová schémata a generujte aktualizační SQL skripty. Zdarma pro Windows, Linux a macOS."/>
+  <meta name="twitter:image" content="https://basediff.com/og-image.png"/>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+  <link rel="preload" as="image" href="/img/01-basediff-main-d.webp" fetchpriority="high">
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "BaseDiff",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Windows, Linux, macOS",
+      "softwareVersion": "2.0.2",
+      "datePublished": "2026-03-25",
+      "description": "BaseDiff is a desktop tool for comparing and synchronizing database schemas. It generates SQL scripts (CREATE, ALTER, DROP) for MS SQL Server and PostgreSQL.",
+      "url": "https://basediff.com/",
+      "downloadUrl": "https://basediff.com/#download",
+      "image": "https://basediff.com/og-image.png",
+      "author": {
+        "@type": "Organization",
+        "name": "ELVAC SOLUTIONS",
+        "url": "https://www.elvacsolutions.eu"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      "softwareRequirements": [
+        "Windows 10 or later",
+        "Linux x86_64",
+        "macOS 12 or later"
+      ],
+      "featureList": [
+        "Database schema comparison",
+        "Automatic SQL script generation",
+        "Support for MS SQL Server",
+        "Support for PostgreSQL",
+        "Visual schema diff",
+        "Export CREATE, ALTER and DROP scripts",
+        "Offline project support",
+        "Query Tool for SQL joins"
+      ]
+  }
+  </script>
+
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" media="print" onload="this.media='all'">
+
+  <!-- AOS Animations -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" media="print" onload="this.media='all'">
+
+  <!-- App CSS -->
+  <style>
+      /* ══════════════════════════════════════
+   RESET & BASE
+   ══════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary: #8b5cf6;
+  --primary-rgb: 139,92,246;
+  --primary-glow: rgba(var(--primary-rgb),0.25);
+  --green: #4ade80;
+  --green-rgb: 74,222,128;
+  --red: #f87171;
+  --cyan: #22d3ee;
+  --yellow: #facc15;
+  --radius: 16px;
+  --font: 'Inter', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --ease: .35s cubic-bezier(.4,0,.2,1);
+}
+
+/* ── DARK THEME ── */
+[data-theme="dark"] {
+  --bg:     #09090b;
+  --bg2:    #0f0f13;
+  --bg3:    #18181b;
+  --card:   #111114;
+  --border: #27272a;
+  --text:   #fafafa;
+  --text2:  #a1a1aa;
+  --text3:  #71717a;
+  --nav-bg: rgba(9,9,11,0.82);
+  --icon-bg: rgba(var(--primary-rgb),0.12);
+  --icon-border: rgba(var(--primary-rgb),0.22);
+  --shadow-card: 0 8px 32px rgba(0,0,0,0.35);
+  --hero-g1: rgba(var(--primary-rgb),0.12);
+  --hero-g2: rgba(34,211,238,0.06);
+  --term-bg: #0c0c0f;
+  --term-header: rgba(255,255,255,0.04);
+  --term-border: rgba(255,255,255,0.08);
+  --term-text: #a1a1aa;
+  --term-title: #71717a;
+  --term-cmd: #fafafa;
+}
+
+/* ── LIGHT THEME ── */
+[data-theme="light"] {
+  --bg:     #f8f9fc;
+  --bg2:    #f0f1f5;
+  --bg3:    #e4e5ea;
+  --card:   #ffffff;
+  --border: #d4d5db;
+  --text:   #1a1a2e;
+  --text2:  #555770;
+  --text3:  #8b8da3;
+  --nav-bg: rgba(248,249,252,0.85);
+  --icon-bg: rgba(var(--primary-rgb),0.08);
+  --icon-border: rgba(var(--primary-rgb),0.15);
+  --shadow-card: 0 4px 24px rgba(0,0,0,0.08);
+  --hero-g1: rgba(var(--primary-rgb),0.07);
+  --hero-g2: rgba(34,211,238,0.04);
+  --term-bg: #1a1a2e;
+  --term-header: rgba(255,255,255,0.06);
+  --term-border: rgba(255,255,255,0.1);
+  --term-text: #a1a1aa;
+  --term-title: #71717a;
+  --term-cmd: #f1f5f9;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background var(--ease), color var(--ease);
+}
+
+::selection { background: var(--primary); color: #fff; }
+a { color: inherit; text-decoration: none; }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+.gradient {
+  background: linear-gradient(135deg, var(--primary), var(--cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ══════════════════════════════════════
+   NAVBAR
+   ══════════════════════════════════════ */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: .85rem 0;
+  background: var(--nav-bg);
+  backdrop-filter: blur(20px) saturate(1.3);
+  border-bottom: 1px solid var(--border);
+  transition: background var(--ease), border-color var(--ease);
+}
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.nav-left { display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0; /* ← důležité */ }
+.nav-brand {
+  display: flex; align-items: center; gap: .55rem;
+  font-weight: 800; font-size: 1.15rem; letter-spacing: -.02em;
+}
+.nav-brand i {
+  color: var(--primary); font-size: 1.1rem;
+  filter: drop-shadow(0 0 6px var(--primary-glow));
+}
+.nav-version {
+  font-size: .68rem; font-weight: 600;
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 100px; padding: .18rem .55rem;
+  color: var(--text3); transition: all var(--ease);
+}
+.nav-right { display: flex; align-items: center; gap: .85rem; }
+.nav-links { display: flex; align-items: center; gap: 1.5rem; }
+.nav-links a {
+  font-size: .875rem; font-weight: 500; color: var(--text2);
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--text); }
+
+.theme-toggle {
+  width: 38px; height: 38px; border-radius: 10px;
+  background: var(--bg3); border: 1px solid var(--border);
+  color: var(--text2); font-size: 1rem;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all .25s;
+}
+.theme-toggle:hover { color: var(--primary); border-color: rgba(var(--primary-rgb),0.4); }
+[data-theme="dark"] .theme-toggle .fa-sun  { display: inline; }
+[data-theme="dark"] .theme-toggle .fa-moon { display: none; }
+[data-theme="light"] .theme-toggle .fa-sun  { display: none; }
+[data-theme="light"] .theme-toggle .fa-moon { display: inline; }
+
+.lang-switch {
+  display: flex; border: 1px solid var(--border); border-radius: 8px;
+  overflow: hidden; transition: border-color var(--ease);
+}
+.lang-switch button {
+  background: transparent; color: var(--text3); border: none;
+  padding: .32rem .55rem; font-size: .7rem; font-weight: 700;
+  font-family: var(--font); cursor: pointer; transition: all .2s;
+}
+.lang-switch button.active { background: var(--bg3); color: var(--text); }
+.lang-switch button:not(:last-child) { border-right: 1px solid var(--border); }
+.lang-switch button:hover:not(.active) { color: var(--text2); }
+
+.nav-cta {
+  background: var(--primary); color: #fff !important;
+  padding: .48rem 1.05rem; border-radius: 8px;
+  font-weight: 600; font-size: .82rem;
+  display: inline-flex; align-items: center; gap: .4rem;
+  transition: opacity .2s;
+}
+.nav-cta:hover { opacity: .85; }
+.nav-cta i { font-size: .75rem; }
+
+.nav-hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.3rem;
+  cursor: pointer;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  align-items: center;
+  justify-content: center;
+  transition: color .2s;
+}
+.nav-hamburger:hover { color: var(--primary); }
+
+.mobile-menu {
+  display: none; flex-direction: column;
+  padding: .5rem 1.5rem 1rem;
+  border-top: 1px solid var(--border);
+  background: var(--nav-bg);
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  padding: .75rem 0; font-size: .95rem; font-weight: 500;
+  color: var(--text2); border-bottom: 1px solid var(--border);
+  transition: color .2s;
+}
+.mobile-menu a:last-child { border-bottom: none; }
+.mobile-menu a:hover { color: var(--primary); }
+
+/* ══════════════════════════════════════
+   HERO
+   ══════════════════════════════════════ */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  padding: 8rem 0 5rem; position: relative;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%, var(--hero-g1) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 30% at 20% 80%, var(--hero-g2) 0%, transparent 60%);
+  transition: background var(--ease);
+}
+.hero-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4rem; align-items: center;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 100px; padding: .3rem .9rem;
+  font-size: .78rem; font-weight: 600; color: var(--text2);
+  margin-bottom: 1.5rem; transition: all var(--ease);
+}
+.live-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px rgba(var(--green-rgb),0.5);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1}50%{opacity:.35} }
+
+.hero h1 {
+  font-size: clamp(2.4rem,5vw,3.5rem);
+  font-weight: 800; line-height: 1.1;
+  letter-spacing: -.03em; margin-bottom: 1.25rem;
+}
+.hero-sub {
+  font-size: 1.1rem; color: var(--text2);
+  max-width: 480px; margin-bottom: 2rem; line-height: 1.7;
+}
+.hero-btns { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+.btn-primary {
+  background: var(--primary); color: #fff;
+  padding: .75rem 1.6rem; border-radius: 10px;
+  font-weight: 700; font-size: .95rem;
+  box-shadow: 0 4px 24px var(--primary-glow);
+  transition: transform .15s, box-shadow .15s;
+  display: inline-flex; align-items: center; gap: .5rem;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(var(--primary-rgb),0.35); }
+.btn-primary i { font-size: .85rem; }
+
+.btn-ghost {
+  background: transparent; color: var(--text);
+  padding: .75rem 1.6rem; border-radius: 10px;
+  font-weight: 600; font-size: .95rem;
+  border: 1px solid var(--border);
+  transition: border-color .2s, background .2s;
+  display: inline-flex; align-items: center; gap: .5rem;
+}
+.btn-ghost:hover { border-color: var(--text3); background: rgba(var(--primary-rgb),0.04); }
+.btn-ghost i { font-size: .85rem; }
+
+.hero-downloads {
+  display: inline-flex; align-items: center; gap: .6rem;
+  margin-top: 2rem; padding: .6rem 1.2rem;
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 12px; font-size: .88rem;
+  color: var(--text2); transition: all var(--ease);
+}
+.hero-downloads i { color: var(--green); font-size: 1rem; }
+.hero-downloads strong { color: var(--text); font-weight: 800; font-size: 1.05rem; }
+
+/* ── Terminal ── */
+.terminal {
+  background: var(--term-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: border-color var(--ease), box-shadow var(--ease);
+}
+.terminal-header {
+  display: flex; align-items: center; gap: .5rem;
+  padding: .7rem 1rem;
+  background: var(--term-header);
+  border-bottom: 1px solid var(--term-border);
+}
+.terminal-dot { width: 10px; height: 10px; border-radius: 50%; }
+.terminal-dot.r { background: #f87171; }
+.terminal-dot.y { background: #facc15; }
+.terminal-dot.g { background: #4ade80; }
+.terminal-title {
+  flex: 1; text-align: center;
+  font-size: .72rem; color: var(--term-title); font-weight: 500;
+  font-family: var(--mono);
+}
+.terminal-body {
+  padding: 1.25rem; font-family: var(--mono); font-size: .8rem;
+  line-height: 1.95; color: var(--term-text); min-height: 260px;
+}
+.terminal-body .prompt   { color: #4ade80; }
+.terminal-body .cmd      { color: var(--term-cmd); font-weight: 500; }
+.terminal-body .info     { color: var(--term-title); }
+.terminal-body .diff-add { color: #4ade80; }
+.terminal-body .diff-alter { color: #facc15; }
+.terminal-body .diff-drop { color: #f87171; }
+.terminal-body .success  { color: #22d3ee; }
+.terminal-body .line     { display: block; }
+.terminal-body .line.indent { padding-left: 1.2rem; }
+
+/* ══════════════════════════════════════
+   STATS
+   ══════════════════════════════════════ */
+.stats {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 2.5rem 0;
+  transition: border-color var(--ease);
+}
+.stats-grid {
+  display: grid; grid-template-columns: repeat(4,1fr);
+  gap: 2rem; text-align: center;
+}
+.stat-icon { font-size: 1.5rem; color: var(--primary); margin-bottom: .5rem; opacity: .8; }
+.stat-value { font-size: 2rem; font-weight: 800; letter-spacing: -.02em; }
+.stat-label { color: var(--text3); font-size: .82rem; margin-top: .2rem; }
+
+/* ══════════════════════════════════════
+   SECTIONS COMMON
+   ══════════════════════════════════════ */
+section { padding: 6rem 0; transition: background var(--ease); }
+.alt-bg { background: var(--bg2); }
+.section-label {
+  font-size: .72rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .1em; color: var(--primary);
+  margin-bottom: .75rem;
+  display: inline-flex; align-items: center; gap: .4rem;
+}
+.section-label i { font-size: .7rem; }
+.section-title {
+  font-size: clamp(1.8rem,4vw,2.5rem);
+  font-weight: 800; letter-spacing: -.03em;
+  line-height: 1.2; margin-bottom: .75rem;
+}
+.section-sub { color: var(--text2); font-size: 1rem; max-width: 520px; }
+.section-center { text-align: center; }
+.section-center .section-sub { margin: 0 auto; }
+
+/* ══════════════════════════════════════
+   FEATURES
+   ══════════════════════════════════════ */
+.features-grid {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1.25rem; margin-top: 3rem;
+}
+.feature-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.75rem;
+  transition: border-color .25s, transform .25s, box-shadow .25s, background var(--ease);
+}
+.feature-card:hover {
+  border-color: rgba(var(--primary-rgb),0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(var(--primary-rgb),0.1);
+}
+.feature-icon {
+  width: 46px; height: 46px; border-radius: 12px;
+  background: var(--icon-bg); border: 1px solid var(--icon-border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; color: var(--primary); margin-bottom: 1rem;
+  transition: all var(--ease);
+}
+.feature-card h3 {
+  font-size: .95rem; font-weight: 700; margin-bottom: .4rem; letter-spacing: -.01em;
+}
+.feature-card p { color: var(--text2); font-size: .85rem; line-height: 1.6; }
+
+/* ══════════════════════════════════════
+   OBJECTS
+   ══════════════════════════════════════ */
+.objects-grid {
+  display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  gap: 1rem; margin-top: 3rem;
+}
+.object-item {
+  display: flex; align-items: center; gap: .75rem;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 1rem 1.25rem;
+  font-size: .88rem; font-weight: 500;
+  transition: border-color .2s, background var(--ease);
+}
+.object-item:hover { border-color: rgba(var(--primary-rgb),0.3); }
+.object-item i { color: var(--primary); font-size: 1rem; width: 20px; text-align: center; }
+
+/* ══════════════════════════════════════
+   DATABASES
+   ══════════════════════════════════════ */
+.db-grid {
+  display: grid; grid-template-columns: repeat(auto-fit,minmax(190px,1fr));
+  gap: 1.25rem; margin-top: 3rem;
+}
+.db-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 2rem; text-align: center;
+  transition: border-color .25s, transform .25s, background var(--ease);
+}
+.db-card:hover { border-color: rgba(var(--primary-rgb),0.3); transform: translateY(-3px); }
+.db-card .db-icon { font-size: 2.2rem; margin-bottom: .75rem; color: var(--primary); }
+.db-card h3 { font-weight: 700; font-size: .95rem; margin-bottom: .25rem; }
+.db-card .db-sub { color: var(--text3); font-size: .78rem; margin-bottom: .75rem; }
+.db-badge {
+  display: inline-flex; align-items: center; gap: .3rem;
+  font-size: .68rem; font-weight: 700;
+  border-radius: 100px; padding: .18rem .6rem;
+  text-transform: uppercase; letter-spacing: .04em;
+}
+.db-badge.ok { background: rgba(var(--green-rgb),0.1); color: var(--green); border: 1px solid rgba(var(--green-rgb),0.2); }
+.db-badge.soon { background: rgba(113,113,122,0.1); color: var(--text3); border: 1px solid var(--border); }
+
+/* ══════════════════════════════════════
+   SCREENSHOTS
+   ══════════════════════════════════════ */
+.screenshots-grid {
+  display: grid; grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+  gap: 1.25rem; margin-top: 3rem;
+}
+.screenshot-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden; cursor: pointer;
+  transition: transform .25s, box-shadow .25s, background var(--ease);
+}
+.screenshot-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-card); }
+/* Oba obrázky zaberou 100% šířky karty */
+.screenshot-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.cap {
+  padding: .85rem 1.1rem; font-size: .8rem; color: var(--text3);
+  border-top: 1px solid var(--border);
+  display: flex; align-items: center; gap: .5rem;
+}
+.cap i { color: var(--primary); font-size: .85rem; }
+.cap-zoom { margin-left: auto; opacity: .4; transition: opacity .2s; font-size: .75rem; }
+.screenshot-card:hover .cap-zoom { opacity: 1; }
+
+/* ══════════════════════════════════════
+   LIGHTBOX
+   ══════════════════════════════════════ */
+.lightbox-overlay {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(0,0,0,0.92);
+  backdrop-filter: blur(12px);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; visibility: hidden;
+  transition: opacity .3s, visibility .3s;
+}
+.lightbox-overlay.open { opacity: 1; visibility: visible; }
+.lightbox-img {
+  max-width: 90vw; max-height: 80vh;
+  border-radius: 12px;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.5);
+  transition: transform .3s;
+}
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+  position: absolute; background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15); color: #fff;
+  border-radius: 12px; cursor: pointer;
+  width: 48px; height: 48px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; transition: background .2s;
+}
+.lightbox-close:hover,
+.lightbox-prev:hover,
+.lightbox-next:hover { background: rgba(255,255,255,0.2); }
+.lightbox-close { top: 1.5rem; right: 1.5rem; }
+.lightbox-prev { left: 1.5rem; top: 50%; transform: translateY(-50%); }
+.lightbox-next { right: 1.5rem; top: 50%; transform: translateY(-50%); }
+.lightbox-caption {
+  position: absolute; bottom: 4rem; left: 50%; transform: translateX(-50%);
+  color: rgba(255,255,255,0.7); font-size: .9rem; text-align: center;
+  max-width: 600px;
+}
+.lightbox-counter {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  color: rgba(255,255,255,0.4); font-size: .78rem; font-weight: 600;
+}
+
+/* ══════════════════════════════════════
+   DOWNLOAD
+   ══════════════════════════════════════ */
+.dl-total {
+  display: inline-flex; align-items: center; gap: .6rem;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: .6rem 1.4rem;
+  font-size: .9rem; color: var(--text2);
+  margin-top: 1.5rem; margin-bottom: .5rem;
+  transition: all var(--ease);
+}
+.dl-total i { color: var(--primary); }
+.dl-total strong { color: var(--text); font-weight: 800; }
+
+.download-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* auto-fit je klíčový */
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.dl-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 2rem; text-align: center;
+  transition: border-color .25s, transform .25s, background var(--ease);
+}
+.dl-card:hover { border-color: rgba(var(--primary-rgb),0.3); transform: translateY(-3px); }
+.dl-card.featured {
+  border-color: var(--primary);
+  background: linear-gradient(180deg, rgba(var(--primary-rgb),0.06) 0%, var(--card) 100%);
+}
+.dl-card .dl-icon { font-size: 2.2rem; margin-bottom: .75rem; color: var(--primary); }
+.dl-card h3 { font-weight: 700; font-size: 1rem; margin-bottom: .2rem; }
+.dl-card .dl-sub { color: var(--text3); font-size: .8rem; margin-bottom: .75rem; }
+.dl-card-count {
+  display: inline-flex; align-items: center; gap: .35rem;
+  font-size: .75rem; color: var(--text3);
+  margin-bottom: 1rem; font-weight: 500;
+}
+.dl-card-count i { font-size: .65rem; color: var(--primary); }
+.recommended-tag {
+  display: inline-flex; align-items: center; gap: .3rem;
+  background: rgba(var(--primary-rgb),0.12); color: var(--primary);
+  border-radius: 100px; padding: .15rem .6rem;
+  font-size: .68rem; font-weight: 700; margin-bottom: .5rem;
+  text-transform: uppercase; letter-spacing: .03em;
+}
+.btn-dl {
+  display: flex; align-items: center; justify-content: center; gap: .5rem;
+  width: 100%; padding: .65rem 1rem; border-radius: 10px;
+  font-weight: 600; font-size: .85rem; font-family: var(--font);
+  transition: all .2s; cursor: pointer; border: none; text-decoration: none;
+}
+.btn-dl i { font-size: .8rem; }
+.btn-dl-primary {
+  background: var(--primary); color: #fff;
+  box-shadow: 0 4px 16px var(--primary-glow);
+}
+.btn-dl-primary:hover { opacity: .85; transform: translateY(-1px); }
+.btn-dl-outline {
+  background: transparent; color: var(--text);
+  border: 1px solid var(--border);
+}
+.btn-dl-outline:hover { border-color: var(--text3); background: rgba(var(--primary-rgb),0.04); }
+
+/* ══════════════════════════════════════
+   COFFEE SECTION
+   ══════════════════════════════════════ */
+.coffee-section {
+  margin-top: 3rem;
+}
+.coffee-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem 2rem;
+  max-width: 700px;
+  margin: 0 auto;
+  transition: border-color .25s, background var(--ease);
+}
+.coffee-card:hover {
+  border-color: rgba(var(--primary-rgb),0.4);
+}
+.coffee-icon {
+  font-size: 2.5rem;
+  color: #f59e0b;
+  flex-shrink: 0;
+}
+.coffee-text h3 {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: .3rem;
+}
+.coffee-text p {
+  color: var(--text2);
+  font-size: .88rem;
+  line-height: 1.5;
+}
+.btn-coffee {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: #f59e0b;
+  color: #fff;
+  padding: .7rem 1.4rem;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: .9rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: opacity .2s, transform .15s;
+  box-shadow: 0 4px 16px rgba(245,158,11,0.3);
+}
+.btn-coffee:hover {
+  opacity: .9;
+  transform: translateY(-2px);
+}
+
+/* ══════════════════════════════════════
+   FOOTER
+   ══════════════════════════════════════ */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 3rem 0; text-align: center;
+  transition: border-color var(--ease);
+}
+.footer-brand {
+  display: inline-flex; align-items: center; gap: .5rem;
+  font-weight: 800; font-size: 1.1rem; margin-bottom: .5rem;
+}
+.footer-brand i { color: var(--primary); font-size: 1rem; }
+footer p { color: var(--text3); font-size: .85rem; }
+.footer-tags {
+  display: flex; gap: .5rem; justify-content: center;
+  flex-wrap: wrap; margin-top: 1.25rem;
+}
+.footer-tag {
+  background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 8px; padding: .25rem .65rem;
+  font-size: .72rem; color: var(--text3);
+  display: inline-flex; align-items: center; gap: .35rem;
+  transition: all var(--ease);
+}
+.footer-tag i { font-size: .65rem; }
+.footer-link {
+  color: var(--primary); text-decoration: underline;
+  text-underline-offset: 3px; transition: color .2s;
+}
+.footer-link:hover { color: var(--cyan); }
+.footer-copy { margin-top: 1.5rem; font-size: .78rem; }
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════ */
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .terminal { margin-top: 2rem; }
+  .features-grid { grid-template-columns: repeat(2,1fr); }
+  .stats-grid { grid-template-columns: repeat(2,1fr); }
+  .download-grid { grid-template-columns: repeat(2,1fr); }
+}
+
+@media (max-width: 640px) {
+  .navbar .container {
+    padding: 0 1rem; /* ← zajistí odsazení zleva i zprava */
+  }    
+  .navbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: .5rem; /* ← mezera mezi nav-left a nav-right */
+    padding: 0;
+  }
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    flex-shrink: 0;
+  }
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: .5rem; /* ← mezera mezi prvky vpravo */
+    flex-shrink: 0;
+  }
+  .nav-version {
+    margin-right: .5rem; /* ← přidá mezeru za verzí */
+  }
+  .nav-links { display: none !important; }
+  .nav-cta { display: none !important; }
+  .lang-switch { display: flex !important; }
+  .theme-toggle { display: flex !important; }
+  .nav-hamburger { display: flex !important; } /* ← zobrazí se na mobilu */
+  .hero h1 { font-size: 2rem; }
+  .features-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: repeat(2,1fr); gap: 1.5rem; }
+  .hero-btns { flex-direction: column; }
+  .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
+  .lightbox-prev, .lightbox-next { width: 40px; height: 40px; font-size: 1rem; }
+  .download-grid { grid-template-columns: 1fr; }
+  .coffee-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  .btn-coffee {
+    width: 100%;
+    justify-content: center;
+  }
+  #back-to-top { display: none !important; }
+}
+
+@media (min-width: 641px) {
+  .nav-hamburger { display: none !important; }
+  .mobile-menu { display: none !important; }
+}
+
+.hero-meta {
+  font-size: .85rem;
+  color: var(--text3);
+  margin-bottom: 1rem;
+}
+
+/* Back to top button */
+#back-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-card);
+  opacity: 0;
+  visibility: hidden;
+  transition: all .25s ease;
+  z-index: 1000;
+}
+
+#back-to-top:hover {
+  transform: translateY(-2px);
+  border-color: rgba(var(--primary-rgb),0.4);
+}
+
+#back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+.navbar.scrolled {
+  background: var(--nav-bg);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+  border-bottom-color: rgba(var(--primary-rgb),0.15);
+}
+
+[data-theme="light"] .navbar.scrolled {
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+
+.footer-legal {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  justify-content: center;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-legal a {
+  color: var(--text3);
+  font-size: .8rem;
+  transition: color .2s;
+}
+
+.footer-legal a:hover {
+  color: var(--primary);
+}
+
+.footer-legal span {
+  color: var(--text3);
+  font-size: .8rem;
+}
+
+/* ══════════════════════════════════════
+   COOKIE BANNER
+   ══════════════════════════════════════ */
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: var(--card);
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -4px 24px rgba(0,0,0,0.2);
+  padding: 1rem 1.5rem;
+  transition: transform .4s ease, opacity .4s ease;
+}
+
+.cookie-banner.hiding {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.cookie-banner-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.cookie-banner-text {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  color: var(--text2);
+  font-size: .88rem;
+  line-height: 1.5;
+}
+
+.cookie-banner-text i {
+  color: var(--primary);
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.cookie-banner-buttons {
+  display: flex;
+  gap: .5rem;
+  flex-shrink: 0;
+}
+
+.cookie-btn {
+  padding: .5rem 1.2rem;
+  border-radius: 8px;
+  font-size: .85rem;
+  font-weight: 600;
+  font-family: var(--font);
+  cursor: pointer;
+  border: none;
+  transition: all .2s;
+}
+
+.cookie-btn-accept {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 2px 12px var(--primary-glow);
+}
+
+.cookie-btn-accept:hover {
+  opacity: .85;
+  transform: translateY(-1px);
+}
+
+.cookie-btn-reject {
+  background: transparent;
+  color: var(--text2);
+  border: 1px solid var(--border);
+}
+
+.cookie-btn-reject:hover {
+  border-color: var(--text3);
+  color: var(--text);
+}
+
+@media (max-width: 640px) {
+  .cookie-banner-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .cookie-banner-buttons {
+    width: 100%;
+  }
+
+  .cookie-btn {
+    flex: 1;
+  }
+}
+
+/* WHY SECTION */
+.why {
+  padding-bottom: 2rem;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.why-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  text-align: left;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.why-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(var(--primary-rgb), 0.4);
+  box-shadow: 0 12px 40px rgba(var(--primary-rgb), 0.1);
+}
+
+.why-card .why-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: var(--icon-bg);
+  border: 1px solid var(--icon-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+  transition: all var(--ease);
+}
+
+.why-card h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: .5rem;
+}
+
+.why-card p {
+  font-size: .9rem;
+  color: var(--text2);
+  line-height: 1.7;
+}
+
+@media (max-width: 640px) {
+  .why-grid { grid-template-columns: 1fr; }
+}
+
+.feature-card {
+  text-align: center;
+}
+
+.feature-card .feature-icon {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.why-card {
+  text-align: center;
+}
+
+.why-card .why-icon {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.object-item {
+  justify-content: center;
+}
+
+.footer-tag-link {
+  text-decoration: none;
+  transition: border-color .2s, color .2s;
+}
+
+.footer-tag-link:hover {
+  border-color: #ff0000;
+  color: #ff0000;
+}
+
+/* Steps grid — always 3 columns */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.step-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  text-align: center;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.step-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(var(--primary-rgb), 0.4);
+  box-shadow: 0 12px 40px rgba(var(--primary-rgb), 0.1);
+}
+
+.step-card .feature-icon {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.step-card h3 {
+  font-size: .95rem;
+  font-weight: 700;
+  margin-bottom: .5rem;
+}
+
+.step-card p {
+  font-size: .9rem;
+  color: var(--text2);
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .steps-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .steps-grid { grid-template-columns: 1fr; }
+}
+
+.db-more-link {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  opacity: 0.8;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  background: rgba(var(--primary-rgb), 0.05);
+}
+
+.db-more-link:hover {
+  opacity: 1;
+  background: rgba(var(--primary-rgb), 0.1);
+  transform: translateX(3px);
+}
+
+.db-more-link i {
+  font-size: 0.65rem;
+}
+
+body {
+  font-display: swap;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+/* Definice animací */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Třídy pro aplikaci animací */
+.animate-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0; /* Výchozí stav je neviditelný */
+}
+
+.animate-in {
+  animation: fadeInRight 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+/* Reakce obrázků na téma */
+[data-theme="dark"] .img-dark { display: block; }
+[data-theme="dark"] .img-light { display: none; }
+
+[data-theme="light"] .img-dark { display: none; }
+[data-theme="light"] .img-light { display: block; }
+
+/* Lightbox fullscreen button */
+.lightbox-fullscreen {
+  position: absolute;
+  top: 1.5rem;
+  right: 5rem;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: #fff;
+  border-radius: 12px;
+  cursor: pointer;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: background .2s;
+  z-index: 10;
+}
+
+.lightbox-fullscreen:hover {
+  background: rgba(255,255,255,0.2);
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAVBAR ═══ -->
+<nav class="navbar" id="navbar">
+  <div class="container navbar-inner">
+    <div class="nav-left">
+      <a href="/" class="nav-brand" aria-label="BaseDiff – domů">
+        <i class="fa-solid fa-bolt" aria-hidden="true"></i> BaseDiff
+      </a>
+      <span class="nav-version" id="nav-version">v2.0.2</span>
+    </div>
+    <div class="nav-right">
+      <div class="nav-links" id="nav-links">
+        <a href="/#features" data-i18n="nav_features">Funkce</a>
+        <a href="/#databases" data-i18n="nav_databases">Databáze</a>
+        <a href="/#screenshots" data-i18n="nav_screenshots">Náhledy</a>
+      </div>
+      <div class="lang-switch" id="lang-switch" role="group" aria-label="Výběr jazyka">
+        <button class="active" data-lang="en" aria-label="English">EN</button>
+        <button data-lang="de" aria-label="Deutsch">DE</button>
+        <button data-lang="cs" aria-label="Čeština">CZ</button>
+      </div>
+
+      <button class="theme-toggle" id="theme-toggle" aria-label="Přepnout téma">
+        <i class="fa-solid fa-sun" aria-hidden="true"></i>
+        <i class="fa-solid fa-moon" aria-hidden="true"></i>
+      </button>
+      <a href="/#download" class="nav-cta">
+        <i class="fa-solid fa-download" aria-hidden="true"></i>
+        <span data-i18n="nav_download">Stáhnout</span>
+      </a>
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Otevřít menu" aria-expanded="false">
+        <i class="fa-solid fa-bars" id="hamburger-icon" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobilní menu">
+    <a href="/#features" data-i18n="nav_features">Funkce</a>
+    <a href="/#databases" data-i18n="nav_databases">Databáze</a>
+    <a href="/#screenshots" data-i18n="nav_screenshots">Náhledy</a>
+    <a href="/#download" data-i18n="nav_download">Stáhnout</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="live-dot"></span>
+        <span data-i18n="hero_badge" id="hero-badge">v2.0.2 — Windows · Linux · macOS</span>
+      </div>
+      <h1 class="animate-up">
+        <span data-i18n="hero_h1_1">Porovnej schémata.</span><br/>
+        <span class="gradient" data-i18n="hero_h1_2">Generuj skripty.</span>
+      </h1>
+      <div class="hero-meta" id="hero-meta"></div>
+      <p class="hero-sub animate-up" style="animation-delay: 0.1s" data-i18n="hero_sub">Nástroj pro porovnání databázových schémat a generování aktualizačních skriptů. Rychlý, přesný, multiplatformní.</p>
+      <div class="hero-btns">
+        <a href="/#download" class="btn-primary">
+          <i class="fa-solid fa-download" aria-hidden="true"></i>
+          <span data-i18n="hero_btn_download">Stáhnout zdarma</span>
+        </a>
+        <a href="/#features" class="btn-ghost">
+          <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
+          <span data-i18n="hero_btn_more">Zjistit více</span>
+        </a>
+      </div>
+      <!-- Download counter -->
+      <div class="hero-downloads">
+        <i class="fa-solid fa-arrow-trend-up" aria-hidden="true"></i>
+        <span>
+          <strong id="download-count">—</strong>
+          <span data-i18n="hero_downloads_label">stažení</span>
+        </span>
+      </div>
+    </div>
+    <div class="terminal animate-in" style="animation-delay: 0.2s">
+      <div class="terminal-header">
+        <span class="terminal-dot r"></span>
+        <span class="terminal-dot y"></span>
+        <span class="terminal-dot g"></span>
+        <span class="terminal-title">base-diff</span>
+      </div>
+      <div class="terminal-body" id="terminal-body">
+        <span class="line"><span class="prompt">$</span> <span class="cmd">basediff compare source.db target.db</span></span>
+        <span class="line">&nbsp;</span>
+        <span class="line info" data-i18n="term_analyzing">Analyzuji schémata...</span>
+        <span class="line info" data-i18n="term_found">Nalezeny 4 rozdíly</span>
+        <span class="line">&nbsp;</span>
+        <span class="line indent diff-add">+ CREATE TABLE audit_log (...);</span>
+        <span class="line indent diff-alter">~ ALTER TABLE users ADD COLUMN avatar TEXT;</span>
+        <span class="line indent diff-add">+ CREATE INDEX idx_users_email ON users(email);</span>
+        <span class="line indent diff-drop">− DROP TABLE legacy_sessions;</span>
+        <span class="line">&nbsp;</span>
+        <span class="line success" data-i18n="term_success">✓ Aktualizační skript vygenerován → update.sql</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ STATS ═══ -->
+<div class="stats">
+  <div class="container stats-grid">
+    <div class="stat" data-aos="fade-up" data-aos-delay="0">
+      <div class="stat-icon"><i class="fa-solid fa-cubes" aria-hidden="true"></i></div>
+      <div class="stat-value"><span class="gradient counter" data-target="8">0</span>+</div>
+      <div class="stat-label" data-i18n="stat_objects">Typů DB objektů</div>
+    </div>
+    <div class="stat" data-aos="fade-up" data-aos-delay="100">
+      <div class="stat-icon"><i class="fa-solid fa-database" aria-hidden="true"></i></div>
+      <div class="stat-value"><span class="gradient counter" data-target="2">0</span></div>
+      <div class="stat-label" data-i18n="stat_dbs">Podporované databáze</div>
+    </div>
+    <div class="stat" data-aos="fade-up" data-aos-delay="200">
+      <div class="stat-icon"><i class="fa-solid fa-desktop" aria-hidden="true"></i></div>
+      <div class="stat-value"><span class="gradient counter" data-target="4">0</span></div>
+      <div class="stat-label" data-i18n="stat_platforms">Platformy</div>
+    </div>
+    <div class="stat" data-aos="fade-up" data-aos-delay="300">
+      <div class="stat-icon"><i class="fa-solid fa-file-export" aria-hidden="true"></i></div>
+      <div class="stat-value"><span class="gradient counter" data-target="4">0</span></div>
+      <div class="stat-label" data-i18n="stat_exports">Formáty exportu</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FEATURES ═══ -->
+<section id="features" class="alt-bg">
+  <div class="container section-center">
+    <div class="section-label" data-aos="fade-up"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> <span data-i18n="features_label">Funkce</span></div>
+    <h2 class="section-title" data-aos="fade-up" data-aos-delay="50" data-i18n="features_title_html">Vše pro správu <span class="gradient">databázových schémat</span></h2>
+    <p class="section-sub" data-aos="fade-up" data-aos-delay="100" data-i18n="features_sub">Od porovnání až po export – BaseDiff pokryje celý workflow bez nutnosti psát SQL ručně.</p>
+    <div class="features-grid">
+      <article class="feature-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="feature-icon"><i class="fa-solid fa-code-compare" aria-hidden="true"></i></div>
+        <h3 data-i18n="f1_title">Porovnání schémat</h3>
+        <p data-i18n="f1_desc">Vizuální porovnání dvou databázových schémat s přehledným zobrazením rozdílů. Prohození zdroje a cíle jedním klikem.</p>
+      </article>
+      <article class="feature-card" data-aos="fade-up" data-aos-delay="50">
+        <div class="feature-icon"><i class="fa-solid fa-gears" aria-hidden="true"></i></div>
+        <h3 data-i18n="f2_title">Generování skriptů</h3>
+        <p data-i18n="f2_desc">Automatické generování ALTER, CREATE a DROP skriptů pro synchronizaci databází.</p>
+      </article>
+      <article class="feature-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="feature-icon"><i class="fa-solid fa-bolt" aria-hidden="true"></i></div>
+        <h3 data-i18n="f3_title">Bleskově rychlé</h3>
+        <p data-i18n="f3_desc">Optimalizovaný engine pro analýzu i rozsáhlých databázových struktur během sekund.</p>
+      </article>
+      <article class="feature-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="feature-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></div>
+        <h3 data-i18n="f4_title">Bezpečné</h3>
+        <p data-i18n="f4_desc">Náhled změn před aplikací. Žádné neočekávané modifikace vaší databáze.</p>
+      </article>
+      <article class="feature-card" data-aos="fade-up" data-aos-delay="50">
+        <div class="feature-icon"><i class="fa-solid fa-pen-to-square" aria-hidden="true"></i></div>
+        <h3 data-i18n="f5_title">Editace skriptů</h3>
+        <p data-i18n="f5_desc">Upravuj vygenerované skripty před exportem. Zvol přesně, co se zahrne do výstupu.</p>
+      </article>
+      <article class="feature-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="feature-icon"><i class="fa-solid fa-floppy-disk" aria-hidden="true"></i></div>
+        <h3 data-i18n="f6_title">Uložení projektu</h3>
+        <p data-i18n="f6_desc">Ulož konfiguraci porovnání do JSON a kdykoli se k projektu vrať. Offline režim podporován.</p>
+      </article>
+      <article class="feature-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="feature-icon"><i class="fa-solid fa-file-arrow-down" aria-hidden="true"></i></div>
+        <h3 data-i18n="f7_title">Flexibilní export</h3>
+        <p data-i18n="f7_desc">Export do jednoho souboru nebo oddělených souborů (create, alter, drop, datová migrace).</p>
+      </article>
+      <article class="feature-card" data-aos="fade-up" data-aos-delay="50">
+        <div class="feature-icon"><i class="fa-solid fa-terminal" aria-hidden="true"></i></div>
+        <h3 data-i18n="f8_title">Query Tool</h3>
+        <p data-i18n="f8_desc">Sestavuj SQL dotazy včetně JOINů a použij je přímo v migračních skriptech.</p>
+      </article>
+      <article class="feature-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="feature-icon"><i class="fa-solid fa-palette" aria-hidden="true"></i></div>
+        <h3 data-i18n="f9_title">Témata a jazyky</h3>
+        <p data-i18n="f9_desc">Světlý a tmavý režim. Rozhraní v češtině, angličtině a němčině.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WHY BASEDIFF ═══ -->
+<section class="why">
+  <div class="container section-center">
+
+    <div class="section-label" data-aos="fade-up">
+      <i class="fa-solid fa-circle-question"></i>
+      <span data-i18n="why_label">Why BaseDiff</span>
+    </div>
+
+    <h2 class="section-title" data-aos="fade-up" data-aos-delay="50"
+        data-i18n="why_title_html">
+      Why developers use <span class="gradient">BaseDiff</span>
+    </h2>
+
+    <p class="section-sub" data-aos="fade-up" data-aos-delay="100"
+       data-i18n="why_sub">
+      BaseDiff is designed for developers and database administrators who
+      need a fast and reliable way to compare database schemas and generate
+      SQL migration scripts.
+    </p>
+
+    <div class="why-grid">
+        <div class="why-card" data-aos="fade-up" data-aos-delay="0">
+            <div class="why-icon"><i class="fa-solid fa-code-compare" aria-hidden="true"></i></div>
+            <h3 data-i18n="why_c1_title">Database schema comparison</h3>
+            <p data-i18n="why_c1_desc">Compare database schemas between environments such as development, staging and production. BaseDiff quickly detects differences in tables, indexes, constraints, views, procedures and triggers.</p>
+        </div>
+        <div class="why-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="why-icon"><i class="fa-solid fa-file-code" aria-hidden="true"></i></div>
+            <h3 data-i18n="why_c2_title">Automatic SQL migration scripts</h3>
+            <p data-i18n="why_c2_desc">Generate SQL scripts to synchronize database structures. The tool automatically produces CREATE, ALTER and DROP statements based on detected schema differences.</p>
+        </div>
+        <div class="why-card" data-aos="fade-up" data-aos-delay="0">
+            <div class="why-icon"><i class="fa-solid fa-server" aria-hidden="true"></i></div>
+            <h3 data-i18n="why_c3_title">Supports SQL Server and PostgreSQL</h3>
+            <p data-i18n="why_c3_desc">BaseDiff currently supports Microsoft SQL Server and PostgreSQL. Support for MySQL, Oracle and SQLite is planned in future versions.</p>
+        </div>
+        <div class="why-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="why-icon"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i></div>
+            <h3 data-i18n="why_c4_title">Visual schema diff tool</h3>
+            <p data-i18n="why_c4_desc">Easily explore differences between source and target databases using a visual tree structure and detailed SQL previews.</p>
+        </div>
+  </div>
+  </div>
+</section>
+
+<!-- ═══ OBJECTS ═══ -->
+<section>
+  <div class="container section-center">
+    <div class="section-label" data-aos="fade-up"><i class="fa-solid fa-layer-group" aria-hidden="true"></i> <span data-i18n="objects_label">Sledované objekty</span></div>
+    <h2 class="section-title" data-aos="fade-up" data-aos-delay="50" data-i18n="objects_title_html">Kompletní pokrytí <span class="gradient">databázových objektů</span></h2>
+    <p class="section-sub" data-aos="fade-up" data-aos-delay="100" data-i18n="objects_sub">Vyber si, které objekty a vlastnosti chceš zahrnout do porovnání.</p>
+    <div class="objects-grid">
+      <div class="object-item" data-aos="zoom-in" data-aos-delay="0"><i class="fa-solid fa-table" aria-hidden="true"></i> <span data-i18n="obj_tables">Tabulky</span></div>
+      <div class="object-item" data-aos="zoom-in" data-aos-delay="50"><i class="fa-solid fa-list-ol" aria-hidden="true"></i> <span data-i18n="obj_indexes">Indexy</span></div>
+      <div class="object-item" data-aos="zoom-in" data-aos-delay="100"><i class="fa-solid fa-link" aria-hidden="true"></i> <span data-i18n="obj_constraints">Omezení (FK, CK, UQ)</span></div>
+      <div class="object-item" data-aos="zoom-in" data-aos-delay="150"><i class="fa-solid fa-eye" aria-hidden="true"></i> <span data-i18n="obj_views">Pohledy</span></div>
+      <div class="object-item" data-aos="zoom-in" data-aos-delay="200"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i> <span data-i18n="obj_procedures">Uložené procedury</span></div>
+      <div class="object-item" data-aos="zoom-in" data-aos-delay="250"><i class="fa-solid fa-square-root-variable" aria-hidden="true"></i> <span data-i18n="obj_functions">Funkce</span></div>
+      <div class="object-item" data-aos="zoom-in" data-aos-delay="300"><i class="fa-solid fa-bolt-lightning" aria-hidden="true"></i> <span data-i18n="obj_triggers">Triggery</span></div>
+      <div class="object-item" data-aos="zoom-in" data-aos-delay="350"><i class="fa-solid fa-arrows-rotate" aria-hidden="true"></i> <span data-i18n="obj_migrations">Migrace</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DATABASES ═══ -->
+<section id="databases" class="alt-bg">
+  <div class="container section-center">
+    <div class="section-label" data-aos="fade-up"><i class="fa-solid fa-database" aria-hidden="true"></i> <span data-i18n="db_label">Podporované databáze</span></div>
+    <h2 class="section-title" data-aos="fade-up" data-aos-delay="50" data-i18n="db_title_html">Pracuj s databázemi, <span class="gradient">které znáš</span></h2>
+    <p class="section-sub" data-aos="fade-up" data-aos-delay="100" data-i18n="db_sub">Aktuálně podporujeme MS SQL Server a PostgreSQL. Podpora dalších databází se připravuje.</p>
+    <div class="db-grid">
+      <div class="db-card" data-aos="fade-up" data-aos-delay="0">
+      <div class="db-icon"><i class="fa-solid fa-server" aria-hidden="true"></i></div>
+      <h3>MS SQL Server</h3>
+      <div class="db-sub" data-i18n="db_mssql_sub">Windows Auth & SQL Auth</div>
+      
+      <div style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem; margin-top: 0.5rem;">
+        <span class="db-badge ok" data-i18n="db_available"><i class="fa-solid fa-check"></i> Dostupné</span>
+        
+        <a href="/compare-sql-server-schemas.html" class="db-more-link" data-i18n="nav_sql_compare_short">
+          Learn more <i class="fa-solid fa-chevron-right"></i>
+        </a>
+      </div>
+    </div>
+      <div class="db-card" data-aos="fade-up" data-aos-delay="75">
+          <div class="db-icon"><i class="fa-solid fa-database" aria-hidden="true"></i></div>
+          <h3>PostgreSQL</h3>
+          <div class="db-sub" data-i18n="db_pg_sub">Plná podpora schémat</div>
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 0.75rem; margin-top: 0.5rem;">
+            <span class="db-badge ok" data-i18n="db_available"><i class="fa-solid fa-check"></i> Dostupné</span>
+            <a href="/compare-postgresql-schemas.html" class="db-more-link" data-i18n="nav_pg_compare_short">
+              Learn more <i class="fa-solid fa-chevron-right"></i>
+            </a>
+          </div>
+        </div>
+      <div class="db-card" data-aos="fade-up" data-aos-delay="150">
+        <div class="db-icon"><i class="fa-solid fa-circle-nodes" aria-hidden="true"></i></div>
+        <h3>MySQL</h3>
+        <div class="db-sub" data-i18n="db_planned">Připravujeme</div>
+        <span class="db-badge soon" data-i18n="db_soon"><i class="fa-solid fa-clock"></i> Brzy</span>
+      </div>
+      <div class="db-card" data-aos="fade-up" data-aos-delay="225">
+        <div class="db-icon"><i class="fa-solid fa-fire" aria-hidden="true"></i></div>
+        <h3>Oracle</h3>
+        <div class="db-sub" data-i18n="db_planned">Připravujeme</div>
+        <span class="db-badge soon" data-i18n="db_soon"><i class="fa-solid fa-clock"></i> Brzy</span>
+      </div>
+      <div class="db-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="db-icon"><i class="fa-solid fa-feather" aria-hidden="true"></i></div>
+        <h3>SQLite</h3>
+        <div class="db-sub" data-i18n="db_planned">Připravujeme</div>
+        <span class="db-badge soon" data-i18n="db_soon"><i class="fa-solid fa-clock"></i> Brzy</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SCREENSHOTS ═══ -->
+<section id="screenshots">
+  <div class="container section-center">
+    <div class="section-label" data-aos="fade-up">
+      <i class="fa-solid fa-images" aria-hidden="true"></i>
+      <span data-i18n="screens_label">Náhledy aplikace</span>
+    </div>
+    <h2 class="section-title" data-aos="fade-up" data-aos-delay="50" data-i18n="screens_title_html">
+      Podívej se, <span class="gradient">jak to vypadá</span>
+    </h2>
+    <div class="screenshots-grid">
+
+      <!-- 01 Hlavní okno -->
+      <figure class="screenshot-card" data-lightbox-base="01-basediff-main" data-aos="fade-up" data-aos-delay="0">
+        <img src="/img/01-basediff-main-d.webp"
+             class="img-dark"
+             srcset="/img/01-basediff-main-d-mobile.webp 800w,
+                     /img/01-basediff-main-d.webp 1920w"
+             sizes="(max-width: 640px) 100vw, 50vw"
+             width="1920" height="1032"
+             alt="BaseDiff main window showing database schema comparison tree with SQL update scripts"
+             fetchpriority="high">
+        <img src="/img/01-basediff-main-l.webp"
+             class="img-light"
+             srcset="/img/01-basediff-main-l-mobile.webp 800w,
+                     /img/01-basediff-main-l.webp 1920w"
+             sizes="(max-width: 640px) 100vw, 50vw"
+             width="1920" height="1032"
+             alt="BaseDiff main window showing database schema comparison tree with SQL update scripts"
+             loading="lazy">
+        <figcaption class="cap">
+          <i class="fa-solid fa-display" aria-hidden="true"></i>
+          <span data-i18n="screen1">Hlavní okno – stromy schémat a update skripty</span>
+          <i class="fa-solid fa-expand cap-zoom" aria-hidden="true"></i>
+        </figcaption>
+      </figure>
+
+      <!-- 02 Compare Dialog -->
+      <figure class="screenshot-card" data-lightbox-base="02-basediff-compare-dialog" data-aos="fade-up" data-aos-delay="75">
+        <img src="/img/02-basediff-compare-dialog-d.webp"
+             class="img-dark"
+             srcset="/img/02-basediff-compare-dialog-d-mobile.webp 800w,
+                     /img/02-basediff-compare-dialog-d.webp 1920w"
+             sizes="(max-width: 640px) 100vw, 50vw"
+             width="1920" height="1032"
+             alt="BaseDiff source and target database selection dialog for SQL Server schema comparison"
+             loading="lazy">
+        <img src="/img/02-basediff-compare-dialog-l.webp"
+             class="img-light"
+             srcset="/img/02-basediff-compare-dialog-l-mobile.webp 800w,
+                     /img/02-basediff-compare-dialog-l.webp 1920w"
+             sizes="(max-width: 640px) 100vw, 50vw"
+             width="1920" height="1032"
+             alt="BaseDiff source and target database selection dialog for SQL Server schema comparison"
+             loading="lazy">
+        <figcaption class="cap">
+          <i class="fa-solid fa-right-left" aria-hidden="true"></i>
+          <span data-i18n="screen2">Výběr zdrojové a cílové databáze</span>
+          <i class="fa-solid fa-expand cap-zoom" aria-hidden="true"></i>
+        </figcaption>
+      </figure>
+
+      <!-- 03 Export -->
+      <figure class="screenshot-card" data-lightbox-base="03-basediff-export" data-aos="fade-up" data-aos-delay="150">
+        <img src="/img/03-basediff-export-d.webp"
+             class="img-dark"
+             srcset="/img/03-basediff-export-d-mobile.webp 800w,
+                     /img/03-basediff-export-d.webp 1920w"
+             sizes="(max-width: 640px) 100vw, 50vw"
+             width="1920" height="1032"
+             alt="BaseDiff SQL migration script export to files including CREATE ALTER and DROP statements"
+             loading="lazy">
+        <img src="/img/03-basediff-export-l.webp"
+             class="img-light"
+             srcset="/img/03-basediff-export-l-mobile.webp 800w,
+                     /img/03-basediff-export-l.webp 1920w"
+             sizes="(max-width: 640px) 100vw, 50vw"
+             width="1920" height="1032"
+             alt="BaseDiff SQL migration script export to files including CREATE ALTER and DROP statements"
+             loading="lazy">
+        <figcaption class="cap">
+          <i class="fa-solid fa-file-export" aria-hidden="true"></i>
+          <span data-i18n="screen3">Export update skriptů do souborů</span>
+          <i class="fa-solid fa-expand cap-zoom" aria-hidden="true"></i>
+        </figcaption>
+      </figure>
+
+      <!-- 04 Options -->
+      <figure class="screenshot-card" data-lightbox-base="04-basediff-options" data-aos="fade-up" data-aos-delay="225">
+        <img src="/img/04-basediff-options-d.webp"
+             class="img-dark"
+             srcset="/img/04-basediff-options-d-mobile.webp 800w,
+                     /img/04-basediff-options-d.webp 1920w"
+             sizes="(max-width: 640px) 100vw, 50vw"
+             width="1920" height="1032"
+             alt="BaseDiff tracked database objects settings including tables indexes views stored procedures and triggers"
+             loading="lazy">
+        <img src="/img/04-basediff-options-l.webp"
+             class="img-light"
+             srcset="/img/04-basediff-options-l-mobile.webp 800w,
+                     /img/04-basediff-options-l.webp 1920w"
+             sizes="(max-width: 640px) 100vw, 50vw"
+             width="1920" height="1032"
+             alt="BaseDiff tracked database objects settings including tables indexes views stored procedures and triggers"
+             loading="lazy">
+        <figcaption class="cap">
+          <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+          <span data-i18n="screen4">Nastavení sledovaných objektů (F4)</span>
+          <i class="fa-solid fa-expand cap-zoom" aria-hidden="true"></i>
+        </figcaption>
+      </figure>
+
+      <!-- 05 Query Tool -->
+      <figure class="screenshot-card" data-lightbox-base="05-basediff-query-tool" data-aos="fade-up" data-aos-delay="300">
+        <img src="/img/05-basediff-query-tool-d.webp"
+             class="img-dark"
+             srcset="/img/05-basediff-query-tool-d-mobile.webp 800w,
+                     /img/05-basediff-query-tool-d.webp 1920w"
+             sizes="(max-width: 640px) 100vw, 50vw"
+             width="1920" height="1032"
+             alt="BaseDiff Query Tool building SQL SELECT queries with JOINs for database migration scripts"
+             loading="lazy">
+        <img src="/img/05-basediff-query-tool-l.webp"
+             class="img-light"
+             srcset="/img/05-basediff-query-tool-l-mobile.webp 800w,
+                     /img/05-basediff-query-tool-l.webp 1920w"
+             sizes="(max-width: 640px) 100vw, 50vw"
+             width="1920" height="1032"
+             alt="BaseDiff Query Tool building SQL SELECT queries with JOINs for database migration scripts"
+             loading="lazy">
+        <figcaption class="cap">
+          <i class="fa-solid fa-terminal" aria-hidden="true"></i>
+          <span data-i18n="screen5">Query Tool – sestavování dotazů</span>
+          <i class="fa-solid fa-expand cap-zoom" aria-hidden="true"></i>
+        </figcaption>
+      </figure>
+
+      <!-- 06 Migration Data Editor -->
+      <figure class="screenshot-card" data-lightbox-base="06-basediff-migration-data-editor" data-aos="fade-up" data-aos-delay="375">
+        <img src="/img/06-basediff-migration-data-editor-d.webp"
+             class="img-dark"
+             srcset="/img/06-basediff-migration-data-editor-d-mobile.webp 800w,
+                     /img/06-basediff-migration-data-editor-d.webp 1920w"
+             sizes="(max-width: 640px) 100vw, 50vw"
+             width="1920" height="1032"
+             alt="BaseDiff Migration Data Editor for editing and managing database data migration scripts"
+             loading="lazy">
+        <img src="/img/06-basediff-migration-data-editor-l.webp"
+             class="img-light"
+             srcset="/img/06-basediff-migration-data-editor-l-mobile.webp 800w,
+                     /img/06-basediff-migration-data-editor-l.webp 1920w"
+             sizes="(max-width: 640px) 100vw, 50vw"
+             width="1920" height="1032"
+             alt="BaseDiff Migration Data Editor for editing and managing database data migration scripts"
+             loading="lazy">
+        <figcaption class="cap">
+          <i class="fa-solid fa-table-columns" aria-hidden="true"></i>
+          <span data-i18n="screen6">Editor migračních dat</span>
+          <i class="fa-solid fa-expand cap-zoom" aria-hidden="true"></i>
+        </figcaption>
+      </figure>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Lightbox -->
+<div class="lightbox-overlay" id="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Prohlížeč obrázků">
+  <button class="lightbox-close" id="lightbox-close" aria-label="Zavřít"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+  <button class="lightbox-prev" id="lightbox-prev" aria-label="Předchozí"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
+  <button class="lightbox-next" id="lightbox-next" aria-label="Další"><i class="fa-solid fa-chevron-right" aria-hidden="true"></i></button>
+  <img class="lightbox-img" id="lightbox-img" src="" alt=""/>
+  <div class="lightbox-caption" id="lightbox-caption"></div>
+  <div class="lightbox-counter" id="lightbox-counter"></div>
+</div>
+
+<!-- ═══ DOWNLOAD ═══ -->
+<section id="download" class="alt-bg">
+  <div class="container section-center">
+    <div class="section-label" data-aos="fade-up"><i class="fa-solid fa-download" aria-hidden="true"></i> <span data-i18n="dl_label">Stáhnout</span></div>
+    <h2 class="section-title" data-aos="fade-up" data-aos-delay="50" data-i18n="dl_title_html">Začni používat <span class="gradient">BaseDiff ještě dnes</span></h2>
+    <p class="section-sub" data-aos="fade-up" data-aos-delay="100" data-i18n="dl_sub">Po instalaci nakonfiguruj připojení a vytvoř první srovnávací projekt.</p>
+
+    <!-- Total downloads badge -->
+    <div class="dl-total" data-aos="fade-up" data-aos-delay="150">
+      <i class="fa-solid fa-chart-line" aria-hidden="true"></i>
+      <span data-i18n="dl_total_label">Celkem stažení:</span>
+      <strong id="download-count-section">—</strong>
+    </div>
+
+  <div class="download-grid">
+    <!-- 1. Windows x64 Installer -->
+    <div class="dl-card featured" data-platform="win64">
+      <span class="recommended-tag" data-i18n="dl_recommended">Doporučeno</span>
+      <div class="dl-icon"><i class="fa-brands fa-windows"></i></div>
+      <h3>Windows x64</h3>
+      <div class="dl-sub" data-i18n="dl_win64_sub">Instalátor (.exe)</div>
+      <div class="dl-card-count"><i class="fa-solid fa-download"></i> <span class="platform-count">—</span></div>
+      <a href="/download/windows" class="btn-dl btn-dl-primary" data-i18n="dl_btn_exe">Stáhnout .exe</a>
+    </div>
+    
+    <!-- 2. Windows x86 Installer -->
+    <div class="dl-card" data-platform="win32">
+      <div class="dl-icon"><i class="fa-brands fa-windows"></i></div>
+      <h3>Windows x86</h3>
+      <div class="dl-sub" data-i18n="dl_win32_sub">Instalátor (32-bit)</div>
+      <div class="dl-card-count"><i class="fa-solid fa-download"></i> <span class="platform-count">—</span></div>
+      <a href="/download/windows32" class="btn-dl btn-dl-outline" data-i18n="dl_btn_exe">Stáhnout .exe</a>
+    </div>
+    
+    <!-- 3. Linux AppImage -->
+    <div class="dl-card" data-platform="linux">
+      <div class="dl-icon"><i class="fa-brands fa-linux"></i></div>
+      <h3>Linux</h3>
+      <div class="dl-sub" data-i18n="dl_linux_sub">AppImage</div>
+      <div class="dl-card-count"><i class="fa-solid fa-download"></i> <span class="platform-count">—</span></div>
+      <a href="/download/linux" class="btn-dl btn-dl-outline" data-i18n="dl_btn_appimage">Stáhnout AppImage</a>
+    </div>
+    
+    <!-- 4. macOS Portable -->
+    <div class="dl-card" data-platform="macos-portable">
+      <div class="dl-icon"><i class="fa-brands fa-apple"></i></div>
+      <h3>macOS</h3>
+      <div class="dl-sub" data-i18n="dl_macos_sub">Portable (.zip)</div>
+      <div class="dl-card-count"><i class="fa-solid fa-download"></i> <span class="platform-count">—</span></div>
+      <a href="/download/portable/macos" class="btn-dl btn-dl-outline" data-i18n="dl_btn_zip">Stáhnout .zip</a>
+    </div>
+    
+    <!-- 5. Win x64 Portable -->
+    <div class="dl-card" data-platform="win64-portable">
+      <div class="dl-icon"><i class="fa-solid fa-box-archive"></i></div>
+      <h3>Win x64 Port.</h3>
+      <div class="dl-sub" data-i18n="dl_portable_sub">Bez instalace (.zip)</div>
+      <div class="dl-card-count"><i class="fa-solid fa-download"></i> <span class="platform-count">—</span></div>
+      <a href="/download/portable/win64" class="btn-dl btn-dl-outline" data-i18n="dl_btn_zip">Stáhnout .zip</a>
+    </div>
+    
+    <!-- 6. Win x86 Portable -->
+    <div class="dl-card" data-platform="win32-portable">
+      <div class="dl-icon"><i class="fa-solid fa-box-archive"></i></div>
+      <h3>Win x86 Port.</h3>
+      <div class="dl-sub" data-i18n="dl_portable32_sub">Bez instalace (32-bit)</div>
+      <div class="dl-card-count"><i class="fa-solid fa-download"></i> <span class="platform-count">—</span></div>
+      <a href="/download/portable/win32" class="btn-dl btn-dl-outline" data-i18n="dl_btn_zip">Stáhnout .zip</a>
+    </div>
+    
+    <!-- 7. Linux Portable -->
+    <div class="dl-card" data-platform="linux-portable">
+      <div class="dl-icon"><i class="fa-brands fa-linux"></i></div>
+      <h3>Linux Port.</h3>
+      <div class="dl-sub" data-i18n="dl_linux_portable_sub">Přenosná x86_64</div>
+      <div class="dl-card-count"><i class="fa-solid fa-download"></i> <span class="platform-count">—</span></div>
+      <a href="/download/portable/linux" class="btn-dl btn-dl-outline" data-i18n="dl_btn_targz">Stáhnout .tar.gz</a>
+    </div>
+</div>
+
+    <!-- COFFEE -->
+      <div class="coffee-section" data-aos="fade-up">
+        <div class="coffee-card">
+          <div class="coffee-icon">
+            <i class="fa-solid fa-mug-hot"></i>
+          </div>
+          <div class="coffee-text">
+            <h3 data-i18n="coffee_title">Líbí se ti BaseDiff?</h3>
+            <p data-i18n="coffee_desc">Software je zdarma. Pokud ti ušetřil čas, můžeš nás podpořit kávou. ☕</p>
+          </div>
+          <a href="https://ko-fi.com/basediff"
+             target="_blank"
+             rel="noopener"
+             class="btn-coffee">
+            <i class="fa-solid fa-mug-hot"></i>
+            <span data-i18n="coffee_btn">Kup nám kafe</span>
+          </a>
+        </div>
+      </div>      
+  </div>  
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="container">
+    <a href="/" class="footer-brand"><i class="fa-solid fa-bolt" aria-hidden="true"></i> BaseDiff</a>
+    <p data-i18n="footer_desc">Nástroj pro porovnání a synchronizaci databázových struktur.</p>
+    <div class="footer-tags">
+      <span class="footer-tag"><i class="fa-solid fa-code" aria-hidden="true"></i> .NET</span>
+      <span class="footer-tag"><i class="fa-brands fa-windows" aria-hidden="true"></i> Windows</span>
+      <span class="footer-tag"><i class="fa-brands fa-linux" aria-hidden="true"></i> Linux</span>
+      <span class="footer-tag"><i class="fa-brands fa-apple" aria-hidden="true"></i> macOS</span>
+      <span class="footer-tag"><i class="fa-solid fa-globe" aria-hidden="true"></i> EN / DE / CZ</span>
+      <a href="https://www.youtube.com/@BaseDiff" target="_blank" rel="noopener" class="footer-tag footer-tag-link">
+        <i class="fa-brands fa-youtube" aria-hidden="true"></i> YouTube
+      </a>
+    </div>
+    <div class="footer-legal">
+      <a href="/compare-sql-server-schemas.html" data-i18n="nav_sql_compare">SQL Server Comparison</a>
+      <span>·</span>
+      <a href="/compare-postgresql-schemas.html" data-i18n="nav_pg_compare">PostgreSQL Comparison</a>
+      <span>·</span>
+      <a href="/changelog.html">Changelog</a>
+      <span>·</span>
+      <a href="/privacy.html" data-i18n="nav_privacy">Privacy Policy</a>
+      <span>·</span>
+      <a href="/terms.html" data-i18n="nav_terms">Terms of Use</a>
+      <span>·</span>
+      <a href="/cookies.html" data-i18n="nav_cookies">Cookies</a>
+      <span>·</span>
+      <a href="#" onclick="openCookieSettings(); return false;" data-i18n="cookie_settings">Cookie settings</a>
+    </div>
+    <p class="footer-copy">
+      © <span id="footer-year"></span>
+      <a href="https://www.elvacsolutions.eu" target="_blank" rel="noopener" class="footer-link">ELVAC SOLUTIONS</a> · BaseDiff
+    </p>
+  </div>
+</footer>
+
+<!-- Cookie Banner -->
+<div id="cookie-banner" class="cookie-banner" style="display:none;">
+  <div class="cookie-banner-inner">
+    <div class="cookie-banner-text">
+      <i class="fa-solid fa-cookie-bite" aria-hidden="true"></i>
+      <span data-i18n="cookie_banner_text">Tento web používá cookies pro analýzu návštěvnosti. Můžete je přijmout nebo odmítnout.</span>
+    </div>
+    <div class="cookie-banner-buttons">
+      <button id="cookie-reject" class="cookie-btn cookie-btn-reject" data-i18n="cookie_reject">Odmítnout</button>
+      <button id="cookie-accept" class="cookie-btn cookie-btn-accept" data-i18n="cookie_accept">Přijmout</button>
+    </div>
+  </div>
+</div>
+
+
+<button id="back-to-top" aria-label="Back to top">
+  <i class="fa-solid fa-chevron-up"></i>
+</button>
+
+<!-- AOS library -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+<!-- App JS -->
+<script src="/js/app-config.js?v=4" defer></script>
+<script src="/js/theme.js?v=4" defer></script>
+<script src="/js/i18n.js?v=38" defer></script>
+<script src="/js/mobile-menu.js?v=8" defer></script>
+<script src="/js/lightbox.js?v=5" defer></script>
+<script src="/js/animations.js?v=6" defer></script>
+<script src="/js/download-counter.js?v=7" defer></script>
+<script src="/js/cookie-consent.js?v=3" defer></script>
+
+<script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+<script>
+  var kofiLabels = {
+    cs: 'Podpořte nás',
+    en: 'Support us',
+    de: 'Unterstützen'
+  };
+
+  var currentLang = localStorage.getItem('basediff-lang') || 'en';
+  var kofiText = kofiLabels[currentLang] || kofiLabels.en;
+
+  kofiWidgetOverlay.draw('basediff', {
+    'type': 'floating-chat',
+    'floating-chat.donateButton.text': kofiText,
+    'floating-chat.donateButton.background-color': '#794bc4',
+    'floating-chat.donateButton.text-color': '#fff'
+  });
+</script>
+
+
+</body>
+</html>

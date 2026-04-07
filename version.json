@@ -1,0 +1,19 @@
+{
+  "latest_version": "2.0.2",
+  "release_date": "2026-03-25",
+  "release_date_text": {
+    "cs": "březen 2026",
+    "en": "March 2026",
+    "de": "März 2026"
+  },
+  "changelog_url": "https://basediff.com/changelog.html",
+  "downloads": {
+    "windows": "https://basediff.com/download/windows",
+    "windows32": "https://basediff.com/download/windows32",
+    "linux": "https://basediff.com/download/linux",
+    "portable_macos": "https://basediff.com/download/portable/macos",
+    "portable_win64": "https://basediff.com/download/portable/win64",
+    "portable_win32": "https://basediff.com/download/portable/win32",
+    "portable_linux": "https://basediff.com/download/portable/linux"
+  }
+}

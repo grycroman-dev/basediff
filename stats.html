@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" id="root-html" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#09090b">
+  <title>Stats — BaseDiff</title>
+  <meta name="description" content="BaseDiff is a desktop application for comparing and synchronizing database structures. It generates SQL scripts (CREATE, ALTER, DROP) for MS SQL Server and PostgreSQL. Free for Windows, Linux and macOS."/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://basediff.com/stats.html"/>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap&font-display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+  <link rel="stylesheet" href="/css/style.css?v=17"/>
+  <link rel="stylesheet" href="/css/legal.css?v=2"/>
+  <link rel="stylesheet" href="/css/stats.css?v=4"/>
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://basediff.com/stats.html"/>
+  <meta property="og:title" content="BaseDiff — Schema comparison, script generation"/>
+  <meta property="og:description" content="Compare database schemas and generate update SQL scripts. Fast, accurate, cross-platform tool for DBAs and developers."/>
+  <meta property="og:image" content="https://basediff.com/og-image.png"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:locale:alternate" content="de_DE"/>
+  <meta property="og:locale:alternate" content="cs_CZ"/>
+  <meta property="og:site_name" content="BaseDiff"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container navbar-inner">
+    <div class="nav-left">
+      <a href="/" class="nav-brand">
+        <i class="fa-solid fa-bolt" aria-hidden="true"></i> BaseDiff
+      </a>
+      <span class="nav-version" id="nav-version">v2.0.2</span>
+    </div>
+    <div class="nav-right">
+      <div class="nav-links" id="nav-links">
+        <a href="/#features" data-i18n="nav_features">Features</a>
+        <a href="/#databases" data-i18n="nav_databases">Databases</a>
+        <a href="/#screenshots" data-i18n="nav_screenshots">Previews</a>
+      </div>
+      <div class="lang-switch" id="lang-switch">
+        <button class="active" data-lang="en">EN</button>
+        <button data-lang="de">DE</button>
+        <button data-lang="cs">CZ</button>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+        <i class="fa-solid fa-sun" aria-hidden="true"></i>
+        <i class="fa-solid fa-moon" aria-hidden="true"></i>
+      </button>
+      <a href="/#download" class="nav-cta">
+        <i class="fa-solid fa-download" aria-hidden="true"></i>
+        <span data-i18n="nav_download">Download</span>
+      </a>
+      <button class="nav-hamburger" id="nav-hamburger" aria-expanded="false">
+        <i class="fa-solid fa-bars" id="hamburger-icon"></i>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="/#features" data-i18n="nav_features">Features</a>
+    <a href="/#databases" data-i18n="nav_databases">Databases</a>
+    <a href="/#screenshots" data-i18n="nav_screenshots">Previews</a>
+    <a href="/#download" data-i18n="nav_download">Download</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="legal-hero">
+  <div class="container">
+    <div class="section-label">
+      <i class="fa-solid fa-chart-line"></i>
+      <span data-i18n="stats_label">Statistics</span>
+    </div>
+    <h1 data-i18n="stats_title">BaseDiff Statistics</h1>
+    <p data-i18n="stats_sub">Live download and usage data.</p>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+  <div class="stats-page">
+
+    <!-- Downloads overview -->
+    <div class="stats-section">
+      <h2><i class="fa-solid fa-download"></i> <span data-i18n="stats_downloads_title">Downloads</span></h2>
+      <div class="stats-cards" id="download-stats">
+        <div class="stats-card">
+          <div class="stats-card-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+          <div class="stats-card-value" id="stats-dl-total">—</div>
+          <div class="stats-card-label" data-i18n="stats_total">Total downloads</div>
+        </div>
+        <div class="stats-card">
+          <div class="stats-card-icon"><i class="fa-brands fa-windows"></i></div>
+          <div class="stats-card-value" id="stats-dl-windows">—</div>
+          <div class="stats-card-label">Windows</div>
+        </div>
+        <div class="stats-card">
+          <div class="stats-card-icon"><i class="fa-brands fa-linux"></i></div>
+          <div class="stats-card-value" id="stats-dl-linux">—</div>
+          <div class="stats-card-label">Linux</div>
+        </div>
+        <div class="stats-card">
+          <div class="stats-card-icon"><i class="fa-brands fa-apple"></i></div>
+          <div class="stats-card-value" id="stats-dl-macos">—</div>
+          <div class="stats-card-label">macOS</div>
+        </div>
+        <div class="stats-card">
+          <div class="stats-card-icon"><i class="fa-solid fa-box-archive"></i></div>
+          <div class="stats-card-value" id="stats-dl-portable">—</div>
+          <div class="stats-card-label">Portable</div>
+        </div>
+      </div>
+
+      <!-- Download bar chart -->
+      <div class="stats-chart-container">
+        <h3 data-i18n="stats_by_platform">Downloads by platform</h3>
+        <div class="stats-bar-chart" id="dl-bar-chart"></div>
+      </div>
+      
+      <!-- TOP 10 zemí -->
+      <div class="stats-chart-container">
+        <h3 data-i18n="stats_by_country">Downloads by country</h3>
+        <div class="stats-bar-chart" id="countries-bar-chart"></div>
+      </div>
+    </div>
+
+    <!-- Telemetry -->
+    <div class="stats-section">
+      <h2><i class="fa-solid fa-signal"></i> <span data-i18n="stats_telemetry_title">App Usage (last 30 days)</span></h2>
+      <div class="stats-cards" id="telemetry-stats">
+        <div class="stats-card">
+          <div class="stats-card-icon"><i class="fa-solid fa-rocket"></i></div>
+          <div class="stats-card-value" id="stats-tel-total">—</div>
+          <div class="stats-card-label" data-i18n="stats_launches">Total launches</div>
+        </div>
+        <div class="stats-card">
+          <div class="stats-card-icon"><i class="fa-brands fa-windows"></i></div>
+          <div class="stats-card-value" id="stats-tel-windows">—</div>
+          <div class="stats-card-label">Windows</div>
+        </div>
+        <div class="stats-card">
+          <div class="stats-card-icon"><i class="fa-brands fa-linux"></i></div>
+          <div class="stats-card-value" id="stats-tel-linux">—</div>
+          <div class="stats-card-label">Linux</div>
+        </div>
+        <div class="stats-card">
+          <div class="stats-card-icon"><i class="fa-brands fa-apple"></i></div>
+          <div class="stats-card-value" id="stats-tel-macos">—</div>
+          <div class="stats-card-label">macOS</div>
+        </div>
+      </div>
+
+      <!-- Version breakdown -->
+      <div class="stats-chart-container">
+        <h3 data-i18n="stats_by_version">Launches by version</h3>
+        <div class="stats-bar-chart" id="version-bar-chart"></div>
+      </div>
+
+      <!-- Daily chart -->
+      <div class="stats-chart-container">
+        <h3 data-i18n="stats_daily">Daily launches (last 30 days)</h3>
+        <div class="stats-daily-chart" id="daily-chart"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <a href="/" class="footer-brand"><i class="fa-solid fa-bolt"></i> BaseDiff</a>
+    <p data-i18n="footer_desc">A tool for comparing and synchronizing database structures.</p>
+    <div class="footer-tags">
+      <span class="footer-tag"><i class="fa-solid fa-code"></i> .NET</span>
+      <span class="footer-tag"><i class="fa-brands fa-windows"></i> Windows</span>
+      <span class="footer-tag"><i class="fa-brands fa-linux"></i> Linux</span>
+      <span class="footer-tag"><i class="fa-brands fa-apple"></i> macOS</span>
+      <span class="footer-tag"><i class="fa-solid fa-globe"></i> EN / DE / CZ</span>
+      <a href="https://www.youtube.com/@BaseDiff" target="_blank" rel="noopener" class="footer-tag footer-tag-link">
+        <i class="fa-brands fa-youtube" aria-hidden="true"></i> YouTube
+      </a>
+    </div>
+    <div class="footer-legal">
+      <a href="/compare-sql-server-schemas.html" data-i18n="nav_sql_compare">SQL Server Comparison</a>
+      <span>·</span>    
+      <a href="/compare-postgresql-schemas.html" data-i18n="nav_pg_compare">PostgreSQL Comparison</a>
+      <span>·</span>
+      <a href="/changelog.html">Changelog</a>
+      <span>·</span>      
+      <a href="/privacy.html" data-i18n="nav_privacy">Privacy Policy</a>
+      <span>·</span>
+      <a href="/terms.html" data-i18n="nav_terms">Terms of Use</a>
+      <span>·</span>
+      <a href="/cookies.html" data-i18n="nav_cookies">Cookies</a>
+      <span>·</span>
+      <a href="#" onclick="openCookieSettings(); return false;" data-i18n="cookie_settings">Cookie settings</a>
+    </div>
+    <p class="footer-copy">
+      © <span id="footer-year"></span>
+      <a href="https://www.elvacsolutions.eu" target="_blank" rel="noopener" class="footer-link">ELVAC SOLUTIONS</a> · BaseDiff
+    </p>
+  </div>
+</footer>
+
+<!-- Cookie Banner -->
+<div id="cookie-banner" class="cookie-banner" style="display:none;">
+  <div class="cookie-banner-inner">
+    <div class="cookie-banner-text">
+      <i class="fa-solid fa-cookie-bite" aria-hidden="true"></i>
+      <span data-i18n="cookie_banner_text">This website uses cookies for traffic analysis. You can accept or reject them.</span>
+    </div>
+    <div class="cookie-banner-buttons">
+      <button id="cookie-reject" class="cookie-btn cookie-btn-reject" data-i18n="cookie_reject">Reject</button>
+      <button id="cookie-accept" class="cookie-btn cookie-btn-accept" data-i18n="cookie_accept">Accept</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- Back to top -->
+<button id="back-to-top" aria-label="Back to top">
+  <i class="fa-solid fa-chevron-up"></i>
+</button>
+
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="/js/app-config.js?v=3"></script>
+<script src="/js/theme.js?v=4"></script>
+<script src="/js/legal-i18n.js?v=18"></script>
+<script src="/js/mobile-menu.js?v=8"></script>
+<script src="/js/animations.js?v=6"></script>
+<script src="/js/stats.js?v=4"></script>
+<script src="/js/cookie-consent.js?v=2"></script>
+
+<script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+<script>
+  var kofiLabels = {
+    cs: 'Podpořte nás',
+    en: 'Support us',
+    de: 'Unterstützen'
+  };
+
+  var currentLang = localStorage.getItem('basediff-lang') || 'en';
+  var kofiText = kofiLabels[currentLang] || kofiLabels.en;
+
+  kofiWidgetOverlay.draw('basediff', {
+    'type': 'floating-chat',
+    'floating-chat.donateButton.text': kofiText,
+    'floating-chat.donateButton.background-color': '#794bc4',
+    'floating-chat.donateButton.text-color': '#fff'
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,278 @@
+/* ══════════════════════════════════════
+   STATS PAGE
+   ══════════════════════════════════════ */
+.stats-page {
+  padding: 3rem 0 6rem;
+}
+
+.stats-section {
+  margin-bottom: 4rem;
+}
+
+.stats-section h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+
+.stats-section h2 i {
+  color: var(--primary);
+}
+
+/* Cards grid */
+.stats-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stats-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  text-align: center;
+  transition: border-color .2s, transform .2s;
+}
+
+.stats-card:hover {
+  border-color: rgba(var(--primary-rgb), 0.4);
+  transform: translateY(-2px);
+}
+
+.stats-card-icon {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin-bottom: .75rem;
+  opacity: .8;
+}
+
+.stats-card-value {
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: -.02em;
+  background: linear-gradient(135deg, var(--primary), var(--cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stats-card-label {
+  font-size: .82rem;
+  color: var(--text3);
+  margin-top: .25rem;
+}
+
+/* Chart containers */
+.stats-chart-container {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.stats-chart-container h3 {
+  font-size: .95rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  color: var(--text2);
+}
+
+/* Bar chart (CSS only) */
+.stats-bar-chart {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+
+.stats-bar-row {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+
+.stats-bar-label {
+  width: 100px;
+  font-size: .85rem;
+  font-weight: 500;
+  color: var(--text2);
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.stats-bar-track {
+  flex: 1;
+  height: 28px;
+  background: var(--bg3);
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.stats-bar-fill {
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary), var(--cyan));
+  border-radius: 8px;
+  transition: width 1s ease;
+  min-width: 2px;
+}
+
+.stats-bar-value {
+  width: 70px;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--text);
+  font-family: var(--mono);
+  flex-shrink: 0;
+}
+
+/* Daily chart */
+.stats-daily-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 150px;
+  padding-top: 1rem;
+}
+
+.stats-daily-bar {
+  flex: 1;
+  background: linear-gradient(180deg, var(--primary), rgba(var(--primary-rgb), 0.3));
+  border-radius: 4px 4px 0 0;
+  min-height: 2px;
+  transition: height .8s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+.stats-daily-bar:hover {
+  opacity: .8;
+}
+
+.stats-daily-bar .tooltip {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: .35rem .6rem;
+  font-size: .72rem;
+  color: var(--text);
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.stats-daily-bar:hover .tooltip {
+  display: block;
+}
+
+/* Empty state */
+.stats-empty {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text3);
+  font-size: .9rem;
+}
+
+.stats-empty i {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  display: block;
+  opacity: .5;
+}
+
+@media (max-width: 640px) {
+  .stats-bar-label {
+    width: 70px;
+    font-size: .75rem;
+  }
+
+  .stats-bar-value {
+    width: 50px;
+    font-size: .75rem;
+  }
+
+  .stats-daily-chart {
+    height: 100px;
+  }
+}
+
+.stats-flag {
+  width: 20px;
+  height: auto;
+  border-radius: 2px;
+  vertical-align: middle;
+  margin-right: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  display: inline-block;
+  margin-top: -2px; /* Jemné doladění pozice vůči textu */
+}
+
+/* Pokud je label v grafu moc úzký, trochu ho rozšíříme */
+.stats-bar-label {
+  min-width: 80px; 
+  display: flex;
+  align-items: center;
+}
+
+/* Country wrap s tooltipem */
+.stats-country-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  position: relative;
+  cursor: default;
+}
+
+/* Tooltip text */
+.stats-country-wrap::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: .72rem;
+  font-weight: 500;
+  padding: .3rem .6rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .2s, visibility .2s;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Tooltip šipka */
+.stats-country-wrap::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 1px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--border);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .2s, visibility .2s;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Zobrazení při hoveru */
+.stats-country-wrap:hover::after,
+.stats-country-wrap:hover::before {
+  opacity: 1;
+  visibility: visible;
+}

@@ -1,0 +1,28 @@
+[
+  {
+    "version": "2.0.2",
+    "date": "2026-03-25",
+    "description": "Process optimization.",
+    "changes": [
+      "User interface optimization",
+      "Feedback page"
+    ]
+  },
+  {
+    "version": "2.0.1",
+    "date": "2026-03-20",
+    "description": "Process optimization.",
+    "changes": [
+      "User interface optimization",
+      "Postgres database - Added schema name to the query for creating sequences"
+    ]
+  },
+  {
+    "version": "2.0.0",
+    "date": "2026-03-17",
+    "description": "Initial release.",
+    "changes": [
+      "First stable release"
+    ]
+  }
+]
