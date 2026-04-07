@@ -11,6 +11,9 @@ downloads/*.tar.gz
 # SQLite databases (runtime data)
 data/*.db
 
+# Sensitive local config
+api/config.php
+
 # PHP-rendered / obfuscated files
 index.php
 

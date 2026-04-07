@@ -1,34 +1,25 @@
 <?php
-// ZABEZPEČENÍ: Přidej jednoduché heslo do URL, aby ti tam nikdo nekoukal
-// basediff.com/api/view-feedback.php?pw=mojetajneheslo123
+/**
+ * Internal feedback viewer
+ * Usage: basediff.com/api/view-feedback.php?pw=YOUR_PASSWORD
+ */
 
-if (($_GET['pw'] ?? '') !== 'mojetajneheslo123') {
-    die("Unauthorized");
+require_once __DIR__ . '/config.php';
+
+if (($_GET['pw'] ?? '') !== FEEDBACK_VIEW_PW) {
+    http_response_code(403);
+    die("Unauthorized access.");
 }
 
-// Zkusíme najít databázi na více místech
-$paths = [
-    __DIR__ . '/../../data/feedback.db',
-    __DIR__ . '/../data/feedback.db',
-    dirname(__DIR__) . '/data/feedback.db',
-];
+$dbPath = __DIR__ . '/../data/feedback.db';
 
-$dbPath = null;
-foreach ($paths as $path) {
-    if (file_exists($path)) {
-        $dbPath = $path;
-        break;
-    }
-}
-
-if (!$dbPath) {
-    // Ukáže nám kde PHP hledá soubor
-    die("Database not found. Tried:<br>" . implode("<br>", $paths));
+if (!file_exists($dbPath)) {
+    die("Database not found at: " . htmlspecialchars($dbPath));
 }
 
 try {
     $db = new SQLite3($dbPath);
-    
+
     // Zkontroluj zda tabulka existuje
     $tables = $db->query("SELECT name FROM sqlite_master WHERE type='table'");
     echo "<h3>Tables in database:</h3><ul>";
