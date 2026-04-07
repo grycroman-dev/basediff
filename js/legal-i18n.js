@@ -232,122 +232,7 @@
       cookies_s4_p1: 'You can manage or delete cookies in your browser settings.',
       cookies_s5_title: '5. Contact',
       cookies_s5_p1: 'If you have questions about cookies, please contact us:'
-    },
-
-    de: {
-      nav_sql_compare: 'SQL Server Vergleich',  
-      nav_pg_compare: 'PostgreSQLSQL Vergleich',
-      stats_label: 'Statistiken',
-      stats_title: 'BaseDiff Statistiken',
-      stats_sub: 'Live-Daten zu Downloads und Nutzung.',
-      stats_downloads_title: 'Downloads',
-      stats_total: 'Downloads insgesamt',
-      stats_by_platform: 'Downloads nach Plattform',
-      stats_telemetry_title: 'App-Nutzung (letzte 30 Tage)',
-      stats_launches: 'Starts insgesamt',
-      stats_by_version: 'Starts nach Version',
-      stats_daily: 'Tägliche Starts (letzte 30 Tage)',
-      stats_by_country: 'Downloads nach Land',
-
-      company_address_line1: 'Hasičská 930/53, Hrabůvka',
-      company_address_line2: '700 30 Ostrava',
-      company_country: 'Tschechische Republik',    
-      company_id: 'ID-Nr.: 27396649',
-      company_vat: 'USt-IdNr.: CZ27396649',    
-      
-      cookie_settings: 'Cookie‑Einstellungen',
-      cookie_banner_text: 'Diese Website verwendet Cookies zur Besucheranalyse. Sie können sie akzeptieren oder ablehnen.',
-      cookie_accept: 'Akzeptieren',
-      cookie_reject: 'Ablehnen',
-
-      nav_features: 'Funktionen',
-      nav_databases: 'Datenbanken',
-      nav_screenshots: 'Vorschau',
-      nav_download: 'Herunterladen',
-      nav_privacy: 'Datenschutz',
-      nav_terms: 'Nutzungsbedingungen',
-      nav_cookies: 'Cookies',
-      footer_desc: 'Ein Werkzeug zum Vergleichen und Synchronisieren von Datenbankstrukturen.',
-
-      privacy_label: 'Datenschutz',
-      privacy_title: 'Datenschutzerklärung',
-      privacy_updated: 'Letzte Aktualisierung: März 2026',
-      privacy_s1_title: '1. Betreiber der Website',
-      privacy_s2_title: '2. Welche Daten wir verarbeiten',
-      privacy_s2_p1: 'Die BaseDiff-Website erfordert keine Registrierung. Persönliche Daten werden nicht direkt erhoben.',
-      privacy_s2_p2: 'Der Webserver zeichnet automatisch technische Informationen auf:',
-      privacy_s2_li1: 'IP-Adresse des Besuchers',
-      privacy_s2_li2: 'Browsertyp und -version',
-      privacy_s2_li3: 'Besuchte Seiten und Besuchszeit',
-      privacy_s2_li4: 'Anzahl der Software-Downloads (anonym)',
-      privacy_s2_p3: 'Diese Informationen dienen ausschließlich dem technischen Betrieb und der Sicherheit.',
-      privacy_s3_title: '3. Analysetools',
-      privacy_s3_p1: 'Die Website kann Analysetools wie Google Analytics verwenden, um zu verstehen, wie Besucher die Website nutzen, und um ihre Funktionalität zu verbessern.',
-      privacy_s3_p2: 'Analyse-Cookies werden erst aktiviert, nachdem der Nutzer über den Cookie-Banner seine Zustimmung erteilt hat.',
-      privacy_s4_title: '4. Zahlungsdienste (Ko-fi / Stripe)',
-      privacy_s4_p1: 'Wenn Sie das Projekt über Ko-fi unterstützen, wird die Zahlung von einem Drittanbieter verarbeitet.',
-      privacy_s4_li1: 'Ko-fi Datenschutzrichtlinie:',
-      privacy_s4_li2: 'Stripe Datenschutzrichtlinie:',
-      privacy_s5_title: '5. Cookies',
-      privacy_s5_p1: 'Die Website verwendet nur technisch notwendige Cookies. Diese erfordern keine Zustimmung.',
-      privacy_s5_link: 'Mehr Informationen zu Cookies →',
-      privacy_s6_title: '6. Ihre Rechte (DSGVO)',
-      privacy_s6_p1: 'Wenn Ihre personenbezogenen Daten verarbeitet werden, haben Sie das Recht auf:',
-      privacy_s6_li1: 'Zugang zu Ihren personenbezogenen Daten',
-      privacy_s6_li2: 'Berichtigung oder Löschung Ihrer Daten',
-      privacy_s6_li3: 'Einschränkung der Verarbeitung',
-      privacy_s6_li4: 'Beschwerde bei einer Aufsichtsbehörde',
-      privacy_s6_contact: 'Kontakt:',
-      privacy_s7_title: '7. Anwendungstelemetrie',
-      privacy_s7_p1: 'Die BaseDiff-Anwendung sendet beim Start anonyme Informationen über die App-Version und das Betriebssystem. Es werden keine persönlichen Daten, IP-Adressen oder Kennungen erfasst.',
-      privacy_s8_title: '8. Änderungen dieser Richtlinie',
-      privacy_s8_p1: 'Diese Richtlinie kann aktualisiert werden.',
-
-      terms_label: 'Nutzungsbedingungen',
-      terms_title: 'Nutzungsbedingungen',
-      terms_updated: 'Letzte Aktualisierung: März 2026',
-      terms_s1_title: '1. Einleitung',
-      terms_s1_p1: 'Diese Nutzungsbedingungen regeln die Nutzung der BaseDiff-Website und -Software.',
-      terms_s2_title: '2. Softwarelizenz',
-      terms_s2_p1: 'BaseDiff wird als Freeware vertrieben und ist kostenlos.',
-      terms_s2_p2: 'Erlaubt ist:',
-      terms_s2_li1: 'Die Software kostenlos herunterladen und nutzen',
-      terms_s2_li2: 'Die Software für persönliche und kommerzielle Zwecke nutzen',
-      terms_s2_li3: 'Links zur offiziellen Download-Seite teilen',
-      terms_s2_p3: 'Nicht erlaubt ist:',
-      terms_s2_li4: 'Modifizierte Versionen der Software weiterzugeben',
-      terms_s2_li5: 'Die Software als eigenes produkt auszugeben',
-      terms_s2_li6: 'Die Software irreführend zu verbreiten',
-      terms_s3_title: '3. Haftungsausschluss',
-      terms_s3_p1: 'Die Software wird "wie besehen" (AS-IS) ohne jegliche Gewährleistung bereitgestellt.',
-      terms_s3_p2: 'Wir empfehlen vor der Anwendung von Update-Skripten immer eine Datensicherung.',
-      terms_s4_title: '4. Links zu Dritten',
-      terms_s4_p1: 'Die Website kann Links zu Diensten Dritter enthalten.',
-      terms_s5_title: '5. Anwendbares Recht',
-      terms_s5_p1: 'Diese Bedingungen unterliegen dem Recht der Tschechischen Republik.',
-      terms_s6_title: '6. Änderungen der Bedingungen',
-      terms_s6_p1: 'Wir behalten uns das Recht vor, diese Bedingungen jederzeit zu aktualisieren.',
-      terms_s7_title: '7. Kontakt',
-
-      cookies_label: 'Cookies',
-      cookies_title: 'Cookie-Richtlinie',
-      cookies_updated: 'Letzte Aktualisierung: März 2026',
-      cookies_s1_title: '1. Was sind Cookies',
-      cookies_s1_p1: 'Cookies sind kleine Textdateien, die in Ihrem Browser gespeichert werden.',
-      cookies_s2_title: '2. Technische Cookies (notwendig)',
-      cookies_s2_p1: 'Die BaseDiff-Website verwendet nur technisch notwendige Cookies.',
-      cookies_s2_li1: 'basediff-lang — speichert die gewählte Sprache (CZ/EN/DE)',
-      cookies_s2_li2: 'basediff-theme — speichert das gewählte Farbthema (hell/dunkel)',
-      cookies_s2_p2: 'Diese Werte werden im localStorage des Browsers gespeichert.',
-      cookies_s3_title: '3. Analyse-Cookies',
-      cookies_s3_p1: 'Die Website kann Google Analytics zur Besuchermessung verwenden. Analyse-Cookies werden nur nach Ihrer ausdrücklichen Zustimmung über den Cookie-Banner aktiviert.',
-      cookies_s3_p2: 'Ohne Ihre Zustimmung sind Analyse-Cookies nicht aktiv.',
-      cookies_s4_title: '4. Cookie-Verwaltung',
-      cookies_s4_p1: 'Sie können Cookies in den Einstellungen Ihres Browsers verwalten.',
-      cookies_s5_title: '5. Kontakt',
-      cookies_s5_p1: 'Bei Fragen zu Cookies kontaktieren Sie uns bitte:'
-    }
-  };
+    }};
 
   // ── Aktualizace verze v navbaru ──
   // Retry mechanismus — app-config.js načítá version.json asynchronně
@@ -399,7 +284,7 @@
     
   for (var i = 0; i < pathParts.length; i++) {
     var part = pathParts[i].toLowerCase();
-    if (part === 'en' || part === 'cs' || part === 'de') {
+    if (part === 'en' || part === 'cs' ) {
       langFromUrl = part;
       break;
     }
@@ -424,3 +309,4 @@
 
   window.setLang = apply;
 })();
+

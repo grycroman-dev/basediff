@@ -1,5 +1,5 @@
 /**
- * Internationalization (CZ / EN / DE)
+ * Internationalization (CZ / EN)
  */
 (function () {
 
@@ -7,12 +7,12 @@
 
   var T = {
     cs: {
-      nav_sql_compare: 'Porovnání SQL Server schémat',  
+      nav_sql_compare: 'Porovnání SQL Server schémat',
       nav_sql_compare_short: 'Zjistit více',
-      nav_pg_compare: 'Porovnání PostgreSQL schémat',    
+      nav_pg_compare: 'Porovnání PostgreSQL schémat',
       nav_pg_compare_short: 'Zjistit více',
       page_title: 'BaseDiff — Porovnání databázových schémat a generování skriptů',
-      
+
       why_label: 'Proč BaseDiff',
       why_title_html: 'Proč vývojáři používají <span class="gradient">BaseDiff</span>',
       why_sub: 'BaseDiff je navržen pro vývojáře a správce databází, kteří potřebují rychlý a spolehlivý způsob porovnání databázových schémat a generování SQL migračních skriptů.',
@@ -25,10 +25,10 @@
       why_c4_title: 'Vizuální nástroj pro porovnání schémat',
       why_c4_desc: 'Snadno prozkoumejte rozdíly mezi zdrojovou a cílovou databází pomocí vizuální stromové struktury a podrobných SQL náhledů.',
 
-      cookie_settings: 'Nastavení cookies',    
+      cookie_settings: 'Nastavení cookies',
       cookie_banner_text: 'Tento web používá cookies pro analýzu návštěvnosti. Můžete je přijmout nebo odmítnout.',
       cookie_accept: 'Přijmout',
-      cookie_reject: 'Odmítnout',    
+      cookie_reject: 'Odmítnout',
       dl_macos_sub: 'Přenosná 64-bit',
       dl_btn_targz: 'Stáhnout .tar.gz',
       coffee_title: 'Líbí se ti BaseDiff?',
@@ -75,7 +75,7 @@
       f8_title: 'Query Tool',
       f8_desc: 'Sestavuj SQL dotazy včetně JOINů a použij je přímo v migračních skriptech.',
       f9_title: 'Témata a jazyky',
-      f9_desc: 'Světlý a tmavý režim. Rozhraní v češtině, angličtině a němčině.',
+      f9_desc: 'Světlý a tmavý režim. Rozhraní v češtině a angličtině.',
       objects_label: 'Sledované objekty',
       objects_title_html: 'Kompletní pokrytí <span class="gradient">databázových objektů</span>',
       objects_sub: 'Vyber si, které objekty a vlastnosti chceš zahrnout do porovnání.',
@@ -118,8 +118,7 @@
       dl_btn_exe: 'Stáhnout .exe',
       dl_btn_appimage: 'Stáhnout AppImage',
       footer_desc: 'Nástroj pro porovnání a synchronizaci databázových struktur.',
-      
-      // Privacy doplňky (pro jistotu ponechány)
+
       privacy_label: 'Ochrana osobních údajů',
       privacy_title: 'Privacy Policy',
       privacy_updated: 'Poslední aktualizace: březen 2026',
@@ -153,12 +152,12 @@
       privacy_s7_p1: 'Tyto zásady mohou být aktualizovány. Datum poslední aktualizace je uvedeno nahoře.'
     },
     en: {
-      nav_sql_compare: 'SQL Server Comparison',    
+      nav_sql_compare: 'SQL Server Comparison',
       nav_sql_compare_short: 'Learn more',
-      nav_pg_compare: 'PostgreSQL Comparison',    
+      nav_pg_compare: 'PostgreSQL Comparison',
       nav_pg_compare_short: 'Learn more',
       page_title: 'BaseDiff — Database schema comparison and script generation',
-      
+
       why_label: "Why BaseDiff",
       why_title_html: "Why developers use <span class='gradient'>BaseDiff</span>",
       why_sub: "BaseDiff is designed for developers and database administrators who need a fast and reliable way to compare database schemas and generate SQL migration scripts.",
@@ -170,11 +169,11 @@
       why_c3_desc: 'BaseDiff currently supports Microsoft SQL Server and PostgreSQL. Support for MySQL, Oracle and SQLite is planned in future versions.',
       why_c4_title: 'Visual schema diff tool',
       why_c4_desc: 'Easily explore differences between source and target databases using a visual tree structure and detailed SQL previews.',
-    
-      cookie_settings: 'Cookie settings',     
+
+      cookie_settings: 'Cookie settings',
       cookie_banner_text: 'This website uses cookies for traffic analysis. You can accept or reject them.',
       cookie_accept: 'Accept',
-      cookie_reject: 'Reject',    
+      cookie_reject: 'Reject',
       dl_macos_sub: 'Portable 64-bit',
       dl_btn_targz: 'Download .tar.gz',
       coffee_title: 'Do you like BaseDiff?',
@@ -221,7 +220,7 @@
       f8_title: 'Query Tool',
       f8_desc: 'Build SQL queries including JOINs and use them directly in migration scripts.',
       f9_title: 'Themes & languages',
-      f9_desc: 'Light and dark mode. Interface in Czech, English and German.',
+      f9_desc: 'Light and dark mode. Interface in Czech and English.',
       objects_label: 'Tracked objects',
       objects_title_html: 'Complete coverage of <span class="gradient">database objects</span>',
       objects_sub: 'Choose which objects and properties to include in comparison.',
@@ -264,119 +263,6 @@
       dl_btn_exe: 'Download .exe',
       dl_btn_appimage: 'Download AppImage',
       footer_desc: 'A tool for comparing and synchronizing database structures.'
-    },
-    de: {
-      nav_sql_compare: 'SQL Server Vergleich',    
-      nav_sql_compare_short: 'Mehr erfahren',
-      nav_pg_compare: 'PostgreSQLSQL Vergleich',    
-      nav_pg_compare_short: 'Mehr erfahren',
-      page_title: 'BaseDiff — Datenbankschema-Vergleich und Skriptgenerierung',
-      
-      why_label: 'Warum BaseDiff',
-      why_title_html: 'Warum Entwickler <span class="gradient">BaseDiff</span> verwenden',
-      why_sub: 'BaseDiff wurde für Entwickler und Datenbankadministratoren entwickelt, die eine schnelle und zuverlässige Möglichkeit benötigen, Datenbankschemata zu vergleichen und SQL-Migrationsskripte zu generieren.',
-      why_c1_title: 'Datenbankschema-Vergleich',
-      why_c1_desc: 'Vergleichen Sie Datenbankschemata zwischen Umgebungen wie Entwicklung, Staging und Produktion. BaseDiff erkennt schnell Unterschiede in Tabellen, Indizes, Einschränkungen, Ansichten, Prozeduren und Triggern.',
-      why_c2_title: 'Automatische SQL-Migrationsskripte',
-      why_c2_desc: 'Generieren Sie SQL-Skripte zur Synchronisierung von Datenbankstrukturen. Das Tool erstellt automatisch CREATE-, ALTER- und DROP-Anweisungen basierend auf erkannten Schemaunterschieden.',
-      why_c3_title: 'Unterstützt SQL Server und PostgreSQL',
-      why_c3_desc: 'BaseDiff unterstützt derzeit Microsoft SQL Server und PostgreSQL. Die Unterstützung für MySQL, Oracle und SQLite ist für zukünftige Versionen geplant.',
-      why_c4_title: 'Visuelles Schema-Diff-Tool',
-      why_c4_desc: 'Erkunden Sie Unterschiede zwischen Quell- und Zieldatenbank einfach mithilfe einer visuellen Baumstruktur und detaillierten SQL-Vorschauen.',
-
-      cookie_settings: 'Cookie‑Einstellungen',    
-      cookie_banner_text: 'Diese Website verwendet Cookies zur Besucheranalyse. Sie können sie akzeptieren oder ablehnen.',
-      cookie_accept: 'Akzeptieren',
-      cookie_reject: 'Ablehnen',    
-      dl_macos_sub: 'Portabel 64-bit',
-      dl_btn_targz: 'Download .tar.gz',
-      coffee_title: 'Gefällt dir BaseDiff?',
-      coffee_desc: 'Die Software ist kostenlos. Wenn sie dir Zeit gespart hat, kannst du uns mit einem Kaffee unterstützen. ☕',
-      coffee_btn: 'Kauf uns einen Kaffee',
-      nav_features: 'Funktionen',
-      nav_databases: 'Datenbanken',
-      nav_privacy: 'Datenschutz',
-      nav_terms: 'Nutzungsbedingungen',
-      nav_cookies: 'Cookies',
-      nav_screenshots: 'Vorschau',
-      nav_download: 'Herunterladen',
-      hero_badge: 'v2.0.2 — Windows · Linux · macOS',
-      hero_h1_1: 'Schemata vergleichen.',
-      hero_h1_2: 'Skripte generieren.',
-      hero_sub: 'Ein Werkzeug zum Vergleichen von Datenbankschemata und Generieren von Update-Skripten. Schnell, präzise, plattformübergreifend.',
-      hero_btn_download: 'Kostenlos herunterladen',
-      hero_btn_more: 'Mehr erfahren',
-      hero_downloads_label: 'Downloads',
-      term_analyzing: 'Schemata werden analysiert...',
-      term_found: '4 Unterschiede gefunden',
-      term_success: '✓ Update-Skript generiert → update.sql',
-      stat_objects: 'DB-Objekttypen',
-      stat_dbs: 'Unterstützte Datenbanken',
-      stat_platforms: 'Plattformen',
-      stat_exports: 'Exportformate',
-      features_label: 'Funktionen',
-      features_title_html: 'Alles für die Verwaltung von <span class="gradient">Datenbankschemata</span>',
-      features_sub: 'Vom Vergleich bis zum Export – BaseDiff deckt den gesamten Workflow ab, ohne SQL manuell schreiben zu müssen.',
-      f1_title: 'Schema-Vergleich',
-      f1_desc: 'Visueller Vergleich zweier Datenbankschemata mit übersichtlicher Darstellung der Unterschiede. Quelle und Ziel mit einem Klick tauschen.',
-      f2_title: 'Skript-Generierung',
-      f2_desc: 'Automatische Generierung von ALTER-, CREATE- und DROP-Skripten zur Synchronisierung.',
-      f3_title: 'Blitzschnell',
-      f3_desc: 'Optimierte Engine zur Analyse auch großer Datenbankstrukturen in Sekunden.',
-      f4_title: 'Sicher',
-      f4_desc: 'Vorschau der Änderungen vor der Anwendung. Keine unerwarteten Änderungen an Ihrer Datenbank.',
-      f5_title: 'Skript-Bearbeitung',
-      f5_desc: 'Bearbeiten Sie generierte Skripte vor dem Export. Wählen Sie genau, was in die Ausgabe aufgenommen wird.',
-      f6_title: 'Projekt speichern',
-      f6_desc: 'Speichern Sie die Vergleichskonfiguration als JSON und kehren Sie jederzeit zurück. Offline-Modus unterstützt.',
-      f7_title: 'Flexibler Export',
-      f7_desc: 'Export in eine einzelne Datei oder separate Dateien (Create, Alter, Drop, Datenmigration).',
-      f8_title: 'Query Tool',
-      f8_desc: 'Erstellen Sie SQL-Abfragen einschließlich JOINs und verwenden Sie diese direkt in Migrationsskripten.',
-      f9_title: 'Themes & Sprachen',
-      f9_desc: 'Helles und dunkles Design. Oberfläche in Tschechisch, Englisch und Deutsch.',
-      objects_label: 'Verfolgte Objekte',
-      objects_title_html: 'Vollständige Abdeckung von <span class="gradient">Datenbankobjekten</span>',
-      objects_sub: 'Wählen Sie, welche Objekte und Eigenschaften in den Vergleich einbezogen werden sollen.',
-      obj_tables: 'Tabellen',
-      obj_indexes: 'Indizes',
-      obj_constraints: 'Einschränkungen (FK, CK, UQ)',
-      obj_views: 'Ansichten',
-      obj_procedures: 'Gespeicherte Prozeduren',
-      obj_functions: 'Funktionen',
-      obj_triggers: 'Trigger',
-      obj_migrations: 'Migrationen',
-      db_label: 'Unterstützte Datenbanken',
-      db_title_html: 'Arbeiten Sie mit Datenbanken, <span class="gradient">die Sie kennen</span>',
-      db_sub: 'Derzeit unterstützen wir MS SQL Server und PostgreSQL. Weitere Datenbanken folgen bald.',
-      db_mssql_sub: 'Windows Auth & SQL Auth',
-      db_pg_sub: 'Volle Schema-Unterstützung',
-      db_planned: 'In Vorbereitung',
-      db_available: '<i class="fa-solid fa-check"></i> Verfügbar',
-      db_soon: '<i class="fa-solid fa-clock"></i> Bald',
-      screens_label: 'App-Vorschau',
-      screens_title_html: 'Sehen Sie, <span class="gradient">wie es aussieht</span>',
-      screen1: 'Hauptfenster – Schema-Bäume und Update-Skripte',
-      screen2: 'Auswahl der Quell- und Zieldatenbank',
-      screen3: 'Export von Update-Skripten in Dateien',
-      screen4: 'Einstellungen der verfolgten Objekte (F4)',
-      screen5: 'Query Tool – Abfragen erstellen',
-      screen6: "Migrationsdaten-Editor",
-      dl_label: 'Herunterladen',
-      dl_title_html: 'Beginnen Sie noch heute <span class="gradient">BaseDiff zu nutzen</span>',
-      dl_sub: 'Nach der Installation konfigurieren Sie die Verbindungen und erstellen Ihr erstes Vergleichsprojekt.',
-      dl_total_label: 'Downloads insgesamt:',
-      dl_portable_sub: 'Portabel 64-bit',
-      dl_portable32_sub: 'Portabel 32-bit',
-      dl_win32_sub: '32-Bit-Installationsprogramm',
-      dl_win64_sub: '64-Bit-Installationsprogramm',
-      dl_linux_sub: 'AppImage x86_64',
-      dl_linux_portable_sub: 'Portabel x86_64',
-      dl_recommended: '<i class="fa-solid fa-star"></i> Empfohlen',
-      dl_btn_zip: 'ZIP herunterladen',
-      dl_btn_exe: '.exe herunterladen',
-      dl_btn_appimage: 'AppImage herunterladen',
-      footer_desc: 'Ein Werkzeug zum Vergleichen und Synchronisieren von Datenbankstrukturen.'
     }
   };
 
@@ -390,8 +276,7 @@
       var releaseText = config.releaseDateText[lang] || config.releaseDateText.en;
       var labels = {
         cs: { version: 'Verze', released: 'Vydáno' },
-        en: { version: 'Version', released: 'Released' },
-        de: { version: 'Version', released: 'Veröffentlicht' }
+        en: { version: 'Version', released: 'Released' }
       };
       var t = labels[lang] || labels.en;
       elMeta.textContent = t.version + ' ' + config.version + ' • ' + t.released + ': ' + releaseText;
@@ -431,7 +316,7 @@
     }
 
     if (!isInit) {
-      // Při změně jazyka přesměruj na čistou URL (bez /en/ /cs/ /de/)
+      // Při změně jazyka přesměruj na čistou URL (bez /en/ /cs/)
       // aby po reloadu URL neovlivňovala detekci jazyka
       // Zapamatuj si aktuální sekci (hash) pro scroll po reloadu
       var currentHash = window.location.hash || '';
@@ -447,7 +332,7 @@
 
   for (var i = 0; i < pathParts.length; i++) {
     var part = pathParts[i].toLowerCase();
-    if (part === 'en' || part === 'cs' || part === 'de') {
+    if (part === 'en' || part === 'cs') {
       langFromUrl = part;
       break;
     }

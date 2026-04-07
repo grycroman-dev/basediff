@@ -278,8 +278,7 @@
               var lang = localStorage.getItem('basediff-lang') || 'en';
               var successMsg = {
                 en: '<i class="fa-solid fa-check-circle"></i> Thank you! Your feedback has been sent. We\'ll get back to you soon.',
-                cs: '<i class="fa-solid fa-check-circle"></i> Děkujeme! Vaše zpětná vazba byla odeslána. Brzy se vám ozveme.',
-                de: '<i class="fa-solid fa-check-circle"></i> Danke! Ihr Feedback wurde gesendet. Wir melden uns bald.'
+                cs: '<i class="fa-solid fa-check-circle"></i> Děkujeme! Vaše zpětná vazba byla odeslána. Brzy se vám ozveme.'
               };
               msgBox.innerHTML = successMsg[lang] || successMsg.en;
             } else {
@@ -289,7 +288,7 @@
             msgBox.className = 'error';
             msgBox.style.display = 'block';
             var lang = localStorage.getItem('basediff-lang') || 'en';
-            var errorPrefix = { en: 'Error: ', cs: 'Chyba: ', de: 'Fehler: ' };
+            var errorPrefix = { en: 'Error: ', cs: 'Chyba: ' };
             msgBox.textContent = (errorPrefix[lang] || 'Error: ') + err.message;
             submitBtn.disabled = false;
             submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> <span data-i18n="feedback_submit">Send Feedback</span>';
@@ -303,4 +302,7 @@
 
 </body>
 </html>
+
+
+
 

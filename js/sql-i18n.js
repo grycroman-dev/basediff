@@ -1,5 +1,5 @@
 /**
- * SQL Server comparison page i18n (EN / DE / CZ)
+ * SQL Server comparison page i18n (EN / CZ)
  */
 (function () {
   var KEY = 'basediff-lang';
@@ -21,8 +21,8 @@
       sql_feat_views_title: 'Views',
       sql_feat_views_desc: 'Compares complete SELECT definitions of views including schema assignment. Detects any change in view logic instantly.',
       sql_feat_export_title: 'Flexible Export',
-      sql_feat_export_desc: 'Export to a single file or separate files for CREATE, ALTER, DROP and data migration scripts. Copy to clipboard or save to disk.',    
-      
+      sql_feat_export_desc: 'Export to a single file or separate files for CREATE, ALTER, DROP and data migration scripts. Copy to clipboard or save to disk.',
+
       nav_features: 'Features',
       nav_databases: 'Databases',
       nav_screenshots: 'Previews',
@@ -103,7 +103,7 @@
       sql_feat_views_desc: 'Porovnává kompletní SELECT definice pohledů včetně přiřazení schématu. Okamžitě detekuje jakoukoli změnu v logice pohledu.',
       sql_feat_export_title: 'Flexibilní export',
       sql_feat_export_desc: 'Export do jednoho souboru nebo oddělených souborů pro CREATE, ALTER, DROP a skripty datové migrace. Kopírování do schránky nebo uložení na disk.',
-    
+
       nav_features: 'Funkce',
       nav_databases: 'Databáze',
       nav_screenshots: 'Náhledy',
@@ -165,87 +165,6 @@
       sql_cta_windows: 'Stáhnout pro Windows',
       sql_cta_linux: 'Stáhnout pro Linux',
       sql_cta_macos: 'Stáhnout pro macOS'
-    },
-
-    de: {
-      sql_feat_tables_title: 'Tabellen & Spalten',
-      sql_feat_tables_desc: 'Verfolgt Datentypen einschließlich varchar(max), nvarchar(50), decimal(18,2). Erkennt nullable, Standardwerte, Collation, Spaltenreihenfolge und Identity (seed, increment, NOT FOR REPLICATION).',
-      sql_feat_indexes_title: 'Indizes',
-      sql_feat_indexes_desc: 'Erkennt CLUSTERED und NONCLUSTERED Indizes, Eindeutigkeit und zusammengesetzte Indizes mit korrekter Spaltenreihenfolge. Unterscheidet Primärschlüssel von regulären Indizes.',
-      sql_feat_constraints_title: 'Constraints',
-      sql_feat_constraints_desc: 'Volle Unterstützung für PRIMARY KEY, FOREIGN KEY (inkl. Schema-, Tabellen- und Spaltenreferenzen), UNIQUE und CHECK Constraints. Verfolgt WITH CHECK vs WITH NOCHECK Status und NOT FOR REPLICATION Flag.',
-      sql_feat_procs_title: 'Prozeduren & Funktionen',
-      sql_feat_procs_desc: 'Vergleicht vollständige SQL-Definitionen und Parametersignaturen einschließlich genauer Typen und Längen. Unterscheidet Scalar (FN), Inline Table-Valued (IF) und Multistatement (TF) Funktionen.',
-      sql_feat_triggers_title: 'Trigger',
-      sql_feat_triggers_desc: 'Erkennt Trigger-Timing (AFTER / INSTEAD OF) und Ereignisbereich (INSERT, UPDATE, DELETE). Verfolgt enabled/disabled Status und vollständige Trigger-Body-Definition.',
-      sql_feat_auth_title: 'Authentifizierung',
-      sql_feat_auth_desc: 'Verbindung über Windows Authentication oder SQL Server Authentication. Unterstützt alle SQL Server Editionen einschließlich Express, Standard und Enterprise.',
-      sql_feat_views_title: 'Views',
-      sql_feat_views_desc: 'Vergleicht vollständige SELECT-Definitionen von Views einschließlich Schema-Zuweisung. Erkennt sofort jede Änderung in der View-Logik.',
-      sql_feat_export_title: 'Flexibler Export',
-      sql_feat_export_desc: 'Export in eine Datei oder separate Dateien für CREATE, ALTER, DROP und Datenmigrationsskripte. In die Zwischenablage kopieren oder auf Disk speichern.',
-
-      nav_features: 'Funktionen',
-      nav_databases: 'Datenbanken',
-      nav_screenshots: 'Vorschau',
-      nav_download: 'Herunterladen',
-      nav_privacy: 'Datenschutz',
-      nav_terms: 'Nutzungsbedingungen',
-      nav_cookies: 'Cookies',
-      cookie_settings: 'Cookie-Einstellungen',
-      cookie_banner_text: 'Diese Website verwendet Cookies zur Besucheranalyse. Sie können sie akzeptieren oder ablehnen.',
-      cookie_accept: 'Akzeptieren',
-      cookie_reject: 'Ablehnen',
-      footer_desc: 'Ein Werkzeug zum Vergleichen und Synchronisieren von Datenbankstrukturen.',
-
-      sql_hero_badge: 'SQL Server Schema-Vergleich',
-      sql_hero_h1_1: 'SQL Server Schemata',
-      sql_hero_h1_2: 'vergleichen & Skripte generieren',
-      sql_hero_sub: 'BaseDiff analyziert zwei SQL Server-Datenbanken, erkennt strukturelle Unterschiede und generiert automatisch Migrationsskripte.',
-      sql_hero_btn_download: 'BaseDiff herunterladen',
-      sql_hero_btn_screenshots: 'Screenshots ansehen',
-
-      sql_term_analyzing: 'SQL Server-Schemata werden verglichen...',
-      sql_term_found: '5 Unterschiede gefunden',
-      sql_term_success: '✓ Migrationsskript generiert → update_prod.sql',
-
-      sql_features_label: 'SQL Server Funktionen',
-      sql_features_title_html: 'Alles für die Verwaltung von <span class="gradient">SQL Server-Schemata</span>',
-      sql_features_sub: 'BaseDiff unterstützt Windows-Authentifizierung und SQL Server-Authentifizierung für nahtlose Integration.',
-      sql_f1_title: 'Schema-Vergleich',
-      sql_f1_desc: 'Vergleichen Sie Datenbankschemata zwischen Entwicklungs-, Staging- und Produktionsumgebungen. Erkennen Sie Unterschiede in Tabellen, Indizes, Einschränkungen, Ansichten, Prozeduren und Triggern.',
-      sql_f2_title: 'Migrationsskripte',
-      sql_f2_desc: 'Automatische Generierung von CREATE-, ALTER- und DROP-Anweisungen basierend auf erkannten Unterschieden. Skripte vor dem Export bearbeiten.',
-      sql_f3_title: 'Authentifizierung',
-      sql_f3_desc: 'Verbinden Sie sich mit Windows-Authentifizierung oder SQL Server-Authentifizierung. Unterstützt alle SQL Server-Editionen.',
-      sql_f4_title: 'Alle Objekttypen',
-      sql_f4_desc: 'Vergleichen Sie Tabellen, Indizes, Fremdschlüssel, Check-Einschränkungen, Ansichten, gespeicherte Prozeduren, Funktionen und Trigger.',
-      sql_f5_title: 'Flexibler Export',
-      sql_f5_desc: 'Export in eine einzelne Datei oder separate Dateien für CREATE, ALTER, DROP und Datenmigrationsskripte.',
-      sql_f6_title: 'Visueller Vergleich',
-      sql_f6_desc: 'Erkunden Sie Unterschiede mithilfe einer visuellen Baumstruktur. Quell- und Ziel-SQL-Definitionen nebeneinander anzeigen.',
-
-      sql_how_label: 'So funktioniert es',
-      sql_how_title_html: 'Schemata vergleichen in <span class="gradient">drei einfachen Schritten</span>',
-      sql_step1_title: '1. Datenbanken verbinden',
-      sql_step1_desc: 'Konfigurieren Sie Quell- und Ziel-SQL Server-Verbindungen. Windows Auth oder SQL Auth verwenden.',
-      sql_step2_title: '2. Schemata vergleichen',
-      sql_step2_desc: 'BaseDiff analysiert beide Schemata und zeigt alle Unterschiede in einer übersichtlichen Baumstruktur an.',
-      sql_step3_title: '3. Skripte generieren & exportieren',
-      sql_step3_desc: 'Überprüfen Sie generierte Migrationsskripte, bearbeiten Sie sie und exportieren Sie sie in Dateien.',
-
-      sql_preview_label: 'Vorschau',
-      sql_preview_title_html: 'Sehen Sie <span class="gradient">BaseDiff in Aktion</span>',
-      sql_screen1: 'SQL Server Schema-Vergleich — Hauptfenster',
-      sql_screen2: 'Auswahl der Quell- und Zieldatenbank',
-      sql_screen3: 'Export von Migrationsskripten in Dateien',
-
-      sql_cta_label: 'Loslegen',
-      sql_cta_title_html: 'Beginnen Sie noch heute <span class="gradient">SQL Server-Schemata zu vergleichen</span>',
-      sql_cta_sub: 'Laden Sie BaseDiff kostenlos herunter und generieren Sie Ihr erstes Migrationsskript in Minuten.',
-      sql_cta_windows: 'Für Windows herunterladen',
-      sql_cta_linux: 'Für Linux herunterladen',
-      sql_cta_macos: 'Für macOS herunterladen'
     }
   };
 
@@ -302,7 +221,7 @@
 
   for (var i = 0; i < pathParts.length; i++) {
     var part = pathParts[i].toLowerCase();
-    if (part === 'en' || part === 'cs' || part === 'de') {
+    if (part === 'en' || part === 'cs') {
       langFromUrl = part;
       break;
     }
@@ -328,3 +247,5 @@
 
   window.setLang = apply;
 })();
+
+

@@ -454,11 +454,13 @@
 
 <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
 <script>
-  var kofiLabels = { cs: 'Podpořte nás', en: 'Support us', de: 'Unterstützen' };
+  var kofiLabels = { cs: 'Podpořte nás', en: 'Support us' };
   var currentLang = localStorage.getItem('basediff-lang') || 'en';
   kofiWidgetOverlay.draw('basediff', { 'type': 'floating-chat', 'floating-chat.donateButton.text': kofiLabels[currentLang] || kofiLabels.en, 'floating-chat.donateButton.background-color': '#794bc4', 'floating-chat.donateButton.text-color': '#fff' });
 </script>
 
 </body>
 </html>
+
+
 

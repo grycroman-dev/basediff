@@ -1,5 +1,5 @@
 /**
- * Feedback page i18n (EN / DE / CZ)
+ * Feedback page i18n (EN / CZ)
  */
 (function () {
   var KEY = 'basediff-lang';
@@ -70,41 +70,7 @@
       cookie_accept: 'Přijmout',
       cookie_reject: 'Odmítnout',
       footer_desc: 'Nástroj pro porovnání a synchronizaci databázových struktur.'
-    },
-    de: {
-      feedback_version_placeholder: 'z.B. 2.0.1',    
-      feedback_title: 'Helfen Sie uns, BaseDiff zu verbessern',
-      feedback_sub: 'Haben Sie einen Vorschlag, einen Fehler gefunden oder möchten Sie uns einfach schreiben?',
-      feedback_type_label: 'Art des Feedbacks',
-      feedback_type_general: '💬 Allgemeines Feedback',
-      feedback_type_bug: '🐛 Fehler melden',
-      feedback_type_feature: '✨ Funktionsanfrage',
-      feedback_version_label: 'App-Version',
-      feedback_os_label: 'Betriebssystem',
-      feedback_os_windows: 'Windows',
-      feedback_os_linux: 'Linux',
-      feedback_os_macos: 'macOS',
-      feedback_os_other: 'Andere',
-      feedback_message_label: 'Nachricht',
-      feedback_message_placeholder: 'Erzählen Sie uns mehr...',
-      feedback_email_label: 'E-Mail (optional)',
-      feedback_email_placeholder: 'ihre@email.de',
-      feedback_submit: 'Feedback senden',
-      feedback_success: 'Danke! Ihr Feedback wurde gesendet. Wir melden uns bald bei Ihnen.',
-      feedback_error: 'Fehler: ',
-      nav_features: 'Funktionen',
-      nav_databases: 'Datenbanken',
-      nav_download: 'Herunterladen',
-      nav_privacy: 'Datenschutz',
-      nav_terms: 'Nutzungsbedingungen',
-      nav_cookies: 'Cookies',
-      cookie_settings: 'Cookie-Einstellungen',
-      cookie_banner_text: 'Diese Website verwendet Cookies zur Besucheranalyse. Sie können sie akzeptieren oder ablehnen.',
-      cookie_accept: 'Akzeptieren',
-      cookie_reject: 'Ablehnen',
-      footer_desc: 'Ein Werkzeug zum Vergleichen und Synchronisieren von Datenbankstrukturen.'
-    }
-  };
+    }};
 
   function updateVersionInfo() {
     var config = window.BaseDiffConfig;
@@ -164,7 +130,7 @@
     
     for (var i = 0; i < pathParts.length; i++) {
       var part = pathParts[i].toLowerCase();
-      if (part === 'en' || part === 'cs' || part === 'de') {
+      if (part === 'en' || part === 'cs' ) {
         langFromUrl = part;
         break;
       }
@@ -190,3 +156,4 @@
 
   window.setLang = apply;
 })();
+

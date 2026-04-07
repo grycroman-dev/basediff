@@ -1,5 +1,5 @@
 /**
- * PostgreSQL comparison page i18n (EN / DE / CZ)
+ * PostgreSQL comparison page i18n (EN / CZ)
  */
 (function () {
   var KEY = 'basediff-lang';
@@ -165,89 +165,7 @@
       pg_cta_windows: 'Stáhnout pro Windows',
       pg_cta_linux: 'Stáhnout pro Linux',
       pg_cta_macos: 'Stáhnout pro macOS'
-    },
-
-    de: {
-      pg_feat_tables_title: 'Tabellen & Spalten',
-      pg_feat_tables_desc: 'Verfolgt Datentypen einschließlich character varying(50), decimal(18,2). Erkennt nullable, Standardwerte, Collation und Spaltenreihenfolge. Unterstützt legacy nextval-Sequenzen und modernes GENERATED ALWAYS AS IDENTITY (PostgreSQL 10+).',
-      pg_feat_triggers_title: 'Trigger & Trigger-Funktionen',
-      pg_feat_triggers_desc: 'Analysiert sowohl die Trigger-Definition als auch die zugehörige Trigger-Funktion (pg_get_functiondef). Erkennt Timing (BEFORE / AFTER), Ereignisbereich (INSERT, UPDATE, DELETE, TRUNCATE) und enabled/disabled Status.',
-      pg_feat_functions_title: 'Funktionen & Prozeduren',
-      pg_feat_functions_desc: 'Unterscheidet alle PostgreSQL-Funktionstypen über prokind: Standardfunktionen (f), Prozeduren (p), Aggregatfunktionen (a) und Fensterfunktionen (w). Vergleicht vollständige Definitionen und Parametersignaturen.',
-      pg_feat_constraints_title: 'Constraints',
-      pg_feat_constraints_desc: 'Volle Unterstützung für PRIMARY KEY, FOREIGN KEY (inkl. Schema-, Tabellen- und Spaltenreferenzen), UNIQUE, CHECK (pg_get_expr) und EXCLUSION Constraints.',
-      pg_feat_extensions_title: 'Erweiterungs-Filterung',
-      pg_feat_extensions_desc: 'Filtert intelligent Objekte aus Erweiterungen wie PostGIS, Unaccent und TimescaleDB. Ignoriert automatisch System-Schemas (pg_catalog, pg_toast, information_schema) für einen sauberen Vergleich.',
-      pg_feat_indexes_title: 'Indizes',
-      pg_feat_indexes_desc: 'Erkennt eindeutige und zusammengesetzte Indizes über indisunique und indisprimary. Unterstützt mehrspaltige Indizes mit korrekter Spaltenreihenfolge.',
-      pg_feat_views_title: 'Views',
-      pg_feat_views_desc: 'Vergleicht vollständige View-Definitionen über pg_get_viewdef. Filtert materialisierte Views und Views aus Erweiterungen für ein sauberes Ergebnis.',
-      pg_feat_export_title: 'Flexibler Export',
-      pg_feat_export_desc: 'Export in eine Datei oder separate Dateien für CREATE, ALTER, DROP und Datenmigrationsskripte. In die Zwischenablage kopieren oder auf Disk speichern.',
-
-      nav_features: 'Funktionen',
-      nav_databases: 'Datenbanken',
-      nav_screenshots: 'Vorschau',
-      nav_download: 'Herunterladen',
-      nav_privacy: 'Datenschutz',
-      nav_terms: 'Nutzungsbedingungen',
-      nav_cookies: 'Cookies',
-      cookie_settings: 'Cookie-Einstellungen',
-      cookie_banner_text: 'Diese Website verwendet Cookies zur Besucheranalyse. Sie können sie akzeptieren oder ablehnen.',
-      cookie_accept: 'Akzeptieren',
-      cookie_reject: 'Ablehnen',
-      footer_desc: 'Ein Werkzeug zum Vergleichen und Synchronisieren von Datenbankstrukturen.',
-
-      pg_hero_badge: 'PostgreSQL Schema-Vergleich',
-      pg_hero_h1_1: 'PostgreSQL Schemata',
-      pg_hero_h1_2: 'vergleichen & Skripte generieren',
-      pg_hero_sub: 'BaseDiff analysiert zwei PostgreSQL-Datenbanken, erkennt strukturelle Unterschiede und generiert automatisch Migrationsskripte.',
-      pg_hero_btn_download: 'BaseDiff herunterladen',
-      pg_hero_btn_screenshots: 'Screenshots ansehen',
-
-      pg_term_analyzing: 'PostgreSQL-Schemata werden verglichen...',
-      pg_term_found: '5 Unterschiede gefunden',
-      pg_term_success: '✓ Migrationsskript generiert → update_prod.sql',
-
-      pg_features_label: 'PostgreSQL Funktionen',
-      pg_features_title_html: 'Alles für die Verwaltung von <span class="gradient">PostgreSQL-Schemata</span>',
-      pg_features_sub: 'BaseDiff unterstützt den vollständigen PostgreSQL-Schema-Vergleich einschließlich Tabellen, Indizes, Ansichten, Funktionen und Triggern.',
-      pg_f1_title: 'Schema-Vergleich',
-      pg_f1_desc: 'Vergleichen Sie PostgreSQL-Schemata zwischen Entwicklungs-, Staging- und Produktionsumgebungen.',
-      pg_f2_title: 'Migrationsskripte',
-      pg_f2_desc: 'Automatische Generierung von CREATE-, ALTER- und DROP-Anweisungen. Skripte vor dem Export bearbeiten.',
-      pg_f3_title: 'Mehrere Schemas',
-      pg_f3_desc: 'Vollständige Unterstützung für PostgreSQL-Schemas (Namespaces). Objekte über verschiedene Schemas hinweg vergleichen.',
-      pg_f4_title: 'Funktionen & Trigger',
-      pg_f4_desc: 'Vergleichen Sie gespeicherte Funktionen, Prozeduren und Trigger. Änderungen in Funktionssignaturen und Triggerdefinitionen erkennen.',
-      pg_f5_title: 'Flexibler Export',
-      pg_f5_desc: 'Export in eine einzelne Datei oder separate Dateien für CREATE, ALTER, DROP und Datenmigrationsskripte.',
-      pg_f6_title: 'Visueller Vergleich',
-      pg_f6_desc: 'Erkunden Sie Unterschiede mithilfe einer visuellen Baumstruktur. Quell- und Ziel-SQL-Definitionen nebeneinander anzeigen.',
-
-      pg_how_label: 'So funktioniert es',
-      pg_how_title_html: 'Schemata vergleichen in <span class="gradient">drei einfachen Schritten</span>',
-      pg_step1_title: '1. Datenbanken verbinden',
-      pg_step1_desc: 'Konfigurieren Sie Quell- und Ziel-PostgreSQL-Verbindungen. Host, Port, Datenbankname und Anmeldedaten eingeben.',
-      pg_step2_title: '2. Schemata vergleichen',
-      pg_step2_desc: 'BaseDiff analysiert beide PostgreSQL-Schemata und zeigt alle Unterschiede in einer übersichtlichen Baumstruktur an.',
-      pg_step3_title: '3. Skripte generieren & exportieren',
-      pg_step3_desc: 'Überprüfen Sie generierte Migrationsskripte, bearbeiten Sie sie und exportieren Sie sie in Dateien.',
-
-      pg_preview_label: 'Vorschau',
-      pg_preview_title_html: 'Sehen Sie <span class="gradient">BaseDiff in Aktion</span>',
-      pg_screen1: 'PostgreSQL Schema-Vergleich — Hauptfenster',
-      pg_screen2: 'Auswahl der Quell- und Zieldatenbank',
-      pg_screen3: 'Export von Migrationsskripten in Dateien',
-
-      pg_cta_label: 'Loslegen',
-      pg_cta_title_html: 'Beginnen Sie noch heute <span class="gradient">PostgreSQL-Schemata zu vergleichen</span>',
-      pg_cta_sub: 'Laden Sie BaseDiff kostenlos herunter und generieren Sie Ihr erstes Migrationsskript in Minuten.',
-      pg_cta_windows: 'Für Windows herunterladen',
-      pg_cta_linux: 'Für Linux herunterladen',
-      pg_cta_macos: 'Für macOS herunterladen'
-    }
-  };
+    }};
 
   function updateVersionInfo(lang) {
     var config = window.BaseDiffConfig;
@@ -301,7 +219,7 @@
 
   for (var i = 0; i < pathParts.length; i++) {
     var part = pathParts[i].toLowerCase();
-    if (part === 'en' || part === 'cs' || part === 'de') {
+    if (part === 'en' || part === 'cs' ) {
       langFromUrl = part;
       break;
     }
@@ -323,3 +241,4 @@
 
   window.setLang = apply;
 })();
+
