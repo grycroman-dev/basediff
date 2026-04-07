@@ -1,8 +1,14 @@
 # ══════════════════════════════════════
-# BaseDiff .htaccess
+# BaseDiff .htaccess (ULTRA-SECURE EDITION)
 # ══════════════════════════════════════
 
-# Zapnutí Gzip komprese
+# 1. ZÁKLADNÍ BEZPEČNOST SERVERU
+# Zakáže zobrazení obsahu složek, pokud tam není index soubor
+Options -Indexes
+# Vypne identifikační řádky serveru (např. Apache/2.4.41 v patce chybové stránky)
+ServerSignature Off
+
+# 2. GZIP KOMPRESE (PRO VÝKON)
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/plain text/html text/xml text/css application/xml application/xhtml+xml application/rss+xml application/javascript application/x-javascript
 </IfModule>
@@ -11,7 +17,7 @@
     Header set Connection keep-alive
 </IfModule>
 
-# Kešování souborů (Browser Caching)
+# 3. KEŠOVÁNÍ PROHLÍŽEČE (PRO VÝKON)
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresDefault "access plus 1 month"
@@ -22,6 +28,29 @@
   ExpiresByType application/javascript "access plus 1 month"
 </IfModule>
 
+# 4. POKROČILÉ BEZPEČNOSTNÍ HLAVIČKY
+<IfModule mod_headers.c>
+    # Brání klik-jacking útokům (web nelze vložit do framu jiného webu)
+    Header set X-Frame-Options "SAMEORIGIN"
+    
+    # Brání prohlížeči "hádání" MIME typů (proti nahrávání falešných scriptů jako obrázky)
+    Header set X-Content-Type-Options "nosniff"
+    
+    # Zapíná XSS Protection (v moderních prohlížečích spíš jako fallback)
+    Header set X-XSS-Protection "1; mode=block"
+    
+    # Říká, kolik informací o refereru se má posílat (chrání soukromí)
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # HSTS - Vynucuje HTTPS na 1 rok
+    Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+    
+    # Content Security Policy (CSP)
+    # POVOLUJE: tvůj web, inline CSS (pro výkon), FontAwesome, Google Fonts, Ko-fi widget.
+    Header set Content-Security-Policy "default-src 'self' https:; script-src 'self' 'unsafe-inline' https://kit.fontawesome.com https://storage.ko-fi.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://ka-f.fontawesome.com; font-src 'self' https://fonts.gstatic.com https://ka-f.fontawesome.com; img-src 'self' data: https:;"
+</IfModule>
+
+# 5. REWRITES (HTTPS, JAZYKY, DOWNLOADS)
 RewriteEngine On
 
 # Vynucení HTTPS a odstranění WWW
@@ -29,50 +58,31 @@ RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
 RewriteRule ^(.*)$ https://basediff.com/$1 [R=301,L]
 
-# ── JAZYKOVÉ VERZE (POŘADÍ JE KRITICKÉ) ──
-
-# 1. SQL stránka s jazykem (nejkonkrétnější)
+# ── JAZYKOVÉ VERZE ──
 RewriteRule ^(en|cs|de)/(compare-sql-server-schemas\.html)$ /$2 [L,QSA]
-
-# 2. Sekce s jazykem → přesměrování na anchor
 RewriteRule ^(en|cs|de)/download/?$     /#download     [R=301,L,NE]
 RewriteRule ^(en|cs|de)/features/?$     /#features     [R=301,L,NE]
 RewriteRule ^(en|cs|de)/databases/?$    /#databases    [R=301,L,NE]
 RewriteRule ^(en|cs|de)/screenshots/?$  /#screenshots  [R=301,L,NE]
-
-# 3. Hlavní stránka s jazykem (nejobecnější)
 RewriteRule ^(en|cs|de)/?$ /index.html [L,QSA]
 
-
 # ── DOWNLOAD SYSTÉM ──
-
-# Portable verze
 RewriteRule ^download/portable/win64$ /api/download.php?file=win64-portable [L,QSA]
 RewriteRule ^download/portable/win32$ /api/download.php?file=win32-portable [L,QSA]
 RewriteRule ^download/portable/linux$ /api/download.php?file=linux-portable [L,QSA]
 RewriteRule ^download/portable/macos$ /api/download.php?file=macos-portable [L,QSA]
-
-# Instalátory
 RewriteRule ^download/windows$   /api/download.php?file=win64 [L,QSA]
 RewriteRule ^download/windows32$ /api/download.php?file=win32 [L,QSA]
 RewriteRule ^download/linux$     /api/download.php?file=linux [L,QSA]
-
-# Zpětná kompatibilita
 RewriteRule ^download/macos$     /api/download.php?file=macos-portable [L,QSA]
 RewriteRule ^download/portable$  /api/download.php?file=win64-portable [L,QSA]
-
-# Přesměrování /download na sekci na webu
 RewriteRule ^download/?$ /#download [R=301,L,NE]
 
-
-# ── OSTATNÍ NASTAVENÍ ──
-
-# Zakáže cache pro CSS a JS během vývoje
+# 6. CACHE CONTROL (DEVELOPMENT & API)
 <FilesMatch "\.(css|js)$">
     Header set Cache-Control "no-cache, no-store, must-revalidate"
 </FilesMatch>
 
-# Zákaz kešování pro API složku
 <FilesMatch "\.(php)$">
     <IfModule mod_headers.c>
         Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"

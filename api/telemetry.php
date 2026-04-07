@@ -48,32 +48,37 @@ if (!is_dir(dirname($dbPath))) {
     mkdir(dirname($dbPath), 0755, true);
 }
 
-$db = new SQLite3($dbPath);
+try {
+    $db = new SQLite3($dbPath);
+    $db->busyTimeout(5000);
 
-$db->exec("
-    CREATE TABLE IF NOT EXISTS telemetry (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        version TEXT NOT NULL,
-        os TEXT NOT NULL,
-        date TEXT NOT NULL
-    )
-");
+    $db->exec("
+        CREATE TABLE IF NOT EXISTS telemetry (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            version TEXT NOT NULL,
+            os TEXT NOT NULL,
+            date TEXT NOT NULL
+        )
+    ");
 
-// Create index for faster queries
-$db->exec("
-    CREATE INDEX IF NOT EXISTS idx_telemetry_date ON telemetry(date)
-");
+    // Create index for faster queries
+    $db->exec("CREATE INDEX IF NOT EXISTS idx_telemetry_date ON telemetry(date)");
 
-// Insert record
-$stmt = $db->prepare("
-    INSERT INTO telemetry (version, os, date)
-    VALUES (:version, :os, :date)
-");
-$stmt->bindValue(':version', $version, SQLITE3_TEXT);
-$stmt->bindValue(':os', $os, SQLITE3_TEXT);
-$stmt->bindValue(':date', $date, SQLITE3_TEXT);
-$stmt->execute();
+    // Insert record
+    $stmt = $db->prepare("
+        INSERT INTO telemetry (version, os, date)
+        VALUES (:version, :os, :date)
+    ");
+    $stmt->bindValue(':version', $version, SQLITE3_TEXT);
+    $stmt->bindValue(':os', $os, SQLITE3_TEXT);
+    $stmt->bindValue(':date', $date, SQLITE3_TEXT);
+    $stmt->execute();
+    $db->close();
+} catch (Exception $e) {
+    error_log("Telemetry error: " . $e->getMessage());
+    http_response_code(500);
+    exit(json_encode(['error' => 'Internal server error']));
+}
 
-$db->close();
 
 echo json_encode(['status' => 'ok']);
