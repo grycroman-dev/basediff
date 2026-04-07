@@ -10,7 +10,6 @@
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://basediff.com/en"/>
     <xhtml:link rel="alternate" hreflang="cs" href="https://basediff.com/cs"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://basediff.com/de"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://basediff.com/"/>
   </url>
 
@@ -22,7 +21,6 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://basediff.com/en/compare-sql-server-schemas.html"/>
     <xhtml:link rel="alternate" hreflang="cs" href="https://basediff.com/cs/compare-sql-server-schemas.html"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://basediff.com/de/compare-sql-server-schemas.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://basediff.com/compare-sql-server-schemas.html"/>
   </url>
 
@@ -72,7 +70,6 @@
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://basediff.com/en/compare-postgresql-schemas.html"/>
     <xhtml:link rel="alternate" hreflang="cs" href="https://basediff.com/cs/compare-postgresql-schemas.html"/>
-    <xhtml:link rel="alternate" hreflang="de" href="https://basediff.com/de/compare-postgresql-schemas.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://basediff.com/compare-postgresql-schemas.html"/>
   </url>
 

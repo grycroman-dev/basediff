@@ -59,12 +59,13 @@ RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
 RewriteRule ^(.*)$ https://basediff.com/$1 [R=301,L]
 
 # ── JAZYKOVÉ VERZE ──
-RewriteRule ^(en|cs|de)/(compare-sql-server-schemas\.html)$ /$2 [L,QSA]
-RewriteRule ^(en|cs|de)/download/?$     /#download     [R=301,L,NE]
-RewriteRule ^(en|cs|de)/features/?$     /#features     [R=301,L,NE]
-RewriteRule ^(en|cs|de)/databases/?$    /#databases    [R=301,L,NE]
-RewriteRule ^(en|cs|de)/screenshots/?$  /#screenshots  [R=301,L,NE]
-RewriteRule ^(en|cs|de)/?$ /index.html [L,QSA]
+RewriteRule ^(en|cs)/(compare-sql-server-schemas\.html)$ /$2 [L,QSA]
+RewriteRule ^(en|cs)/download/?$     /#download     [R=301,L,NE]
+RewriteRule ^(en|cs)/features/?$     /#features     [R=301,L,NE]
+RewriteRule ^(en|cs)/databases/?$    /#databases    [R=301,L,NE]
+RewriteRule ^(en|cs)/screenshots/?$  /#screenshots  [R=301,L,NE]
+RewriteRule ^(en|cs)/?$ /index.html [L,QSA]
+
 
 # ── DOWNLOAD SYSTÉM ──
 RewriteRule ^download/portable/win64$ /api/download.php?file=win64-portable [L,QSA]
