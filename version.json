@@ -1,10 +1,10 @@
 {
-  "latest_version": "2.0.2",
-  "release_date": "2026-03-25",
+  "latest_version": "2.0.3",
+  "release_date": "2026-04-08",
   "release_date_text": {
-    "cs": "březen 2026",
-    "en": "March 2026",
-    "de": "März 2026"
+    "cs": "duben 2026",
+    "en": "April 2026",
+    "de": "April 2026"
   },
   "changelog_url": "https://basediff.com/changelog.html",
   "downloads": {

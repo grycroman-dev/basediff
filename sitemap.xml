@@ -5,7 +5,7 @@
   <!-- Hlavní stránka -->
   <url>
     <loc>https://basediff.com/</loc>
-    <lastmod>2026-03-16</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://basediff.com/en"/>
@@ -16,7 +16,7 @@
   <!-- SQL Server stránka -->
   <url>
     <loc>https://basediff.com/compare-sql-server-schemas.html</loc>
-    <lastmod>2026-03-16</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://basediff.com/en/compare-sql-server-schemas.html"/>
@@ -27,7 +27,7 @@
   <!-- Changelog -->
   <url>
     <loc>https://basediff.com/changelog.html</loc>
-    <lastmod>2026-03-16</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -35,7 +35,7 @@
   <!-- Stats -->
   <url>
     <loc>https://basediff.com/stats.html</loc>
-    <lastmod>2026-03-16</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
@@ -43,21 +43,21 @@
   <!-- Právní stránky -->
   <url>
     <loc>https://basediff.com/privacy.html</loc>
-    <lastmod>2026-03-16</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
     <loc>https://basediff.com/terms.html</loc>
-    <lastmod>2026-03-16</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
     <loc>https://basediff.com/cookies.html</loc>
-    <lastmod>2026-03-16</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
@@ -65,7 +65,7 @@
   <!-- PostgreSQL stránka -->
   <url>
     <loc>https://basediff.com/compare-postgresql-schemas.html</loc>
-    <lastmod>2026-03-23</lastmod>
+    <lastmod>2026-04-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://basediff.com/en/compare-postgresql-schemas.html"/>

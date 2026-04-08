@@ -7,8 +7,8 @@
 
   var T = {
     cs: {
-      nav_sql_compare: 'Porovnání SQL Server schémat',    
-      nav_pg_compare: 'Porovnání PostgreSQL schémat',    
+      nav_sql_compare: 'Porovnání SQL Server schémat',
+      nav_pg_compare: 'Porovnání PostgreSQL schémat',
       stats_label: 'Statistiky',
       stats_title: 'Statistiky BaseDiff',
       stats_sub: 'Živá data o stahování a používání.',
@@ -23,7 +23,7 @@
 
       company_address_line1: 'Hasičská 930/53, Hrabůvka',
       company_address_line2: '700 30 Ostrava',
-      company_country: 'Česká republika',    
+      company_country: 'Česká republika',
       company_id: 'IČ: 27396649',
       company_vat: 'DIČ: CZ27396649',
 
@@ -31,7 +31,7 @@
       cookie_banner_text: 'Tento web používá cookies pro analýzu návštěvnosti. Můžete je přijmout nebo odmítnout.',
       cookie_accept: 'Přijmout',
       cookie_reject: 'Odmítnout',
-          
+
       nav_features: 'Funkce',
       nav_databases: 'Databáze',
       nav_screenshots: 'Náhledy',
@@ -43,7 +43,7 @@
 
       privacy_label: 'Ochrana osobních údajů',
       privacy_title: 'Privacy Policy',
-      privacy_updated: 'Poslední aktualizace: březen 2026',
+      privacy_updated: 'Poslední aktualizace: duben 2026',
       privacy_s1_title: '1. Provozovatel webu',
       privacy_s2_title: '2. Jaké údaje zpracováváme',
       privacy_s2_p1: 'Web BaseDiff nevyžaduje registraci ani vytvoření účtu. Osobní údaje nejsou sbírány přímo.',
@@ -71,13 +71,13 @@
       privacy_s6_li4: 'Podání stížnosti u dozorového úřadu (ÚOOÚ)',
       privacy_s6_contact: 'Kontakt:',
       privacy_s7_title: '7. Telemetrie aplikace',
-      privacy_s7_p1: 'Aplikace BaseDiff při spuštění odesílá anonymní informaci o verzi aplikace a operačním systému. Nejsou sbírány žádné osobní údaje, IP adresy ani identifikátory.',    
+      privacy_s7_p1: 'Aplikace BaseDiff při spuštění odesílá anonymní informaci o verzi aplikace a operačním systému. Nejsou sbírány žádné osobní údaje, IP adresy ani identifikátory.',
       privacy_s8_title: '8. Změny těchto zásad',
       privacy_s8_p1: 'Tyto zásady mohou být aktualizovány. Datum poslední aktualizace je uvedeno nahoře.',
 
       terms_label: 'Podmínky užití',
       terms_title: 'Podmínky užití',
-      terms_updated: 'Poslední aktualizace: březen 2026',
+      terms_updated: 'Poslední aktualizace: duben 2026',
       terms_s1_title: '1. Úvod',
       terms_s1_p1: 'Tyto podmínky užití upravují používání webu BaseDiff a softwaru BaseDiff. Stažením nebo používáním softwaru vyjadřujete souhlas s těmito podmínkami.',
       terms_s2_title: '2. Licence k softwaru',
@@ -103,7 +103,7 @@
 
       cookies_label: 'Cookies',
       cookies_title: 'Cookie Policy',
-      cookies_updated: 'Poslední aktualizace: březen 2026',
+      cookies_updated: 'Poslední aktualizace: duben 2026',
       cookies_s1_title: '1. Co jsou cookies',
       cookies_s1_p1: 'Cookies jsou malé textové soubory ukládané do vašeho prohlížeče při návštěvě webu.',
       cookies_s2_title: '2. Technické cookies (nezbytné)',
@@ -121,7 +121,7 @@
     },
 
     en: {
-      nav_sql_compare: 'SQL Server Comparison',    
+      nav_sql_compare: 'SQL Server Comparison',
       nav_pg_compare: 'PostgreSQL Comparison',
       stats_label: 'Statistics',
       stats_title: 'BaseDiff Statistics',
@@ -134,14 +134,14 @@
       stats_by_version: 'Launches by version',
       stats_daily: 'Daily launches (last 30 days)',
       stats_by_country: 'Downloads by country',
-      
+
       company_address_line1: 'Hasičská 930/53, Hrabůvka',
       company_address_line2: '700 30 Ostrava',
       company_country: 'Czech Republic',
       company_id: 'ID: 27396649',
       company_vat: 'VAT: CZ27396649',
-    
-      cookie_settings: 'Cookie settings',      
+
+      cookie_settings: 'Cookie settings',
       cookie_banner_text: 'This website uses cookies for traffic analysis. You can accept or reject them.',
       cookie_accept: 'Accept',
       cookie_reject: 'Reject',
@@ -157,7 +157,7 @@
 
       privacy_label: 'Privacy',
       privacy_title: 'Privacy Policy',
-      privacy_updated: 'Last updated: March 2026',
+      privacy_updated: 'Last updated: April 2026',
       privacy_s1_title: '1. Website Operator',
       privacy_s2_title: '2. Data We Collect',
       privacy_s2_p1: 'The BaseDiff website does not require registration or account creation. Personal data is not collected directly.',
@@ -191,7 +191,7 @@
 
       terms_label: 'Terms of Use',
       terms_title: 'Terms of Use',
-      terms_updated: 'Last updated: March 2026',
+      terms_updated: 'Last updated: April 2026',
       terms_s1_title: '1. Introduction',
       terms_s1_p1: 'These Terms of Use govern the use of the BaseDiff website and software. By downloading or using the software, you agree to these terms.',
       terms_s2_title: '2. Software License',
@@ -217,7 +217,7 @@
 
       cookies_label: 'Cookies',
       cookies_title: 'Cookie Policy',
-      cookies_updated: 'Last updated: March 2026',
+      cookies_updated: 'Last updated: April 2026',
       cookies_s1_title: '1. What Are Cookies',
       cookies_s1_p1: 'Cookies are small text files stored in your browser when you visit a website.',
       cookies_s2_title: '2. Technical Cookies (Necessary)',
@@ -232,7 +232,8 @@
       cookies_s4_p1: 'You can manage or delete cookies in your browser settings.',
       cookies_s5_title: '5. Contact',
       cookies_s5_p1: 'If you have questions about cookies, please contact us:'
-    }};
+    }
+  };
 
   // ── Aktualizace verze v navbaru ──
   // Retry mechanismus — app-config.js načítá version.json asynchronně
@@ -281,17 +282,17 @@
   // ── Inicializace jazyka ──
   var pathParts = window.location.pathname.split('/');
   var langFromUrl = null;
-    
+
   for (var i = 0; i < pathParts.length; i++) {
     var part = pathParts[i].toLowerCase();
-    if (part === 'en' || part === 'cs' ) {
+    if (part === 'en' || part === 'cs') {
       langFromUrl = part;
       break;
     }
   }
 
   var initialLang = langFromUrl || localStorage.getItem(KEY) || 'en';
-  
+
   if (langFromUrl) {
     localStorage.setItem(KEY, langFromUrl);
   }

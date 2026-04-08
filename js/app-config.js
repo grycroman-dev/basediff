@@ -6,19 +6,19 @@
 window.BaseDiffConfig = {
   version: "2.0",
   releaseDateText: {
-    cs: "březen 2026",
-    en: "March 2026",
-    de: "März 2026"
+    cs: "duben 2026",
+    en: "April 2026",
+    de: "April 2026"
   },
-  
-  init: async function() {
+
+  init: async function () {
     try {
       const response = await fetch('/version.json?t=' + Date.now());
       const data = await response.json();
-      
+
       this.version = data.latest_version;
       this.releaseDateText = data.release_date_text;
-      
+
       // Pokud existuje setLang (i18n stránky), použijeme ho
       if (window.setLang) {
         const currentLang = localStorage.getItem('basediff-lang') || 'en';

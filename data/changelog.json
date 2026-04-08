@@ -1,5 +1,14 @@
 [
   {
+    "version": "2.0.3",
+    "date": "2026-04-08",
+    "description": "Repair and optimization.",
+    "changes": [
+      "Repair update script generator for stored procedures, functions and views",
+      "Optimize databases selection window"
+    ]
+  },
+  {
     "version": "2.0.2",
     "date": "2026-03-25",
     "description": "Process optimization.",
