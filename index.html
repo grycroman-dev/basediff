@@ -1294,6 +1294,104 @@
     }
 
     /* ══════════════════════════════════════
+   COMPARISON SECTION
+   ══════════════════════════════════════ */
+    .comp-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+      margin-top: 3rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .philosophy-card {
+      background: var(--card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      text-align: center;
+    }
+
+    .philosophy-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .philosophy-card p {
+      color: var(--text2);
+      line-height: 1.6;
+      font-size: 1.05rem;
+    }
+
+    .comp-table-container {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .comp-table th,
+    .comp-table td {
+      padding: 1.2rem 1.5rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .comp-table th {
+      background: rgba(var(--primary-rgb), 0.05);
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .comp-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .comp-table td:first-child {
+      font-weight: 600;
+      color: var(--text2);
+      width: 30%;
+    }
+
+    .comp-table .basediff-col {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .comp-table .others-col {
+      color: var(--text3);
+    }
+
+    .check-icon {
+      color: var(--green);
+      margin-right: 0.5rem;
+    }
+
+    .cross-icon {
+      color: var(--red);
+      margin-right: 0.5rem;
+    }
+
+    @media (max-width: 992px) {
+      .comp-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+
+    /* ══════════════════════════════════════
    FOOTER
    ══════════════════════════════════════ */
     footer {
@@ -2015,6 +2113,7 @@
       <div class="nav-right">
         <div class="nav-links" id="nav-links">
           <a href="/#features" data-i18n="nav_features">Funkce</a>
+          <a href="/#comparison" data-i18n="nav_comparison">Srovnání</a>
           <a href="/#databases" data-i18n="nav_databases">Databáze</a>
           <a href="/#screenshots" data-i18n="nav_screenshots">Náhledy</a>
           <a href="/#faq" data-i18n="nav_faq">FAQ</a>
@@ -2040,6 +2139,7 @@
     </div>
     <div class="mobile-menu" id="mobile-menu" role="navigation" aria-label="Mobilní menu">
       <a href="/#features" data-i18n="nav_features">Funkce</a>
+      <a href="/#comparison" data-i18n="nav_comparison">Srovnání</a>
       <a href="/#databases" data-i18n="nav_databases">Databáze</a>
       <a href="/#screenshots" data-i18n="nav_screenshots">Náhledy</a>
       <a href="/#faq" data-i18n="nav_faq">FAQ</a>
@@ -2277,6 +2377,80 @@
   </section>
 
   <!-- ═══ DATABASES ═══ -->
+  <!-- ═══ COMPARISON ═══ -->
+  <section id="comparison">
+    <div class="container">
+      <div class="section-center">
+        <div class="section-label" data-aos="fade-up"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>
+          <span data-i18n="comp_label">Srovnání</span>
+        </div>
+        <h2 class="section-title" data-aos="fade-up" data-aos-delay="50" data-i18n="comp_title_html">V čem BaseDiff
+          <span class="gradient">vyniká</span>
+        </h2>
+        <p class="section-sub" data-aos="fade-up" data-aos-delay="100" data-i18n="comp_sub">Proč jsme si vyvinuli
+          vlastní
+          nástroj a proč může být správnou volbou i pro vás.</p>
+      </div>
+
+      <div class="comp-wrapper">
+        <div class="philosophy-card" data-aos="fade-up">
+          <h3 data-i18n="comp_philosophy_title">Naše filozofie</h3>
+          <p data-i18n="comp_philosophy_text">Už nás nebavily drahé licence a nástroje omezené jen na Windows. BaseDiff
+            vznikl jako interní projekt s cílem být rychlý, multiplatformní a dostupný pro každého.</p>
+        </div>
+
+        <div class="comp-table-container" data-aos="fade-up" data-aos-delay="100">
+          <table class="comp-table">
+            <thead>
+              <tr>
+                <th data-i18n="comp_table_feature">Vlastnost</th>
+                <th data-i18n="comp_table_basediff">BaseDiff</th>
+                <th data-i18n="comp_table_others">Ostatní nástroje</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-i18n="comp_f1">Cena</td>
+                <td class="basediff-col"><i class="fa-solid fa-check check-icon"></i><span
+                    data-i18n="comp_v1_basediff">Zdarma / Coffeeware</span></td>
+                <td class="others-col"><i class="fa-solid fa-xmark cross-icon"></i><span
+                    data-i18n="comp_v1_others">Drahé / Předplatné</span></td>
+              </tr>
+              <tr>
+                <td data-i18n="comp_f2">Multiplatformní</td>
+                <td class="basediff-col"><i class="fa-solid fa-check check-icon"></i><span
+                    data-i18n="comp_v2_basediff">Win, Linux, macOS</span></td>
+                <td class="others-col"><i class="fa-solid fa-xmark cross-icon"></i><span
+                    data-i18n="comp_v2_others">Většinou jen Windows</span></td>
+              </tr>
+              <tr>
+                <td data-i18n="comp_f3">Instalace</td>
+                <td class="basediff-col"><i class="fa-solid fa-check check-icon"></i><span
+                    data-i18n="comp_v3_basediff">Portable (bez instalace)</span></td>
+                <td class="others-col"><i class="fa-solid fa-xmark cross-icon"></i><span
+                    data-i18n="comp_v3_others">Těžkopádné instalátory</span></td>
+              </tr>
+              <tr>
+                <td data-i18n="comp_f4">Jednoduchost</td>
+                <td class="basediff-col"><i class="fa-solid fa-check check-icon"></i><span
+                    data-i18n="comp_v4_basediff">Cílený a lehký</span></td>
+                <td class="others-col"><i class="fa-solid fa-xmark cross-icon"></i><span
+                    data-i18n="comp_v4_others">Přebujelé a složité</span></td>
+              </tr>
+              <tr>
+                <td data-i18n="comp_f5">Soukromí</td>
+                <td class="basediff-col"><i class="fa-solid fa-check check-icon"></i><span
+                    data-i18n="comp_v5_basediff">100% Offline</span></td>
+                <td class="others-col"><i class="fa-solid fa-xmark cross-icon"></i><span
+                    data-i18n="comp_v5_others">Nutnost cloudu</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="databases" class="alt-bg">
     <div class="container section-center">
       <div class="section-label" data-aos="fade-up"><i class="fa-solid fa-database" aria-hidden="true"></i> <span
@@ -2648,7 +2822,7 @@
         <span>·</span>
         <a href="/compare-postgresql-schemas.html" data-i18n="nav_pg_compare">PostgreSQL Comparison</a>
         <span>·</span>
-        <a href="/changelog.html">Changelog</a>
+        <a href="/changelog.html" data-i18n="nav_changelog">Changelog</a>
         <span>·</span>
         <a href="/privacy.html" data-i18n="nav_privacy">Privacy Policy</a>
         <span>·</span>

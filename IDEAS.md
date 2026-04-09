@@ -5,7 +5,7 @@ Tento dokument obsahuje návrhy na vylepšení webu a uživatelské zkušenosti 
 ## 1. Obsah a důvěryhodnost (Trust Signals)
 - [ ] **Video demo / GIF**: Krátká ukázka (30s) aplikace v akci přímo v hlavičce webu.
 - [ ] **Reference a loga**: Sekce s logy firem nebo citacemi uživatelů, kteří software používají.
-- [ ] **Srovnávací tabulka**: Přehledné porovnání BaseDiff vs. konkurence (Redgate, ApexSQL, atd.), zdůrazňující rychlost a cenu.
+- [x] **Srovnávací tabulka**: Přehledné porovnání BaseDiff vs. konkurence (Redgate, ApexSQL, atd.), zdůrazňující rychlost a cenu.
 
 ## 2. Podpora a dokumentace
 - [ ] **Znalostní báze / Wiki**: Samostatná stránka s návody (např. připojení přes SSH/VPN, automatizace skriptů).

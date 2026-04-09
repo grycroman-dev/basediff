@@ -9,6 +9,7 @@
     cs: {
       nav_sql_compare: 'Porovnání SQL Server schémat',
       nav_pg_compare: 'Porovnání PostgreSQL schémat',
+      nav_changelog: 'Changelog',
       stats_label: 'Statistiky',
       stats_title: 'Statistiky BaseDiff',
       stats_sub: 'Živá data o stahování a používání.',
@@ -35,6 +36,7 @@
       nav_features: 'Funkce',
       nav_databases: 'Databáze',
       nav_screenshots: 'Náhledy',
+      nav_comparison: 'Srovnání',
       nav_download: 'Stáhnout',
       nav_privacy: 'Privacy Policy',
       nav_terms: 'Podmínky užití',
@@ -124,6 +126,7 @@
     en: {
       nav_sql_compare: 'SQL Server Comparison',
       nav_pg_compare: 'PostgreSQL Comparison',
+      nav_changelog: 'Changelog',
       stats_label: 'Statistics',
       stats_title: 'BaseDiff Statistics',
       stats_sub: 'Live download and usage data.',
@@ -150,6 +153,7 @@
       nav_features: 'Features',
       nav_databases: 'Databases',
       nav_screenshots: 'Previews',
+      nav_comparison: 'Comparison',
       nav_download: 'Download',
       nav_privacy: 'Privacy Policy',
       nav_terms: 'Terms of Use',
