@@ -64,6 +64,7 @@ RewriteRule ^(.*)$ https://basediff.com/$1 [R=301,L]
 
 # ── JAZYKOVÉ VERZE ──
 RewriteRule ^(en|cs)/(compare-sql-server-schemas\.html)$ /$2 [L,QSA]
+RewriteRule ^(en|cs)/(compare-postgresql-schemas\.html)$ /$2 [L,QSA]
 RewriteRule ^(en|cs)/download/?$     /#download     [R=301,L,NE]
 RewriteRule ^(en|cs)/features/?$     /#features     [R=301,L,NE]
 RewriteRule ^(en|cs)/databases/?$    /#databases    [R=301,L,NE]
@@ -82,6 +83,9 @@ RewriteRule ^download/linux$     /api/download.php?file=linux [L,QSA]
 RewriteRule ^download/macos$     /api/download.php?file=macos-portable [L,QSA]
 RewriteRule ^download/portable$  /api/download.php?file=win64-portable [L,QSA]
 RewriteRule ^download/?$ /#download [R=301,L,NE]
+
+# ── FEEDBACK ──
+RewriteRule ^(?:(en|cs)/)?feedback/?$ /feedback.html [L,QSA]
 
 # 6. CACHE CONTROL (DEVELOPMENT & API)
 <FilesMatch "\.(css|js)$">
