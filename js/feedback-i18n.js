@@ -6,6 +6,7 @@
 
   var T = {
     en: {
+      feedback_label: 'Feedback',
       feedback_version_placeholder: 'e.g. 2.0.1',
       feedback_title: 'Help us improve BaseDiff',
       feedback_sub: 'Have a suggestion, found a bug, or just want to say hi?',
@@ -45,6 +46,7 @@
       footer_desc: 'A tool for comparing and synchronizing database structures.'
     },
     cs: {
+      feedback_label: 'Zpětná vazba',
       feedback_version_placeholder: 'např. 2.0.1',
       feedback_title: 'Pomozte nám vylepšit BaseDiff',
       feedback_sub: 'Máte návrh, našli jste chybu, nebo nám chcete jen napsat?',

@@ -212,9 +212,11 @@
   <!-- ═══ HERO ═══ -->
   <section class="legal-hero">
     <div class="container section-center">
-      <div class="section-label"><i class="fa-solid fa-comment-dots"></i> Feedback</div>
-      <h1 class="section-title" data-i18n="feedback_title">Help us improve <span class="gradient">BaseDiff</span></h1>
-      <p class="section-sub" data-i18n="feedback_sub">Have a suggestion, found a bug, or just want to say hi?</p>
+      <div class="section-label"><i class="fa-solid fa-comment-dots"></i> <span data-i18n="feedback_label">Zpětná
+          vazba</span></div>
+      <h1 class="section-title" data-i18n="feedback_title">Pomozte nám vylepšit <span class="gradient">BaseDiff</span>
+      </h1>
+      <p class="section-sub" data-i18n="feedback_sub">Máte návrh, našli jste chybu nebo nám chcete jen napsat?</p>
     </div>
   </section>
 
@@ -230,8 +232,8 @@
         </div>
 
         <div class="form-group">
-          <label for="type"><i class="fa-solid fa-tag"></i> <span data-i18n="feedback_type_label">Feedback
-              Type</span></label>
+          <label for="type"><i class="fa-solid fa-tag"></i> <span data-i18n="feedback_type_label">Typ zpětné
+              vazby</span></label>
           <select id="type" name="type" class="form-control"
             data-i18n-options="feedback_type_general, feedback_type_bug, feedback_type_feature">
             <option value="general">💬 General Feedback</option>
@@ -242,14 +244,14 @@
 
         <div class="feedback-meta">
           <div class="form-group">
-            <label for="version"><i class="fa-solid fa-code-branch"></i> <span data-i18n="feedback_version_label">App
-                Version</span></label>
+            <label for="version"><i class="fa-solid fa-code-branch"></i> <span data-i18n="feedback_version_label">Verze
+                aplikace</span></label>
             <input type="text" id="version" name="version" class="form-control"
               data-i18n-placeholder="feedback_version_placeholder" placeholder="e.g. 2.0.1">
           </div>
           <div class="form-group">
-            <label for="os"><i class="fa-solid fa-desktop"></i> <span data-i18n="feedback_os_label">Operating
-                System</span></label>
+            <label for="os"><i class="fa-solid fa-laptop-code"></i> <span data-i18n="feedback_os_label">Operační
+                systém</span></label>
             <select id="os" name="os" class="form-control"
               data-i18n-options="feedback_os_windows, feedback_os_linux, feedback_os_macos, feedback_os_other">
               <option value="windows">Windows</option>
@@ -261,15 +263,15 @@
         </div>
 
         <div class="form-group">
-          <label for="message"><i class="fa-solid fa-pen-to-square"></i> <span
-              data-i18n="feedback_message_label">Message</span></label>
+          <label for="message"><i class="fa-solid fa-pen-nib"></i> <span
+              data-i18n="feedback_message_label">Zpráva</span></label>
           <textarea id="message" name="message" class="form-control"
             data-i18n-placeholder="feedback_message_placeholder" placeholder="Tell us more..." required></textarea>
         </div>
 
         <div class="form-group">
           <label for="email"><i class="fa-solid fa-envelope"></i> <span data-i18n="feedback_email_label">Email
-              (optional)</span></label>
+              (volitelný)</span></label>
           <input type="email" id="email" name="email" class="form-control"
             data-i18n-placeholder="feedback_email_placeholder" placeholder="your@email.com">
         </div>
