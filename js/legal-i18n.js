@@ -39,6 +39,7 @@
       nav_privacy: 'Privacy Policy',
       nav_terms: 'Podmínky užití',
       nav_cookies: 'Cookies',
+      nav_faq: 'FAQ',
       footer_desc: 'Nástroj pro porovnání a synchronizaci databázových struktur.',
 
       privacy_label: 'Ochrana osobních údajů',
@@ -153,6 +154,7 @@
       nav_privacy: 'Privacy Policy',
       nav_terms: 'Terms of Use',
       nav_cookies: 'Cookies',
+      nav_faq: 'FAQ',
       footer_desc: 'A tool for comparing and synchronizing database structures.',
 
       privacy_label: 'Privacy',

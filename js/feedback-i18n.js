@@ -6,7 +6,7 @@
 
   var T = {
     en: {
-      feedback_version_placeholder: 'e.g. 2.0.1',    
+      feedback_version_placeholder: 'e.g. 2.0.1',
       feedback_title: 'Help us improve BaseDiff',
       feedback_sub: 'Have a suggestion, found a bug, or just want to say hi?',
       feedback_type_label: 'Feedback Type',
@@ -32,6 +32,7 @@
       nav_privacy: 'Privacy Policy',
       nav_terms: 'Terms of Use',
       nav_cookies: 'Cookies',
+      nav_faq: 'FAQ',
       cookie_settings: 'Cookie settings',
       cookie_banner_text: 'This website uses cookies for traffic analysis. You can accept or reject them.',
       cookie_accept: 'Accept',
@@ -39,7 +40,7 @@
       footer_desc: 'A tool for comparing and synchronizing database structures.'
     },
     cs: {
-      feedback_version_placeholder: 'např. 2.0.1',    
+      feedback_version_placeholder: 'např. 2.0.1',
       feedback_title: 'Pomozte nám vylepšit BaseDiff',
       feedback_sub: 'Máte návrh, našli jste chybu, nebo nám chcete jen napsat?',
       feedback_type_label: 'Typ zpětné vazby',
@@ -65,12 +66,14 @@
       nav_privacy: 'Privacy Policy',
       nav_terms: 'Podmínky užití',
       nav_cookies: 'Cookies',
+      nav_faq: 'FAQ',
       cookie_settings: 'Nastavení cookies',
       cookie_banner_text: 'Tento web používá cookies pro analýzu návštěvnosti. Můžete je přijmout nebo odmítnout.',
       cookie_accept: 'Přijmout',
       cookie_reject: 'Odmítnout',
       footer_desc: 'Nástroj pro porovnání a synchronizaci databázových struktur.'
-    }};
+    }
+  };
 
   function updateVersionInfo() {
     var config = window.BaseDiffConfig;
@@ -125,34 +128,34 @@
   }
 
   // ── Inicializace jazyka ──
-    var pathParts = window.location.pathname.split('/');
-    var langFromUrl = null;
-    
-    for (var i = 0; i < pathParts.length; i++) {
-      var part = pathParts[i].toLowerCase();
-      if (part === 'en' || part === 'cs' ) {
-        langFromUrl = part;
-        break;
-      }
+  var pathParts = window.location.pathname.split('/');
+  var langFromUrl = null;
+
+  for (var i = 0; i < pathParts.length; i++) {
+    var part = pathParts[i].toLowerCase();
+    if (part === 'en' || part === 'cs') {
+      langFromUrl = part;
+      break;
     }
-    
-    var initialLang = langFromUrl || localStorage.getItem(KEY) || 'en';
-    if (langFromUrl) localStorage.setItem(KEY, langFromUrl);
-    
-    // Spustíme až po načtení DOMu
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', function() {
-        apply(initialLang, true);
-      });
-    } else {
+  }
+
+  var initialLang = langFromUrl || localStorage.getItem(KEY) || 'en';
+  if (langFromUrl) localStorage.setItem(KEY, langFromUrl);
+
+  // Spustíme až po načtení DOMu
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function () {
       apply(initialLang, true);
-    }
-    
-    document.querySelectorAll('.lang-switch button').forEach(function (b) {
-      b.addEventListener('click', function () {
-        apply(b.getAttribute('data-lang'), false);
-      });
     });
+  } else {
+    apply(initialLang, true);
+  }
+
+  document.querySelectorAll('.lang-switch button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      apply(b.getAttribute('data-lang'), false);
+    });
+  });
 
   window.setLang = apply;
 })();

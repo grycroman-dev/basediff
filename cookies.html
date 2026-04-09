@@ -1,215 +1,229 @@
 <!DOCTYPE html>
 <html lang="cs" id="root-html" data-theme="dark">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#09090b">
   <title>Cookies — BaseDiff</title>
-  <meta name="description" content="Informace o cookies na webu BaseDiff."/>
-  <meta name="robots" content="index, follow"/>
-  <link rel="canonical" href="https://basediff.com/cookies.html"/>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
-  <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap&font-display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
-  <link rel="stylesheet" href="/css/style.css?v=10"/>
-  <link rel="stylesheet" href="/css/legal.css?v=2"/>
+  <meta name="description" content="Informace o cookies na webu BaseDiff." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://basediff.com/cookies.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap&font-display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <link rel="stylesheet" href="/css/style.css?v=10" />
+  <link rel="stylesheet" href="/css/legal.css?v=2" />
 </head>
+
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar" id="navbar">
-  <div class="container navbar-inner">
-    <div class="nav-left">
-      <a href="/" class="nav-brand">
-        <i class="fa-solid fa-bolt" aria-hidden="true"></i> BaseDiff
-      </a>
-      <span class="nav-version" id="nav-version">v2.0.3</span>
-    </div>
-    <div class="nav-right">
-      <div class="nav-links" id="nav-links">
-        <a href="/#features" data-i18n="nav_features">Funkce</a>
-        <a href="/#databases" data-i18n="nav_databases">Databáze</a>
-        <a href="/#screenshots" data-i18n="nav_screenshots">Náhledy</a>
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <div class="nav-left">
+        <a href="/" class="nav-brand">
+          <i class="fa-solid fa-bolt" aria-hidden="true"></i> BaseDiff
+        </a>
+        <span class="nav-version" id="nav-version">v2.0.3</span>
       </div>
-      <div class="lang-switch" id="lang-switch">
-        <button class="active" data-lang="en">EN</button>
-        <button data-lang="cs">CZ</button>
+      <div class="nav-right">
+        <div class="nav-links" id="nav-links">
+          <a href="/#features" data-i18n="nav_features">Funkce</a>
+          <a href="/#databases" data-i18n="nav_databases">Databáze</a>
+          <a href="/#screenshots" data-i18n="nav_screenshots">Náhledy</a>
+          <a href="/#faq" data-i18n="nav_faq">FAQ</a>
+        </div>
+        <div class="lang-switch" id="lang-switch">
+          <button class="active" data-lang="en">EN</button>
+          <button data-lang="cs">CZ</button>
+        </div>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Přepnout téma">
+          <i class="fa-solid fa-sun" aria-hidden="true"></i>
+          <i class="fa-solid fa-moon" aria-hidden="true"></i>
+        </button>
+        <a href="/#download" class="nav-cta">
+          <i class="fa-solid fa-download" aria-hidden="true"></i>
+          <span data-i18n="nav_download">Stáhnout</span>
+        </a>
+        <button class="nav-hamburger" id="nav-hamburger" aria-expanded="false">
+          <i class="fa-solid fa-bars" id="hamburger-icon"></i>
+        </button>
       </div>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Přepnout téma">
-        <i class="fa-solid fa-sun" aria-hidden="true"></i>
-        <i class="fa-solid fa-moon" aria-hidden="true"></i>
-      </button>
-      <a href="/#download" class="nav-cta">
-        <i class="fa-solid fa-download" aria-hidden="true"></i>
-        <span data-i18n="nav_download">Stáhnout</span>
-      </a>
-      <button class="nav-hamburger" id="nav-hamburger" aria-expanded="false">
-        <i class="fa-solid fa-bars" id="hamburger-icon"></i>
-      </button>
     </div>
-  </div>
-  <div class="mobile-menu" id="mobile-menu">
-    <a href="/#features" data-i18n="nav_features">Funkce</a>
-    <a href="/#databases" data-i18n="nav_databases">Databáze</a>
-    <a href="/#screenshots" data-i18n="nav_screenshots">Náhledy</a>
-    <a href="/#download" data-i18n="nav_download">Stáhnout</a>
-  </div>
-</nav>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="/#features" data-i18n="nav_features">Funkce</a>
+      <a href="/#databases" data-i18n="nav_databases">Databáze</a>
+      <a href="/#screenshots" data-i18n="nav_screenshots">Náhledy</a>
+      <a href="/#faq" data-i18n="nav_faq">FAQ</a>
+      <a href="/#download" data-i18n="nav_download">Stáhnout</a>
+    </div>
+  </nav>
 
-<!-- HERO -->
-<div class="legal-hero">
-  <div class="container">
-    <div class="section-label">
-      <i class="fa-solid fa-cookie-bite"></i>
-      <span data-i18n="cookies_label">Cookies</span>
-    </div>
-    <h1 data-i18n="cookies_title">Cookie Policy</h1>
-    <p data-i18n="cookies_updated">Poslední aktualizace: březen 2026</p>
-    <div class="legal-nav">
-      <a href="/privacy.html" class="legal-nav-link">
-        <i class="fa-solid fa-shield-halved"></i>
-        <span data-i18n="nav_privacy">Privacy Policy</span>
-      </a>
-      <a href="/terms.html" class="legal-nav-link">
-        <i class="fa-solid fa-file-lines"></i>
-        <span data-i18n="nav_terms">Terms of Use</span>
-      </a>
-      <a href="/cookies.html" class="legal-nav-link active">
+  <!-- HERO -->
+  <div class="legal-hero">
+    <div class="container">
+      <div class="section-label">
         <i class="fa-solid fa-cookie-bite"></i>
-        <span data-i18n="nav_cookies">Cookies</span>
-      </a>
+        <span data-i18n="cookies_label">Cookies</span>
+      </div>
+      <h1 data-i18n="cookies_title">Cookie Policy</h1>
+      <p data-i18n="cookies_updated">Poslední aktualizace: březen 2026</p>
+      <div class="legal-nav">
+        <a href="/privacy.html" class="legal-nav-link">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span data-i18n="nav_privacy">Privacy Policy</span>
+        </a>
+        <a href="/terms.html" class="legal-nav-link">
+          <i class="fa-solid fa-file-lines"></i>
+          <span data-i18n="nav_terms">Terms of Use</span>
+        </a>
+        <a href="/cookies.html" class="legal-nav-link active">
+          <i class="fa-solid fa-cookie-bite"></i>
+          <span data-i18n="nav_cookies">Cookies</span>
+        </a>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- CONTENT -->
-<div class="container">
-  <div class="legal-content">
+  <!-- CONTENT -->
+  <div class="container">
+    <div class="legal-content">
 
-    <div class="legal-section">
-      <h2><i class="fa-solid fa-circle-info"></i> <span data-i18n="cookies_s1_title">1. Co jsou cookies</span></h2>
-      <p data-i18n="cookies_s1_p1">Cookies jsou malé textové soubory ukládané do vašeho prohlížeče při návštěvě webu. Slouží k zapamatování vašich preferencí a zlepšení uživatelského zážitku.</p>
+      <div class="legal-section">
+        <h2><i class="fa-solid fa-circle-info"></i> <span data-i18n="cookies_s1_title">1. Co jsou cookies</span></h2>
+        <p data-i18n="cookies_s1_p1">Cookies jsou malé textové soubory ukládané do vašeho prohlížeče při návštěvě webu.
+          Slouží k zapamatování vašich preferencí a zlepšení uživatelského zážitku.</p>
+      </div>
+
+      <div class="legal-section">
+        <h2><i class="fa-solid fa-gear"></i> <span data-i18n="cookies_s2_title">2. Technické cookies (nezbytné)</span>
+        </h2>
+        <p data-i18n="cookies_s2_p1">Web BaseDiff používá pouze technické cookies, které jsou nezbytné pro správné
+          fungování stránky. Tyto cookies nevyžadují váš souhlas.</p>
+        <ul>
+          <li data-i18n="cookies_s2_li1"><strong>basediff-lang</strong> — uložení zvoleného jazyka (EN / CZ)</li>
+          <li data-i18n="cookies_s2_li2"><strong>basediff-theme</strong> — uložení zvoleného barevného tématu
+            (světlé/tmavé)</li>
+        </ul>
+        <p data-i18n="cookies_s2_p2">Tyto hodnoty jsou ukládány do localStorage prohlížeče, nikoli jako klasické
+          cookies.</p>
+      </div>
+
+      <div class="legal-section">
+        <h2><i class="fa-solid fa-chart-line"></i> <span data-i18n="cookies_s3_title">3. Analytické cookies
+            (plánované)</span></h2>
+        <p data-i18n="cookies_s3_p1">V budoucnu plánujeme nasazení analytického nástroje (Google Analytics nebo
+          privacy-friendly alternativa). Analytické cookies budou aktivovány pouze po vašem výslovném souhlasu
+          prostřednictvím cookie banneru.</p>
+        <p data-i18n="cookies_s3_p2">Aktuálně analytické cookies NEJSOU aktivní.</p>
+      </div>
+
+      <div class="legal-section">
+        <h2><i class="fa-solid fa-sliders"></i> <span data-i18n="cookies_s4_title">4. Správa cookies</span></h2>
+        <p data-i18n="cookies_s4_p1">Cookies můžete spravovat nebo smazat v nastavení vašeho prohlížeče. Smazáním
+          cookies dojde k resetování vašich preferencí (jazyk, téma).</p>
+      </div>
+
+      <div class="legal-section">
+        <h2><i class="fa-solid fa-envelope"></i> <span data-i18n="cookies_s5_title">5. Kontakt</span></h2>
+        <p>
+          <span data-i18n="cookies_s5_p1">Máte-li dotazy ohledně cookies, kontaktujte nás:</span>
+          <a href="mailto:info@basediff.com">info@basediff.com</a>
+        </p>
+      </div>
+
     </div>
+  </div>
 
-    <div class="legal-section">
-      <h2><i class="fa-solid fa-gear"></i> <span data-i18n="cookies_s2_title">2. Technické cookies (nezbytné)</span></h2>
-      <p data-i18n="cookies_s2_p1">Web BaseDiff používá pouze technické cookies, které jsou nezbytné pro správné fungování stránky. Tyto cookies nevyžadují váš souhlas.</p>
-      <ul>
-        <li data-i18n="cookies_s2_li1"><strong>basediff-lang</strong> — uložení zvoleného jazyka (EN / CZ)</li>
-        <li data-i18n="cookies_s2_li2"><strong>basediff-theme</strong> — uložení zvoleného barevného tématu (světlé/tmavé)</li>
-      </ul>
-      <p data-i18n="cookies_s2_p2">Tyto hodnoty jsou ukládány do localStorage prohlížeče, nikoli jako klasické cookies.</p>
-    </div>
-
-    <div class="legal-section">
-      <h2><i class="fa-solid fa-chart-line"></i> <span data-i18n="cookies_s3_title">3. Analytické cookies (plánované)</span></h2>
-      <p data-i18n="cookies_s3_p1">V budoucnu plánujeme nasazení analytického nástroje (Google Analytics nebo privacy-friendly alternativa). Analytické cookies budou aktivovány pouze po vašem výslovném souhlasu prostřednictvím cookie banneru.</p>
-      <p data-i18n="cookies_s3_p2">Aktuálně analytické cookies NEJSOU aktivní.</p>
-    </div>
-
-    <div class="legal-section">
-      <h2><i class="fa-solid fa-sliders"></i> <span data-i18n="cookies_s4_title">4. Správa cookies</span></h2>
-      <p data-i18n="cookies_s4_p1">Cookies můžete spravovat nebo smazat v nastavení vašeho prohlížeče. Smazáním cookies dojde k resetování vašich preferencí (jazyk, téma).</p>
-    </div>
-
-    <div class="legal-section">
-      <h2><i class="fa-solid fa-envelope"></i> <span data-i18n="cookies_s5_title">5. Kontakt</span></h2>
-      <p>
-        <span data-i18n="cookies_s5_p1">Máte-li dotazy ohledně cookies, kontaktujte nás:</span>
-        <a href="mailto:info@basediff.com">info@basediff.com</a>
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <a href="/" class="footer-brand"><i class="fa-solid fa-bolt"></i> BaseDiff</a>
+      <p data-i18n="footer_desc">Nástroj pro porovnání a synchronizaci databázových struktur.</p>
+      <div class="footer-tags">
+        <span class="footer-tag"><i class="fa-solid fa-code"></i> .NET</span>
+        <span class="footer-tag"><i class="fa-brands fa-windows"></i> Windows</span>
+        <span class="footer-tag"><i class="fa-brands fa-linux"></i> Linux</span>
+        <span class="footer-tag"><i class="fa-brands fa-apple"></i> macOS</span>
+        <span class="footer-tag"><i class="fa-solid fa-globe"></i> EN / CZ</span>
+        <a href="https://www.youtube.com/@BaseDiff" target="_blank" rel="noopener" class="footer-tag footer-tag-link">
+          <i class="fa-brands fa-youtube" aria-hidden="true"></i> YouTube
+        </a>
+      </div>
+      <div class="footer-legal">
+        <a href="/compare-sql-server-schemas.html" data-i18n="nav_sql_compare">SQL Server Comparison</a>
+        <span>·</span>
+        <a href="/compare-postgresql-schemas.html" data-i18n="nav_pg_compare">PostgreSQL Comparison</a>
+        <span>·</span>
+        <a href="/changelog.html">Changelog</a>
+        <span>·</span>
+        <a href="/privacy.html" data-i18n="nav_privacy">Privacy Policy</a>
+        <span>·</span>
+        <a href="/terms.html" data-i18n="nav_terms">Terms of Use</a>
+        <span>·</span>
+        <a href="/cookies.html" data-i18n="nav_cookies">Cookies</a>
+        <span>·</span>
+        <a href="#" onclick="openCookieSettings(); return false;" data-i18n="cookie_settings">Cookie settings</a>
+      </div>
+      <p class="footer-copy">
+        © <span id="footer-year"></span>
+        <a href="https://www.elvacsolutions.eu" target="_blank" rel="noopener" class="footer-link">ELVAC SOLUTIONS</a> ·
+        BaseDiff
       </p>
     </div>
+  </footer>
 
-  </div>
-</div>
+  <!-- Back to top -->
+  <button id="back-to-top" aria-label="Back to top">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
 
-<!-- FOOTER -->
-<footer>
-  <div class="container">
-    <a href="/" class="footer-brand"><i class="fa-solid fa-bolt"></i> BaseDiff</a>
-    <p data-i18n="footer_desc">Nástroj pro porovnání a synchronizaci databázových struktur.</p>
-    <div class="footer-tags">
-      <span class="footer-tag"><i class="fa-solid fa-code"></i> .NET</span>
-      <span class="footer-tag"><i class="fa-brands fa-windows"></i> Windows</span>
-      <span class="footer-tag"><i class="fa-brands fa-linux"></i> Linux</span>
-      <span class="footer-tag"><i class="fa-brands fa-apple"></i> macOS</span>
-      <span class="footer-tag"><i class="fa-solid fa-globe"></i> EN / CZ</span>
-      <a href="https://www.youtube.com/@BaseDiff" target="_blank" rel="noopener" class="footer-tag footer-tag-link">
-        <i class="fa-brands fa-youtube" aria-hidden="true"></i> YouTube
-      </a>
-    </div>
-    <div class="footer-legal">
-      <a href="/compare-sql-server-schemas.html" data-i18n="nav_sql_compare">SQL Server Comparison</a>
-      <span>·</span>
-      <a href="/compare-postgresql-schemas.html" data-i18n="nav_pg_compare">PostgreSQL Comparison</a>
-      <span>·</span>
-      <a href="/changelog.html">Changelog</a>
-      <span>·</span>      
-      <a href="/privacy.html" data-i18n="nav_privacy">Privacy Policy</a>
-      <span>·</span>
-      <a href="/terms.html" data-i18n="nav_terms">Terms of Use</a>
-      <span>·</span>
-      <a href="/cookies.html" data-i18n="nav_cookies">Cookies</a>
-      <span>·</span>
-      <a href="#" onclick="openCookieSettings(); return false;" data-i18n="cookie_settings">Cookie settings</a>
-    </div>
-    <p class="footer-copy">
-      © <span id="footer-year"></span>
-      <a href="https://www.elvacsolutions.eu" target="_blank" rel="noopener" class="footer-link">ELVAC SOLUTIONS</a> · BaseDiff
-    </p>
-  </div>
-</footer>
-
-<!-- Back to top -->
-<button id="back-to-top" aria-label="Back to top">
-  <i class="fa-solid fa-chevron-up"></i>
-</button>
-
-<!-- Cookie Banner -->
-<div id="cookie-banner" class="cookie-banner" style="display:none;">
-  <div class="cookie-banner-inner">
-    <div class="cookie-banner-text">
-      <i class="fa-solid fa-cookie-bite" aria-hidden="true"></i>
-      <span data-i18n="cookie_banner_text">This website uses cookies for traffic analysis. You can accept or reject them.</span>
-    </div>
-    <div class="cookie-banner-buttons">
-      <button id="cookie-reject" class="cookie-btn cookie-btn-reject" data-i18n="cookie_reject">Reject</button>
-      <button id="cookie-accept" class="cookie-btn cookie-btn-accept" data-i18n="cookie_accept">Accept</button>
+  <!-- Cookie Banner -->
+  <div id="cookie-banner" class="cookie-banner" style="display:none;">
+    <div class="cookie-banner-inner">
+      <div class="cookie-banner-text">
+        <i class="fa-solid fa-cookie-bite" aria-hidden="true"></i>
+        <span data-i18n="cookie_banner_text">This website uses cookies for traffic analysis. You can accept or reject
+          them.</span>
+      </div>
+      <div class="cookie-banner-buttons">
+        <button id="cookie-reject" class="cookie-btn cookie-btn-reject" data-i18n="cookie_reject">Reject</button>
+        <button id="cookie-accept" class="cookie-btn cookie-btn-accept" data-i18n="cookie_accept">Accept</button>
+      </div>
     </div>
   </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script src="/js/app-config.js?v=3"></script>
-<script src="/js/theme.js?v=4"></script>
-<script src="/js/legal-i18n.js?v=16"></script>
-<script src="/js/mobile-menu.js?v=8"></script>
-<script src="/js/animations.js?v=6"></script>
-<script src="/js/cookie-consent.js?v=4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="/js/app-config.js?v=3"></script>
+  <script src="/js/theme.js?v=4"></script>
+  <script src="/js/legal-i18n.js?v=16"></script>
+  <script src="/js/mobile-menu.js?v=8"></script>
+  <script src="/js/animations.js?v=6"></script>
+  <script src="/js/cookie-consent.js?v=4"></script>
 
-<script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-<script>
-  var kofiLabels = {
-    cs: 'Podpořte nás',
-    en: 'Support us'
-  };
+  <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+  <script>
+    var kofiLabels = {
+      cs: 'Podpořte nás',
+      en: 'Support us'
+    };
 
-  var currentLang = localStorage.getItem('basediff-lang') || 'en';
-  var kofiText = kofiLabels[currentLang] || kofiLabels.en;
+    var currentLang = localStorage.getItem('basediff-lang') || 'en';
+    var kofiText = kofiLabels[currentLang] || kofiLabels.en;
 
-  kofiWidgetOverlay.draw('basediff', {
-    'type': 'floating-chat',
-    'floating-chat.donateButton.text': kofiText,
-    'floating-chat.donateButton.background-color': '#794bc4',
-    'floating-chat.donateButton.text-color': '#fff'
-  });
-</script>
+    kofiWidgetOverlay.draw('basediff', {
+      'type': 'floating-chat',
+      'floating-chat.donateButton.text': kofiText,
+      'floating-chat.donateButton.background-color': '#794bc4',
+      'floating-chat.donateButton.text-color': '#fff'
+    });
+  </script>
 
 </body>
+
 </html>
-
-
-

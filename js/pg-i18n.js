@@ -22,7 +22,7 @@
       pg_feat_views_desc: 'Compares complete view definitions via pg_get_viewdef. Filters materialized views and views from extensions for a clean result.',
       pg_feat_export_title: 'Flexible Export',
       pg_feat_export_desc: 'Export to a single file or separate files for CREATE, ALTER, DROP and data migration scripts. Copy to clipboard or save to disk.',
-    
+
       nav_features: 'Features',
       nav_databases: 'Databases',
       nav_screenshots: 'Previews',
@@ -30,6 +30,7 @@
       nav_privacy: 'Privacy Policy',
       nav_terms: 'Terms of Use',
       nav_cookies: 'Cookies',
+      nav_faq: 'FAQ',
       cookie_settings: 'Cookie settings',
       cookie_banner_text: 'This website uses cookies for traffic analysis. You can accept or reject them.',
       cookie_accept: 'Accept',
@@ -103,7 +104,7 @@
       pg_feat_views_desc: 'Porovnává kompletní definice pohledů přes pg_get_viewdef. Filtruje materializované pohledy a pohledy z rozšíření pro čistý výsledek.',
       pg_feat_export_title: 'Flexibilní export',
       pg_feat_export_desc: 'Export do jednoho souboru nebo oddělených souborů pro CREATE, ALTER, DROP a skripty datové migrace. Kopírování do schránky nebo uložení na disk.',
-    
+
       nav_features: 'Funkce',
       nav_databases: 'Databáze',
       nav_screenshots: 'Náhledy',
@@ -111,6 +112,7 @@
       nav_privacy: 'Privacy Policy',
       nav_terms: 'Podmínky užití',
       nav_cookies: 'Cookies',
+      nav_faq: 'FAQ',
       cookie_settings: 'Nastavení cookies',
       cookie_banner_text: 'Tento web používá cookies pro analýzu návštěvnosti. Můžete je přijmout nebo odmítnout.',
       cookie_accept: 'Přijmout',
@@ -165,12 +167,13 @@
       pg_cta_windows: 'Stáhnout pro Windows',
       pg_cta_linux: 'Stáhnout pro Linux',
       pg_cta_macos: 'Stáhnout pro macOS'
-    }};
+    }
+  };
 
   function updateVersionInfo(lang) {
     var config = window.BaseDiffConfig;
     if (!config || !config.version) {
-      setTimeout(function() { updateVersionInfo(lang); }, 100);
+      setTimeout(function () { updateVersionInfo(lang); }, 100);
       return;
     }
     var elNav = document.getElementById('nav-version');
@@ -219,7 +222,7 @@
 
   for (var i = 0; i < pathParts.length; i++) {
     var part = pathParts[i].toLowerCase();
-    if (part === 'en' || part === 'cs' ) {
+    if (part === 'en' || part === 'cs') {
       langFromUrl = part;
       break;
     }

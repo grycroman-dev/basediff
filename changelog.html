@@ -1,189 +1,225 @@
 <!DOCTYPE html>
 <html lang="en" id="root-html" data-theme="dark">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#09090b">
   <title>Changelog — BaseDiff</title>
-  <link rel="canonical" href="https://basediff.com/changelog.html"/>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
-  <link rel="stylesheet" href="/css/style.css?v=17"/>
-  <link rel="stylesheet" href="/css/legal.css?v=2"/>
+  <link rel="canonical" href="https://basediff.com/changelog.html" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <link rel="stylesheet" href="/css/style.css?v=17" />
+  <link rel="stylesheet" href="/css/legal.css?v=2" />
   <style>
-    .changelog-list { max-width: 800px; margin: 2rem auto 4rem; }
-    .changelog-item { 
-      background: var(--card); 
-      border: 1px solid var(--border); 
-      border-radius: var(--radius); 
-      padding: 2rem; 
-      margin-bottom: 2rem; 
+    .changelog-list {
+      max-width: 800px;
+      margin: 2rem auto 4rem;
     }
-    .changelog-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
-    .changelog-ver { 
-      background: var(--primary); 
-      color: #fff; 
-      padding: .2rem .8rem; 
-      border-radius: 100px; 
-      font-weight: 700; 
-      font-size: .85rem; 
+
+    .changelog-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      margin-bottom: 2rem;
     }
-    .changelog-date { color: var(--text3); font-size: .85rem; font-family: var(--mono); }
-    .changelog-desc { font-weight: 600; margin-bottom: 1.2rem; color: var(--text); }
-    .changelog-changes { list-style: none; padding: 0; }
-    .changelog-changes li { 
-      font-size: .9rem; 
-      color: var(--text2); 
-      margin-bottom: .6rem; 
-      display: flex; 
-      align-items: flex-start; 
-      gap: .75rem; 
+
+    .changelog-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .changelog-ver {
+      background: var(--primary);
+      color: #fff;
+      padding: .2rem .8rem;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: .85rem;
+    }
+
+    .changelog-date {
+      color: var(--text3);
+      font-size: .85rem;
+      font-family: var(--mono);
+    }
+
+    .changelog-desc {
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      color: var(--text);
+    }
+
+    .changelog-changes {
+      list-style: none;
+      padding: 0;
+    }
+
+    .changelog-changes li {
+      font-size: .9rem;
+      color: var(--text2);
+      margin-bottom: .6rem;
+      display: flex;
+      align-items: flex-start;
+      gap: .75rem;
       line-height: 1.5;
     }
-    .changelog-changes li i { color: var(--green); font-size: .75rem; margin-top: .4rem; }
+
+    .changelog-changes li i {
+      color: var(--green);
+      font-size: .75rem;
+      margin-top: .4rem;
+    }
   </style>
 </head>
+
 <body>
 
-<nav class="navbar" id="navbar">
-  <div class="container navbar-inner">
-    <div class="nav-left">
-      <a href="/" class="nav-brand">
-        <i class="fa-solid fa-bolt" aria-hidden="true"></i> BaseDiff
-      </a>
-      <span class="nav-version" id="nav-version">v2.0.3</span>
-    </div>
-    <div class="nav-right">
-      <div class="nav-links" id="nav-links">
-        <a href="/#features">Features</a>
-        <a href="/#databases">Databases</a>
-        <a href="/#screenshots">Previews</a>
+  <nav class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <div class="nav-left">
+        <a href="/" class="nav-brand">
+          <i class="fa-solid fa-bolt" aria-hidden="true"></i> BaseDiff
+        </a>
+        <span class="nav-version" id="nav-version">v2.0.3</span>
       </div>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
-        <i class="fa-solid fa-sun" aria-hidden="true"></i>
-        <i class="fa-solid fa-moon" aria-hidden="true"></i>
-      </button>
-      <a href="/#download" class="nav-cta">
-        <i class="fa-solid fa-download" aria-hidden="true"></i>
-        <span>Download</span>
-      </a>
-      <button class="nav-hamburger" id="nav-hamburger" aria-expanded="false">
-        <i class="fa-solid fa-bars" id="hamburger-icon"></i>
-      </button>
+      <div class="nav-right">
+        <div class="nav-links" id="nav-links">
+          <a href="/#features">Features</a>
+          <a href="/#databases">Databases</a>
+          <a href="/#screenshots">Previews</a>
+          <a href="/#faq">FAQ</a>
+        </div>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+          <i class="fa-solid fa-sun" aria-hidden="true"></i>
+          <i class="fa-solid fa-moon" aria-hidden="true"></i>
+        </button>
+        <a href="/#download" class="nav-cta">
+          <i class="fa-solid fa-download" aria-hidden="true"></i>
+          <span>Download</span>
+        </a>
+        <button class="nav-hamburger" id="nav-hamburger" aria-expanded="false">
+          <i class="fa-solid fa-bars" id="hamburger-icon"></i>
+        </button>
+      </div>
     </div>
-  </div>
-  <div class="mobile-menu" id="mobile-menu">
-    <a href="/#features">Features</a>
-    <a href="/#databases">Databases</a>
-    <a href="/#screenshots">Previews</a>
-    <a href="/#download">Download</a>
-  </div>
-</nav>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="/#features">Features</a>
+      <a href="/#databases">Databases</a>
+      <a href="/#screenshots">Previews</a>
+      <a href="/#faq">FAQ</a>
+      <a href="/#download">Download</a>
+    </div>
+  </nav>
 
 
-<section class="legal-hero">
-  <div class="container section-center">
-    <div class="section-label"><i class="fa-solid fa-clock-rotate-left"></i> Release History</div>
-    <h1 class="section-title">Changelog</h1>
-    <p class="section-sub">See what's new in the latest versions of BaseDiff.</p>
-  </div>
-</section>
+  <section class="legal-hero">
+    <div class="container section-center">
+      <div class="section-label"><i class="fa-solid fa-clock-rotate-left"></i> Release History</div>
+      <h1 class="section-title">Changelog</h1>
+      <p class="section-sub">See what's new in the latest versions of BaseDiff.</p>
+    </div>
+  </section>
 
-<div class="container">
-  <div id="changelog-container" class="changelog-list">
-    <!-- Načte se přes JS -->
-    <div class="center" style="padding: 3rem; color: var(--text3);">Loading releases...</div>
-  </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
-<script src="/js/app-config.js?v=7"></script>
-<script src="/js/theme.js?v=4" defer></script>
-<script src="/js/mobile-menu.js?v=8" defer></script>
-<script src="/js/animations.js?v=6" defer></script>
-<script src="/js/cookie-consent.js?v=4" defer></script>
-
-<!-- ═══ FOOTER ═══ -->
-<footer>
   <div class="container">
-    <a href="/" class="footer-brand"><i class="fa-solid fa-bolt" aria-hidden="true"></i> BaseDiff</a>
-    <p>A tool for comparing and synchronizing database structures.</p>
-    <div class="footer-tags">
-      <span class="footer-tag"><i class="fa-solid fa-code" aria-hidden="true"></i> .NET</span>
-      <span class="footer-tag"><i class="fa-brands fa-windows" aria-hidden="true"></i> Windows</span>
-      <span class="footer-tag"><i class="fa-brands fa-linux" aria-hidden="true"></i> Linux</span>
-      <span class="footer-tag"><i class="fa-brands fa-apple" aria-hidden="true"></i> macOS</span>
-      <span class="footer-tag"><i class="fa-solid fa-globe" aria-hidden="true"></i> EN / CZ</span>
-      <a href="https://www.youtube.com/@BaseDiff" target="_blank" rel="noopener" class="footer-tag footer-tag-link">
-        <i class="fa-brands fa-youtube" aria-hidden="true"></i> YouTube
-      </a>
-    </div>
-    <div class="footer-legal">
-      <a href="/compare-sql-server-schemas.html">SQL Server Comparison</a>
-      <span>·</span>
-      <a href="/compare-postgresql-schemas.html">PostgreSQL Comparison</a>
-      <span>·</span>
-      <a href="/changelog.html">Changelog</a>
-      <span>·</span>
-      <a href="/privacy.html">Privacy Policy</a>
-      <span>·</span>
-      <a href="/terms.html">Terms of Use</a>
-      <span>·</span>
-      <a href="/cookies.html">Cookies</a>
-      <span>·</span>
-      <a href="#" onclick="openCookieSettings(); return false;">Cookie settings</a>
-    </div>
-    <p class="footer-copy">
-      © <span id="footer-year"></span>
-      <a href="https://www.elvacsolutions.eu" target="_blank" rel="noopener" class="footer-link">ELVAC SOLUTIONS</a> · BaseDiff
-    </p>
-  </div>
-</footer>
-
-<!-- Cookie Banner -->
-<div id="cookie-banner" class="cookie-banner" style="display:none;">
-  <div class="cookie-banner-inner">
-    <div class="cookie-banner-text">
-      <i class="fa-solid fa-cookie-bite" aria-hidden="true"></i>
-      <span>This website uses cookies for traffic analysis. You can accept or reject them.</span>
-    </div>
-    <div class="cookie-banner-buttons">
-      <button id="cookie-reject" class="cookie-btn cookie-btn-reject">Reject</button>
-      <button id="cookie-accept" class="cookie-btn cookie-btn-accept">Accept</button>
+    <div id="changelog-container" class="changelog-list">
+      <!-- Načte se přes JS -->
+      <div class="center" style="padding: 3rem; color: var(--text3);">Loading releases...</div>
     </div>
   </div>
-</div>
 
-<!-- Back to top -->
-<button id="back-to-top" aria-label="Back to top">
-  <i class="fa-solid fa-chevron-up"></i>
-</button>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
+  <script src="/js/app-config.js?v=7"></script>
+  <script src="/js/theme.js?v=4" defer></script>
+  <script src="/js/mobile-menu.js?v=8" defer></script>
+  <script src="/js/animations.js?v=6" defer></script>
+  <script src="/js/cookie-consent.js?v=4" defer></script>
 
-<script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-<script>
-  var kofiLabels = {
-    cs: 'Podpořte nás',
-    en: 'Support us'
-  };
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="container">
+      <a href="/" class="footer-brand"><i class="fa-solid fa-bolt" aria-hidden="true"></i> BaseDiff</a>
+      <p>A tool for comparing and synchronizing database structures.</p>
+      <div class="footer-tags">
+        <span class="footer-tag"><i class="fa-solid fa-code" aria-hidden="true"></i> .NET</span>
+        <span class="footer-tag"><i class="fa-brands fa-windows" aria-hidden="true"></i> Windows</span>
+        <span class="footer-tag"><i class="fa-brands fa-linux" aria-hidden="true"></i> Linux</span>
+        <span class="footer-tag"><i class="fa-brands fa-apple" aria-hidden="true"></i> macOS</span>
+        <span class="footer-tag"><i class="fa-solid fa-globe" aria-hidden="true"></i> EN / CZ</span>
+        <a href="https://www.youtube.com/@BaseDiff" target="_blank" rel="noopener" class="footer-tag footer-tag-link">
+          <i class="fa-brands fa-youtube" aria-hidden="true"></i> YouTube
+        </a>
+      </div>
+      <div class="footer-legal">
+        <a href="/compare-sql-server-schemas.html">SQL Server Comparison</a>
+        <span>·</span>
+        <a href="/compare-postgresql-schemas.html">PostgreSQL Comparison</a>
+        <span>·</span>
+        <a href="/changelog.html">Changelog</a>
+        <span>·</span>
+        <a href="/privacy.html">Privacy Policy</a>
+        <span>·</span>
+        <a href="/terms.html">Terms of Use</a>
+        <span>·</span>
+        <a href="/cookies.html">Cookies</a>
+        <span>·</span>
+        <a href="#" onclick="openCookieSettings(); return false;">Cookie settings</a>
+      </div>
+      <p class="footer-copy">
+        © <span id="footer-year"></span>
+        <a href="https://www.elvacsolutions.eu" target="_blank" rel="noopener" class="footer-link">ELVAC SOLUTIONS</a> ·
+        BaseDiff
+      </p>
+    </div>
+  </footer>
 
-  var currentLang = localStorage.getItem('basediff-lang') || 'en';
-  var kofiText = kofiLabels[currentLang] || kofiLabels.en;
+  <!-- Cookie Banner -->
+  <div id="cookie-banner" class="cookie-banner" style="display:none;">
+    <div class="cookie-banner-inner">
+      <div class="cookie-banner-text">
+        <i class="fa-solid fa-cookie-bite" aria-hidden="true"></i>
+        <span>This website uses cookies for traffic analysis. You can accept or reject them.</span>
+      </div>
+      <div class="cookie-banner-buttons">
+        <button id="cookie-reject" class="cookie-btn cookie-btn-reject">Reject</button>
+        <button id="cookie-accept" class="cookie-btn cookie-btn-accept">Accept</button>
+      </div>
+    </div>
+  </div>
 
-  kofiWidgetOverlay.draw('basediff', {
-    'type': 'floating-chat',
-    'floating-chat.donateButton.text': kofiText,
-    'floating-chat.donateButton.background-color': '#794bc4',
-    'floating-chat.donateButton.text-color': '#fff'
-  });
-</script>
+  <!-- Back to top -->
+  <button id="back-to-top" aria-label="Back to top">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
 
-<!-- Changelog + verze — MUSÍ BÝT POSLEDNÍ -->
-<script>
-fetch('/api/changelog.php')
-  .then(response => response.json())
-  .then(data => {
-    var container = document.getElementById('changelog-container');
-    container.innerHTML = data.map(item => `
+  <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+  <script>
+    var kofiLabels = {
+      cs: 'Podpořte nás',
+      en: 'Support us'
+    };
+
+    var currentLang = localStorage.getItem('basediff-lang') || 'en';
+    var kofiText = kofiLabels[currentLang] || kofiLabels.en;
+
+    kofiWidgetOverlay.draw('basediff', {
+      'type': 'floating-chat',
+      'floating-chat.donateButton.text': kofiText,
+      'floating-chat.donateButton.background-color': '#794bc4',
+      'floating-chat.donateButton.text-color': '#fff'
+    });
+  </script>
+
+  <!-- Changelog + verze — MUSÍ BÝT POSLEDNÍ -->
+  <script>
+    fetch('/api/changelog.php')
+      .then(response => response.json())
+      .then(data => {
+        var container = document.getElementById('changelog-container');
+        container.innerHTML = data.map(item => `
       <div class="changelog-item">
         <div class="changelog-header">
           <span class="changelog-ver">v${item.version}</span>
@@ -197,34 +233,32 @@ fetch('/api/changelog.php')
         </ul>
       </div>
     `).join('');
-  })
-  .catch(err => {
-    document.getElementById('changelog-container').innerHTML = "Failed to load changelog.";
-  });
+      })
+      .catch(err => {
+        document.getElementById('changelog-container').innerHTML = "Failed to load changelog.";
+      });
 
-function updateNavVersion() {
-  var config = window.BaseDiffConfig;
-  if (!config || !config.version) {
-    setTimeout(updateNavVersion, 100);
-    return;
-  }
-  var elNav = document.getElementById('nav-version');
-  if (elNav) elNav.textContent = 'v' + config.version;
-}
+    function updateNavVersion() {
+      var config = window.BaseDiffConfig;
+      if (!config || !config.version) {
+        setTimeout(updateNavVersion, 100);
+        return;
+      }
+      var elNav = document.getElementById('nav-version');
+      if (elNav) elNav.textContent = 'v' + config.version;
+    }
 
-// Počkáme na DOMContentLoaded pro případ, že defer ještě nedoběhl
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', updateNavVersion);
-} else {
-  updateNavVersion();
-}
+    // Počkáme na DOMContentLoaded pro případ, že defer ještě nedoběhl
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', updateNavVersion);
+    } else {
+      updateNavVersion();
+    }
 
-var footerYear = document.getElementById('footer-year');
-if (footerYear) footerYear.textContent = new Date().getFullYear();
-</script>
+    var footerYear = document.getElementById('footer-year');
+    if (footerYear) footerYear.textContent = new Date().getFullYear();
+  </script>
 
 </body>
+
 </html>
-
-
-
