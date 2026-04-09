@@ -1853,6 +1853,69 @@
       font-display: swap;
     }
 
+    /* ══════════════════════════════════════
+   FAQ Section
+   ══════════════════════════════════════ */
+    .faq-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .faq-item {
+      background: var(--card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all var(--ease);
+    }
+
+    .faq-item summary {
+      padding: 1.25rem 1.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background .2s;
+    }
+
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-item summary::after {
+      content: '\f067';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      font-size: .8rem;
+      color: var(--primary);
+      transition: transform .3s;
+    }
+
+    .faq-item[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-item[open] summary {
+      border-bottom: 1px solid var(--border);
+      background: rgba(var(--primary-rgb), 0.03);
+    }
+
+    .faq-content {
+      padding: 1.25rem 1.5rem;
+      font-size: .92rem;
+      color: var(--text2);
+      line-height: 1.6;
+    }
+
+    .faq-item:hover {
+      border-color: rgba(var(--primary-rgb), 0.3);
+    }
+
     img {
       max-width: 100%;
       height: auto;
@@ -2513,6 +2576,55 @@
   </section>
 
   <!-- ═══ FOOTER ═══ -->
+  <!-- ═══ FAQ ═══ -->
+  <section id="faq" class="alt-bg">
+    <div class="container">
+      <div class="section-center">
+        <div class="section-label" data-aos="fade-up"><i class="fa-solid fa-circle-question" aria-hidden="true"></i>
+          <span data-i18n="faq_label">FAQ</span></div>
+        <h2 class="section-title" data-aos="fade-up" data-aos-delay="50" data-i18n="faq_title_html">Často kladené <span
+            class="gradient">dotazy</span></h2>
+      </div>
+
+      <div class="faq-grid" style="margin-top: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+        <details class="faq-item" data-aos="fade-up" data-aos-delay="0">
+          <summary data-i18n="faq_q1">Je BaseDiff skutečně zdarma?</summary>
+          <div class="faq-content" data-i18n="faq_a1_html">Ano, BaseDiff je zdarma pro osobní i komerční použití.
+            Původně jsme ho vyvinuli pro vlastní potřebu a sami ho denně používáme na našich projektech, ale rozhodli
+            jsme se ho sdílet i s ostatními. Pokud vám ušetří práci a čas, budeme rádi za jakoukoli zpětnou vazbu,
+            náměty na vylepšení nebo podporu přes <a href="https://ko-fi.com/basediff" target="_blank" rel="noopener"
+              class="footer-link">„Buy me a coffee“</a>.</div>
+        </details>
+        <details class="faq-item" data-aos="fade-up" data-aos-delay="50">
+          <summary data-i18n="faq_q2">Jsou moje databázová data v bezpečí?</summary>
+          <div class="faq-content" data-i18n="faq_a2">Naprosto. BaseDiff je desktopová aplikace, která běží lokálně na
+            vašem počítači. Připojení k databázi probíhá přímo z vašeho stroje a žádná data ani schémata se nikdy
+            neposílají na naše servery.</div>
+        </details>
+        <details class="faq-item" data-aos="fade-up" data-aos-delay="100">
+          <summary data-i18n="faq_q3">Které databáze aplikace podporuje?</summary>
+          <div class="faq-content" data-i18n="faq_a3">Aktuálně plně podporujeme Microsoft SQL Server a PostgreSQL
+            (včetně specifik jako triggery nebo funkce). Podpora pro další databáze (např. MySQL) je v plánu.</div>
+        </details>
+        <details class="faq-item" data-aos="fade-up" data-aos-delay="150">
+          <summary data-i18n="faq_q4">Funguje BaseDiff i na macOS a Linuxu?</summary>
+          <div class="faq-content" data-i18n="faq_a4">Ano, BaseDiff je od začátku vyvíjen jako multiplatformní nástroj.
+            Nabízíme verze pro Windows, Linux i macOS.</div>
+        </details>
+        <details class="faq-item" data-aos="fade-up" data-aos-delay="200">
+          <summary data-i18n="faq_q5">Musím být při porovnávání připojen k internetu?</summary>
+          <div class="faq-content" data-i18n="faq_a5">Ne. Internet potřebujete pouze ke stažení aplikace. Samotné
+            porovnávání schémat a generování skriptů probíhá zcela offline ve vaší síti.</div>
+        </details>
+        <details class="faq-item" data-aos="fade-up" data-aos-delay="250">
+          <summary data-i18n="faq_q6">Můžu si vygenerovaný SQL skript před spuštěním upravit?</summary>
+          <div class="faq-content" data-i18n="faq_a6">Samozřejmě. BaseDiff vám umožní skript nejprve prohlédnout,
+            editovat a pak ho buď vyexportovat do souboru, nebo zkopírovat do schránky.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <footer>
     <div class="container">
       <a href="/" class="footer-brand"><i class="fa-solid fa-bolt" aria-hidden="true"></i> BaseDiff</a>

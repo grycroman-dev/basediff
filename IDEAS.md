@@ -9,7 +9,7 @@ Tento dokument obsahuje návrhy na vylepšení webu a uživatelské zkušenosti 
 
 ## 2. Podpora a dokumentace
 - [ ] **Znalostní báze / Wiki**: Samostatná stránka s návody (např. připojení přes SSH/VPN, automatizace skriptů).
-- [ ] **Interaktivní FAQ**: Sekce nejčastějších dotazů na hlavní stránce pro lepší SEO a úsporu času podpory.
+- [x] **Interaktivní FAQ**: Sekce nejčastějších dotazů na hlavní stránce pro lepší SEO a úsporu času podpory.
 - [ ] **Propracovanější DB stránky**: Specifické screenshoty a popisy funkcí pro SQL Server a PostgreSQL na jejich podstránkách.
 
 ## 3. Zapojení uživatelů (Engagement)
@@ -19,7 +19,7 @@ Tento dokument obsahuje návrhy na vylepšení webu a uživatelské zkušenosti 
 
 ## 4. Design a technická vylepšení
 - [x] **Glassmorphism**: Modernizace vzhledu navigace a karet pomocí efektu `backdrop-filter`.
-- [ ] **Lazy Loading**: Kontrola a optimalizace načítání všech obrázků pro maximální rychlost.
+- [x] **Lazy Loading**: Kontrola rychlosti potvrdila, že web je dostatečně optimalizovaný (není nyní potřeba).
 - [ ] **Pravidelná kontrola sitemap**: Po každé aktualizaci verze zajistit validaci sitemaps v Google Search Console.
 
 ## 5. Bezpečnost (Dlouhodobě)
