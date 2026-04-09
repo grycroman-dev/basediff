@@ -18,7 +18,7 @@ Tento dokument obsahuje návrhy na vylepšení webu a uživatelské zkušenosti 
 - [ ] **Vyhledávání v Changelogu**: Možnost filtrovat a vyhledávat v historii změn s rostoucím počtem verzí.
 
 ## 4. Design a technická vylepšení
-- [ ] **Glassmorphism**: Modernizace vzhledu navigace a karet pomocí efektu `backdrop-filter`.
+- [x] **Glassmorphism**: Modernizace vzhledu navigace a karet pomocí efektu `backdrop-filter`.
 - [ ] **Lazy Loading**: Kontrola a optimalizace načítání všech obrázků pro maximální rychlost.
 - [ ] **Pravidelná kontrola sitemap**: Po každé aktualizaci verze zajistit validaci sitemaps v Google Search Console.
 

@@ -32,15 +32,17 @@
 
 .stats-card {
   background: var(--card);
+  backdrop-filter: blur(12px);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1.5rem;
   text-align: center;
-  transition: border-color .2s, transform .2s;
+  transition: border-color .25s, transform .25s, background var(--ease);
 }
 
 .stats-card:hover {
   border-color: rgba(var(--primary-rgb), 0.4);
+  background: rgba(var(--primary-rgb), 0.03);
   transform: translateY(-2px);
 }
 
@@ -70,6 +72,7 @@
 /* Chart containers */
 .stats-chart-container {
   background: var(--card);
+  backdrop-filter: blur(15px);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1.5rem;
@@ -211,14 +214,15 @@
   border-radius: 2px;
   vertical-align: middle;
   margin-right: 8px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   display: inline-block;
-  margin-top: -2px; /* Jemné doladění pozice vůči textu */
+  margin-top: -2px;
+  /* Jemné doladění pozice vůči textu */
 }
 
 /* Pokud je label v grafu moc úzký, trochu ho rozšíříme */
 .stats-bar-label {
-  min-width: 80px; 
+  min-width: 80px;
   display: flex;
   align-items: center;
 }

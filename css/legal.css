@@ -92,6 +92,7 @@
 
 .legal-info-box {
   background: var(--card);
+  backdrop-filter: blur(10px);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1.5rem;
@@ -119,24 +120,26 @@
   align-items: center;
   gap: .4rem;
   background: var(--card);
+  backdrop-filter: blur(8px);
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: .5rem 1rem;
   font-size: .85rem;
   font-weight: 500;
   color: var(--text2);
-  transition: border-color .2s, color .2s;
+  transition: all .2s;
 }
 
 .legal-nav-link:hover {
   border-color: var(--primary);
   color: var(--primary);
+  background: rgba(var(--primary-rgb), 0.04);
 }
 
 .legal-nav-link.active {
   border-color: var(--primary);
   color: var(--primary);
-  background: rgba(var(--primary-rgb), 0.06);
+  background: rgba(var(--primary-rgb), 0.1);
 }
 
 /* Lang switch on legal pages */
