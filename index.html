@@ -452,6 +452,7 @@
       align-items: center;
       padding: 8rem 0 5rem;
       position: relative;
+      overflow: hidden;
     }
 
     .hero::before {
@@ -652,9 +653,15 @@
       padding: 1.25rem;
       font-family: var(--mono);
       font-size: .8rem;
-      line-height: 1.95;
+      line-height: 1.6;
       color: var(--term-text);
       min-height: 260px;
+      overflow-wrap: anywhere;
+    }
+
+    .terminal-body .line {
+      display: block;
+      overflow-wrap: anywhere;
     }
 
     .terminal-body .prompt {
@@ -1474,6 +1481,7 @@
     @media (max-width: 900px) {
       .hero-grid {
         grid-template-columns: 1fr;
+        gap: 2rem;
       }
 
       .terminal {
@@ -1493,10 +1501,9 @@
       }
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 1024px) {
       .navbar .container {
         padding: 0 1rem;
-        /* ← zajistí odsazení zleva i zprava */
       }
 
       .navbar-inner {
@@ -1504,29 +1511,32 @@
         align-items: center;
         justify-content: space-between;
         width: 100%;
-        gap: .5rem;
-        /* ← mezera mezi nav-left a nav-right */
+        gap: .25rem;
         padding: 0;
       }
 
       .nav-left {
         display: flex;
         align-items: center;
-        gap: .75rem;
-        flex-shrink: 0;
+        gap: .5rem;
+        flex-shrink: 1;
+        min-width: 0;
+      }
+
+      .nav-brand {
+        font-size: 1.15rem;
+        gap: .5rem;
       }
 
       .nav-right {
         display: flex;
         align-items: center;
         gap: .5rem;
-        /* ← mezera mezi prvky vpravo */
         flex-shrink: 0;
       }
 
       .nav-version {
-        margin-right: .5rem;
-        /* ← přidá mezeru za verzí */
+        margin-right: 0;
       }
 
       .nav-links {
@@ -1537,17 +1547,12 @@
         display: none !important;
       }
 
-      .lang-switch {
-        display: none !important;
-      }
-
-      .theme-toggle {
-        display: flex !important;
-      }
-
       .nav-hamburger {
         display: flex !important;
       }
+    }
+
+    @media (max-width: 640px) {
 
       /* ← zobrazí se na mobilu */
       .hero h1 {
@@ -1599,7 +1604,7 @@
       }
     }
 
-    @media (min-width: 641px) {
+    @media (min-width: 1025px) {
       .nav-hamburger {
         display: none !important;
       }
@@ -2103,6 +2108,60 @@
     .lightbox-fullscreen:hover {
       background: rgba(255, 255, 255, 0.2);
     }
+
+    /* Feedback Side Tab */
+    .feedback-tab {
+      position: fixed;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 9998;
+      background: var(--primary);
+      color: #fff;
+      padding: 1.2rem 0.6rem;
+      border-radius: 0 12px 12px 0;
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      box-shadow: 4px 0 24px rgba(var(--primary-rgb), 0.3);
+      transition: var(--ease);
+    }
+
+    .feedback-tab i {
+      transform: rotate(90deg);
+      font-size: 1rem;
+    }
+
+    .feedback-tab:hover {
+      padding-left: 1.2rem;
+      background: #7c3aed;
+      box-shadow: 6px 0 32px rgba(var(--primary-rgb), 0.45);
+    }
+
+    @media (max-width: 640px) {
+      .feedback-tab {
+        padding: 0;
+        width: 44px;
+        height: 44px;
+        border-radius: 0 12px 12px 0;
+        justify-content: center;
+        writing-mode: horizontal-tb;
+      }
+
+      .feedback-tab span {
+        display: none;
+      }
+
+      .feedback-tab i {
+        transform: none;
+      }
+    }
   </style>
 </head>
 
@@ -2171,6 +2230,10 @@
           <a href="/#features" class="btn-ghost">
             <i class="fa-solid fa-arrow-down" aria-hidden="true"></i>
             <span data-i18n="hero_btn_more">Zjistit více</span>
+          </a>
+          <a href="/feedback.html" class="btn-ghost">
+            <i class="fa-solid fa-comment-dots" aria-hidden="true"></i>
+            <span data-i18n="hero_btn_feedback">Zpětná vazba</span>
           </a>
         </div>
         <!-- Download counter -->
@@ -2893,6 +2956,7 @@
   </script>
 
 
+  <a href="/feedback.html" class="feedback-tab"><i class="fa-solid fa-comment-dots"></i> <span>Feedback</span></a>
 </body>
 
 </html>

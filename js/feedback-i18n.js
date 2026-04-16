@@ -43,7 +43,8 @@
       cookie_banner_text: 'This website uses cookies for traffic analysis. You can accept or reject them.',
       cookie_accept: 'Accept',
       cookie_reject: 'Reject',
-      footer_desc: 'A tool for comparing and synchronizing database structures.'
+      footer_desc: 'A tool for comparing and synchronizing database structures.',
+      hero_btn_feedback: 'Give Feedback'
     },
     cs: {
       feedback_label: 'Zpětná vazba',
@@ -83,7 +84,8 @@
       cookie_banner_text: 'Tento web používá cookies pro analýzu návštěvnosti. Můžete je přijmout nebo odmítnout.',
       cookie_accept: 'Přijmout',
       cookie_reject: 'Odmítnout',
-      footer_desc: 'Nástroj pro porovnání a synchronizaci databázových struktur.'
+      footer_desc: 'Nástroj pro porovnání a synchronizaci databázových struktur.',
+      hero_btn_feedback: 'Zpětná vazba'
     }
   };
 
@@ -139,32 +141,42 @@
     }
   }
 
-  // Forced English only
-  var initialLang = 'en';
+  function prefillForm() {
+    var params = new URLSearchParams(window.location.search);
+    var version = params.get('version');
+    var os = params.get('os');
 
-  /*
-  var pathParts = window.location.pathname.split('/');
-  var langFromUrl = null;
+    if (!version) {
+      // Pre-fill from config if available
+      var config = window.BaseDiffConfig;
+      if (config && config.version) {
+        version = config.version;
+      }
+    }
 
-  for (var i = 0; i < pathParts.length; i++) {
-    var part = pathParts[i].toLowerCase();
-    if (part === 'en' || part === 'cs') {
-      langFromUrl = part;
-      break;
+    if (version) {
+      var el = document.getElementById('version');
+      if (el) el.value = version;
+    }
+
+    if (os) {
+      var el = document.getElementById('os');
+      if (el) el.value = os;
     }
   }
 
-  var initialLang = langFromUrl || localStorage.getItem(KEY) || 'en';
-  if (langFromUrl) localStorage.setItem(KEY, langFromUrl);
-  */
+  // Forced English only
+  var initialLang = 'en';
 
   // Spustíme až po načtení DOMu
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
       apply(initialLang, true);
+      prefillForm();
     });
   } else {
     apply(initialLang, true);
+    prefillForm();
   }
 
   document.querySelectorAll('.lang-switch button').forEach(function (b) {
@@ -175,4 +187,3 @@
 
   window.setLang = apply;
 })();
-

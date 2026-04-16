@@ -18,7 +18,7 @@
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-  <link rel="stylesheet" href="/css/style.css?v=28" />
+  <link rel="stylesheet" href="/css/style.css?v=30" />
   <style>
     /* Screenshot theme switching */
     [data-theme="dark"] .img-dark {
@@ -41,67 +41,6 @@
       width: 100%;
       height: auto;
       display: block;
-    }
-
-    @media (max-width: 640px) {
-      .navbar .container {
-        padding: 0 1rem;
-      }
-
-      .navbar-inner {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-      }
-
-      .nav-left {
-        display: flex;
-        align-items: center;
-        gap: .75rem;
-        flex-shrink: 0;
-      }
-
-      .nav-right {
-        display: flex;
-        align-items: center;
-        gap: .6rem;
-        flex-shrink: 0;
-      }
-
-      .nav-version {
-        margin-right: .5rem;
-      }
-
-      .nav-links {
-        display: none !important;
-      }
-
-      .nav-cta {
-        display: none !important;
-      }
-
-      .lang-switch {
-        display: flex !important;
-      }
-
-      .theme-toggle {
-        display: flex !important;
-      }
-
-      .nav-hamburger {
-        display: flex !important;
-      }
-    }
-
-    @media (min-width: 641px) {
-      .nav-hamburger {
-        display: none !important;
-      }
-
-      .mobile-menu {
-        display: none !important;
-      }
     }
   </style>
 </head>
@@ -173,7 +112,7 @@
           </a>
         </div>
       </div>
-      <div class="terminal" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200">
+      <div class="terminal" data-aos="fade-up" data-aos-duration="800" data-aos-delay="200">
         <div class="terminal-header">
           <span class="terminal-dot r"></span>
           <span class="terminal-dot y"></span>
@@ -517,6 +456,7 @@
     kofiWidgetOverlay.draw('basediff', { 'type': 'floating-chat', 'floating-chat.donateButton.text': kofiLabels[currentLang] || kofiLabels.en, 'floating-chat.donateButton.background-color': '#794bc4', 'floating-chat.donateButton.text-color': '#fff' });
   </script>
 
+  <a href="/feedback.html" class="feedback-tab"><i class="fa-solid fa-comment-dots"></i> <span>Feedback</span></a>
 </body>
 
 </html>

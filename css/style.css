@@ -76,12 +76,19 @@ html {
   scroll-behavior: smooth;
 }
 
+html,
+body {
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+}
+
 body {
   font-family: var(--font);
   background: var(--bg);
   color: var(--text);
-  line-height: 1.7;
-  overflow-x: hidden;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   transition: background var(--ease), color var(--ease);
 }
@@ -117,12 +124,12 @@ a {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
-  padding: .85rem 0;
+  z-index: 1000;
   background: var(--nav-bg);
-  backdrop-filter: blur(20px) saturate(1.3);
+  backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
-  transition: background var(--ease), border-color var(--ease);
+  padding: .85rem 0;
+  transition: background .3s, box-shadow .3s;
 }
 
 .navbar-inner {
@@ -131,7 +138,6 @@ a {
   justify-content: space-between;
   width: 100%;
   position: relative;
-  /* Pro centrování menu */
 }
 
 .nav-left {
@@ -354,6 +360,7 @@ a {
     radial-gradient(ellipse 60% 50% at 50% 0%, var(--hero-g1) 0%, transparent 70%),
     radial-gradient(ellipse 40% 30% at 20% 80%, var(--hero-g2) 0%, transparent 60%);
   transition: background var(--ease);
+  overflow-x: hidden;
 }
 
 .hero-grid {
@@ -537,15 +544,28 @@ a {
   color: var(--term-title);
   font-weight: 500;
   font-family: var(--mono);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .terminal-body {
   padding: 1.25rem;
   font-family: var(--mono);
   font-size: .8rem;
-  line-height: 1.95;
+  line-height: 1.6;
   color: var(--term-text);
   min-height: 260px;
+  overflow-wrap: anywhere;
+}
+
+.terminal-body .line {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.terminal-body span {
+  overflow-wrap: anywhere;
 }
 
 .terminal-body .prompt {
@@ -1265,6 +1285,7 @@ footer p {
 @media (max-width: 900px) {
   .hero-grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
   }
 
   .terminal {
@@ -1284,10 +1305,9 @@ footer p {
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 1024px) {
   .navbar .container {
     padding: 0 1rem;
-    /* ← zajistí odsazení zleva i zprava */
   }
 
   .navbar-inner {
@@ -1295,29 +1315,32 @@ footer p {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    gap: .5rem;
-    /* ← mezera mezi nav-left a nav-right */
+    gap: .25rem;
     padding: 0;
   }
 
   .nav-left {
     display: flex;
     align-items: center;
-    gap: .75rem;
-    flex-shrink: 0;
+    gap: .5rem;
+    flex-shrink: 1;
+    min-width: 0;
+  }
+
+  .nav-brand {
+    font-size: 1.15rem;
+    gap: .5rem;
   }
 
   .nav-right {
     display: flex;
     align-items: center;
     gap: .5rem;
-    /* ← mezera mezi prvky vpravo */
     flex-shrink: 0;
   }
 
   .nav-version {
-    margin-right: .5rem;
-    /* ← přidá mezeru za verzí */
+    margin-right: 0;
   }
 
   .nav-links {
@@ -1329,8 +1352,13 @@ footer p {
   }
 
   .nav-hamburger {
-    display: flex;
+    display: flex !important;
   }
+}
+
+@media (max-width: 640px) {
+
+
 
   .hero h1 {
     font-size: 2rem;
@@ -1381,9 +1409,9 @@ footer p {
   }
 }
 
-@media (min-width: 641px) {
+@media (min-width: 1025px) {
   .nav-hamburger {
-    display: none;
+    display: none !important;
   }
 
   .mobile-menu {
@@ -1430,6 +1458,60 @@ footer p {
   visibility: visible;
 }
 
+
+/* Feedback Side Tab */
+.feedback-tab {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9998;
+  background: var(--primary);
+  color: #fff;
+  padding: 1.2rem 0.6rem;
+  border-radius: 0 12px 12px 0;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  box-shadow: 4px 0 24px rgba(var(--primary-rgb), 0.3);
+  transition: var(--ease);
+}
+
+.feedback-tab i {
+  transform: rotate(90deg);
+  font-size: 1rem;
+}
+
+.feedback-tab:hover {
+  padding-left: 1.2rem;
+  background: #7c3aed;
+  box-shadow: 6px 0 32px rgba(var(--primary-rgb), 0.45);
+}
+
+@media (max-width: 640px) {
+  .feedback-tab {
+    padding: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 0 12px 12px 0;
+    justify-content: center;
+    writing-mode: horizontal-tb;
+  }
+
+  .feedback-tab span {
+    display: none;
+  }
+
+  .feedback-tab i {
+    transform: none;
+  }
+}
 
 .navbar.scrolled {
   background: var(--nav-bg);
