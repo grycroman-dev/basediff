@@ -139,7 +139,10 @@
     }
   }
 
-  // ── Inicializace jazyka ──
+  // Forced English only
+  var initialLang = 'en';
+
+  /*
   var pathParts = window.location.pathname.split('/');
   var langFromUrl = null;
 
@@ -153,6 +156,7 @@
 
   var initialLang = langFromUrl || localStorage.getItem(KEY) || 'en';
   if (langFromUrl) localStorage.setItem(KEY, langFromUrl);
+  */
 
   // Spustíme až po načtení DOMu
   if (document.readyState === 'loading') {

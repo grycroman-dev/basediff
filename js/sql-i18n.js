@@ -225,6 +225,10 @@
 
   // ── Inicializace jazyka ──
 
+  // Forced English only
+  var initialLang = 'en';
+
+  /*
   // 1. Zjistíme jazyk z URL (např. /en/ nebo /cs/)
   var pathParts = window.location.pathname.split('/');
   var langFromUrl = null;
@@ -244,6 +248,7 @@
   if (langFromUrl) {
     localStorage.setItem(KEY, langFromUrl);
   }
+  */
 
   // 4. VŽDY voláme apply s isInit = true (žádný reload při inicializaci!)
   apply(initialLang, true);

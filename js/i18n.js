@@ -412,7 +412,10 @@
     }
   }
 
-  // ── Inicializace jazyka ──
+  // Forced English only
+  var initialLang = 'en';
+
+  /*
   var pathParts = window.location.pathname.split('/');
   var langFromUrl = null;
 
@@ -430,6 +433,7 @@
   if (langFromUrl) {
     localStorage.setItem(KEY, langFromUrl);
   }
+  */
 
   // VŽDY voláme apply s isInit = true (žádný reload při inicializaci!)
   apply(initialLang, true);

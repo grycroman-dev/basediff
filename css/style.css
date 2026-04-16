@@ -130,6 +130,7 @@ a {
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  position: relative; /* Pro centrování menu */
 }
 
 .nav-left {
@@ -176,6 +177,10 @@ a {
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  /* Centrování menu v desktopu */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .nav-links a {
@@ -226,7 +231,7 @@ a {
 }
 
 .lang-switch {
-  display: flex;
+  display: none !important; /* Odstraněno přepínání jazyků */
   border: 1px solid var(--border);
   border-radius: 8px;
   overflow: hidden;

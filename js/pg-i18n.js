@@ -224,7 +224,10 @@
     }
   }
 
-  // ── Inicializace jazyka ──
+  // Forced English only
+  var initialLang = 'en';
+
+  /*
   var pathParts = window.location.pathname.split('/');
   var langFromUrl = null;
 
@@ -241,6 +244,7 @@
   if (langFromUrl) {
     localStorage.setItem(KEY, langFromUrl);
   }
+  */
 
   apply(initialLang, true);
 
