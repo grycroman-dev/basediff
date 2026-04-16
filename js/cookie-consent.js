@@ -21,17 +21,30 @@
   if (!banner) return;
 
   var consent = localStorage.getItem(KEY);
+  var btt = document.getElementById('back-to-top');
+
+  function updateBTTPosition(isBannerVisible) {
+    if (!btt) return;
+    if (isBannerVisible) {
+      btt.style.bottom = '100px';
+    } else {
+      btt.style.bottom = '20px';
+    }
+  }
 
   if (consent === 'accepted') {
     loadGA();
+    updateBTTPosition(false);
     return;
   }
 
   if (consent === 'rejected') {
+    updateBTTPosition(false);
     return;
   }
 
   banner.style.display = 'block';
+  updateBTTPosition(true);
 
   if (acceptBtn) {
     acceptBtn.addEventListener('click', function () {
@@ -50,6 +63,7 @@
 
   function hideBanner() {
     banner.classList.add('hiding');
+    updateBTTPosition(false);
     setTimeout(function () {
       banner.style.display = 'none';
     }, 400);
