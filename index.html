@@ -120,6 +120,7 @@
 
     :root {
       --primary: #8b5cf6;
+      --primary-dark: #7c3aed;
       --primary-rgb: 139, 92, 246;
       --primary-glow: rgba(var(--primary-rgb), 0.25);
       --green: #4ade80;
@@ -534,20 +535,24 @@
     .btn-primary {
       background: var(--primary);
       color: #fff;
-      padding: .75rem 1.6rem;
+      height: 46px;
+      padding: 0 1.6rem;
       border-radius: 10px;
       font-weight: 700;
       font-size: .95rem;
-      box-shadow: 0 4px 24px var(--primary-glow);
-      transition: transform .15s, box-shadow .15s;
+      border: 1px solid var(--primary);
+      transition: all .2s;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: .5rem;
     }
 
     .btn-primary:hover {
+      background: var(--primary-dark);
+      border-color: var(--primary-dark);
       transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(var(--primary-rgb), 0.35);
+      box-shadow: 0 4px 20px rgba(var(--primary-rgb), 0.25);
     }
 
     .btn-primary i {
@@ -557,14 +562,16 @@
     .btn-ghost {
       background: transparent;
       color: var(--text);
-      padding: .75rem 1.6rem;
+      height: 46px;
+      padding: 0 1.6rem;
       border-radius: 10px;
-      font-weight: 600;
+      font-weight: 700;
       font-size: .95rem;
       border: 1px solid var(--border);
-      transition: border-color .2s, background .2s;
+      transition: all .2s;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: .5rem;
     }
 
@@ -580,26 +587,24 @@
     .hero-downloads {
       display: inline-flex;
       align-items: center;
-      gap: .6rem;
-      margin-top: 2rem;
-      padding: .6rem 1.2rem;
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 12px;
+      gap: .5rem;
+      margin-top: 1.25rem;
+      padding: 0;
+      background: transparent;
+      border: none;
       font-size: .88rem;
-      color: var(--text2);
+      color: var(--text3);
       transition: all var(--ease);
     }
 
     .hero-downloads i {
       color: var(--green);
-      font-size: 1rem;
+      font-size: 0.9rem;
     }
 
     .hero-downloads strong {
       color: var(--text);
-      font-weight: 800;
-      font-size: 1.05rem;
+      font-weight: 700;
     }
 
     /* ── Terminal ── */
