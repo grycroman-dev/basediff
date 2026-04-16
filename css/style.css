@@ -130,7 +130,8 @@ a {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  position: relative; /* Pro centrování menu */
+  position: relative;
+  /* Pro centrování menu */
 }
 
 .nav-left {
@@ -231,7 +232,8 @@ a {
 }
 
 .lang-switch {
-  display: none !important; /* Odstraněno přepínání jazyků */
+  display: none !important;
+  /* Odstraněno přepínání jazyků */
   border: 1px solid var(--border);
   border-radius: 8px;
   overflow: hidden;
@@ -1399,7 +1401,8 @@ footer p {
 #back-to-top {
   position: fixed;
   right: 20px;
-  bottom: 20px;
+  bottom: 100px;
+  /* Moved up to be above cookie banner */
   width: 44px;
   height: 44px;
   border-radius: 12px;
@@ -1414,7 +1417,8 @@ footer p {
   opacity: 0;
   visibility: hidden;
   transition: all .25s ease;
-  z-index: 1000;
+  z-index: 10001;
+  /* Above cookie banner (9999) */
 }
 
 #back-to-top:hover {
@@ -1471,9 +1475,10 @@ footer p {
   left: 0;
   right: 0;
   z-index: 9999;
-  background: var(--card);
+  background: var(--bg2);
+  /* Solid, non-transparent background */
   border-top: 1px solid var(--border);
-  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.3);
   padding: 1rem 1.5rem;
   transition: transform .4s ease, opacity .4s ease;
 }
