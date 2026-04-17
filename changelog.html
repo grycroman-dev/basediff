@@ -77,6 +77,7 @@
 </head>
 
 <body>
+  <div class="scroll-progress" id="scroll-progress"></div>
 
   <nav class="navbar" id="navbar">
     <div class="container navbar-inner">
@@ -266,6 +267,18 @@
   </script>
 
   <a href="/feedback.html" class="feedback-tab"><i class="fa-solid fa-comment-dots"></i> <span>Feedback</span></a>
+  <script>
+    // Scroll Progress
+    window.addEventListener('scroll', () => {
+      const scrollProgress = document.getElementById('scroll-progress');
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      if (scrollProgress) {
+        scrollProgress.style.width = scrolled + "%";
+      }
+    });
+  </script>
 </body>
 
 </html>

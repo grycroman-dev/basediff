@@ -117,6 +117,7 @@
 </head>
 
 <body>
+  <div class="scroll-progress" id="scroll-progress"></div>
 
   <!-- ═══ NAVBAR ═══ -->
   <nav class="navbar" id="navbar">
@@ -378,6 +379,18 @@
 
   </script>
 
+  <script>
+    // Scroll Progress
+    window.addEventListener('scroll', () => {
+      const scrollProgress = document.getElementById('scroll-progress');
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      if (scrollProgress) {
+        scrollProgress.style.width = scrolled + "%";
+      }
+    });
+  </script>
 </body>
 
 </html>
