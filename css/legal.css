@@ -3,24 +3,31 @@
    ====================================== */
 
 .legal-hero {
-  padding: 8rem 0 3rem;
+  padding: 10rem 0 4rem;
   border-bottom: 1px solid var(--border);
+  background: radial-gradient(circle at top right, var(--hero-g1), transparent 50%),
+              radial-gradient(circle at bottom left, var(--hero-g2), transparent 50%);
+  position: relative;
+  overflow: hidden;
 }
 
 .legal-hero .section-label {
-  margin-bottom: .75rem;
+  margin-bottom: 0.75rem;
 }
 
 .legal-hero h1 {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
   font-weight: 800;
   letter-spacing: -.03em;
-  margin-bottom: .75rem;
+  margin-bottom: 1rem;
+  line-height: 1.1;
 }
 
 .legal-hero p {
   color: var(--text2);
-  font-size: .95rem;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .legal-content {
