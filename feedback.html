@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
-  <link rel="stylesheet" href="/css/style.css?v=30" />
+  <link rel="stylesheet" href="/css/style.css?v=31" />
   <link rel="stylesheet" href="/css/legal.css?v=3" />
   <style>
     .feedback-card {
@@ -91,22 +91,16 @@
     }
 
     #feedback-msg.success {
-      background: rgba(74, 222, 128, 0.15);
-      color: #16a34a;
-      /* ← tmavší zelená pro světlé téma */
-      border: 1px solid rgba(74, 222, 128, 0.3);
+      background: var(--tag-ok-bg);
+      color: var(--tag-ok-text);
+      border: 1px solid rgba(var(--green-rgb), 0.2);
       font-weight: 600;
     }
 
-    [data-theme="dark"] #feedback-msg.success {
-      color: var(--green);
-      /* ← původní světlá zelená pro tmavé téma */
-    }
-
     #feedback-msg.error {
-      background: rgba(248, 113, 113, 0.1);
+      background: rgba(var(--red-rgb), 0.1);
       color: var(--red);
-      border: 1px solid rgba(248, 113, 113, 0.2);
+      border: 1px solid rgba(var(--red-rgb), 0.2);
     }
 
     /* Honeypot - neviditelný pro uživatele */
