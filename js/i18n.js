@@ -358,16 +358,11 @@
     var config = window.BaseDiffConfig;
     if (!config || !config.version) return; // Kontrola, zda jsou data připravena
 
-    // 1. Meta info (Version 2.0 • Released: March 2026)
+    // 1. Meta info (Version 2.0 • Released: April 2026)
     var elMeta = document.getElementById('hero-meta');
     if (elMeta) {
-      var releaseText = config.releaseDateText[lang] || config.releaseDateText.en;
-      var labels = {
-        cs: { version: 'Verze', released: 'Vydáno' },
-        en: { version: 'Version', released: 'Released' }
-      };
-      var t = labels[lang] || labels.en;
-      elMeta.textContent = t.version + ' ' + config.version + ' • ' + t.released + ': ' + releaseText;
+      var releaseText = config.releaseDateText;
+      elMeta.textContent = 'Version ' + config.version + ' • Released: ' + releaseText;
     }
 
     // 2. Navbar version (e.g., v2.0)

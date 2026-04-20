@@ -5,11 +5,7 @@
 
 window.BaseDiffConfig = {
   version: "2.0",
-  releaseDateText: {
-    cs: "duben 2026",
-    en: "April 2026",
-    de: "April 2026"
-  },
+  releaseDateText: "April 2026",
 
   init: async function () {
     try {
