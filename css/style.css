@@ -212,10 +212,17 @@ button:active, .btn-primary:active, .btn-ghost:active {
   right: 0;
   z-index: 1000;
   background: var(--nav-bg);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
   padding: .85rem 0;
-  transition: background .3s, box-shadow .3s;
+  transition: all 0.3s var(--ease);
+}
+
+.navbar.scrolled {
+  background: var(--nav-bg);
+  box-shadow: var(--shadow-md);
+  padding: 0.6rem 0;
 }
 
 .navbar-inner {
@@ -294,6 +301,14 @@ button:active, .btn-primary:active, .btn-ghost:active {
   background: var(--primary);
   transition: var(--transition);
   border-radius: 2px;
+}
+
+.nav-links a.active {
+  color: var(--text);
+}
+
+.nav-links a.active::after {
+  width: 100%;
 }
 
 .nav-links a:hover {
@@ -623,11 +638,12 @@ button:active, .btn-primary:active, .btn-ghost:active {
 /* ── Terminal ── */
 .terminal {
   background: var(--term-bg);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: var(--shadow-card);
+  box-shadow: var(--shadow-lg);
   transition: border-color var(--ease), box-shadow var(--ease);
 }
 
