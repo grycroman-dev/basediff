@@ -4,7 +4,7 @@
  */
 
 window.BaseDiffConfig = {
-  version: "2.0",
+  version: "2.0.4",
   releaseDateText: "April 2026",
 
   init: async function () {

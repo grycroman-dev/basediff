@@ -91,9 +91,24 @@
 
   function updateVersionInfo() {
     var config = window.BaseDiffConfig;
-    if (!config || !config.version) { setTimeout(updateVersionInfo, 100); return; }
+    // Wait until version is loaded from JSON
+    if (!config || !config.version) {
+      setTimeout(updateVersionInfo, 100);
+      return;
+    }
+
     var elNav = document.getElementById('nav-version');
     if (elNav) elNav.textContent = 'v' + config.version;
+
+    // Pre-fill version input if not from URL
+    var params = new URLSearchParams(window.location.search);
+    var vParam = params.get('v') || params.get('version');
+    if (!vParam) {
+      var elVersion = document.getElementById('version');
+      if (elVersion && !elVersion.value) {
+        elVersion.value = config.version;
+      }
+    }
   }
 
   function apply(lang, isInit) {
@@ -143,25 +158,20 @@
 
   function prefillForm() {
     var params = new URLSearchParams(window.location.search);
-    var version = params.get('version');
+    var version = params.get('v') || params.get('version');
     var os = params.get('os');
-
-    if (!version) {
-      // Pre-fill from config if available
-      var config = window.BaseDiffConfig;
-      if (config && config.version) {
-        version = config.version;
-      }
-    }
 
     if (version) {
       var el = document.getElementById('version');
-      if (el) el.value = version;
+      if (el) {
+        el.value = version;
+        el.readOnly = true;
+      }
     }
 
     if (os) {
       var el = document.getElementById('os');
-      if (el) el.value = os;
+      if (el) el.value = os.toLowerCase();
     }
   }
 

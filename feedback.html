@@ -297,32 +297,6 @@
       var footerYear = document.getElementById('footer-year');
       if (footerYear) footerYear.textContent = new Date().getFullYear();
 
-      // Předvyplnění z URL parametrů
-      var params = new URLSearchParams(window.location.search);
-      var versionParam = params.get('v');
-      var osParam = params.get('os');
-
-      var versionInput = document.getElementById('version');
-      if (versionInput) {
-        if (versionParam) {
-          versionInput.value = versionParam;
-          versionInput.readOnly = true;
-        } else {
-          versionInput.readOnly = false;
-          // Placeholder se přeloží přes data-i18n-placeholder
-        }
-      }
-
-      // OS select
-      if (osParam) {
-        var osSelect = document.getElementById('os');
-        if (osSelect) {
-          osSelect.querySelectorAll('option').forEach(function (opt) {
-            if (opt.value === osParam.toLowerCase()) opt.selected = true;
-          });
-        }
-      }
-
       // Odeslání formuláře
       var form = document.getElementById('feedback-form');
       var msgBox = document.getElementById('feedback-msg');
