@@ -20,7 +20,7 @@ if (!file_exists($dbPath)) {
 try {
     $db = new SQLite3($dbPath);
 
-    // Zkontroluj zda tabulka existuje
+    // Check if table exists
     $tables = $db->query("SELECT name FROM sqlite_master WHERE type='table'");
     echo "<h3>Tables in database:</h3><ul>";
     while ($t = $tables->fetchArray()) {
@@ -28,7 +28,7 @@ try {
     }
     echo "</ul>";
 
-    // Zobraz feedback
+    // Show feedback
     $results = $db->query("SELECT * FROM feedback ORDER BY id DESC LIMIT 50");
     echo "<h2>Feedback List</h2>";
     echo "<table border='1' cellpadding='5' style='border-collapse:collapse; font-family:sans-serif; font-size:13px;'>";

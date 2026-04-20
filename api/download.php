@@ -17,7 +17,7 @@ if (!isset($files[$platform])) {
     exit("Unknown file");
 }
 
-// ── Zjištění země ──
+// ── Detect Country ──
 $ip = $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
 $country = '??';
 if ($ip !== '127.0.0.1' && $ip !== '::1') {
@@ -31,14 +31,14 @@ if ($ip !== '127.0.0.1' && $ip !== '::1') {
 }
 
 try {
-    // ── Databáze ──
+    // ── Database ──
     $db = new SQLite3(__DIR__ . '/../data/downloads.db');
     $db->busyTimeout(5000); // Wait up to 5s if locked
 
-    // Tabulka pro celkové počty
+    // Table for total counts
     $db->exec("CREATE TABLE IF NOT EXISTS downloads (platform TEXT PRIMARY KEY, count INTEGER DEFAULT 0)");
 
-    // Tabulka pro logy s detaily
+    // Table for detailed logs
     $db->exec("CREATE TABLE IF NOT EXISTS download_logs (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         platform TEXT NOT NULL,
@@ -46,7 +46,7 @@ try {
         created_at TEXT NOT NULL
     )");
 
-    // Inkrementuj celkový počet (Prepared Statement!)
+    // Increment total count (Prepared Statement!)
     $stmt1 = $db->prepare("
         INSERT INTO downloads (platform, count)
         VALUES (:platform, 1)
@@ -56,7 +56,7 @@ try {
     $stmt1->bindValue(':platform', $platform, SQLITE3_TEXT);
     $stmt1->execute();
 
-    // Zaloguj detail
+    // Log detail
     $stmt2 = $db->prepare("
         INSERT INTO download_logs (platform, country, created_at)
         VALUES (:platform, :country, datetime('now'))
@@ -72,7 +72,7 @@ try {
 }
 
 
-// ── Odeslání souboru ──
+// ── Send File ──
 $file = $files[$platform];
 
 header("Cache-Control: no-cache, no-store, must-revalidate");

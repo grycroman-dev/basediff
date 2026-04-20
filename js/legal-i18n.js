@@ -228,7 +228,7 @@
       cookies_s1_p1: 'Cookies are small text files stored in your browser when you visit a website.',
       cookies_s2_title: '2. Technical Cookies (Necessary)',
       cookies_s2_p1: 'The BaseDiff website uses only technical cookies necessary for proper functionality.',
-      cookies_s2_li1: 'basediff-lang — stores your chosen language (CZ/EN/DE)',
+      cookies_s2_li1: 'basediff-lang — stores your chosen language (English)',
       cookies_s2_li2: 'basediff-theme — stores your chosen color theme (light/dark)',
       cookies_s2_p2: 'These values are stored in your browser\'s localStorage.',
       cookies_s3_title: '3. Analytics Cookies',

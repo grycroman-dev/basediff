@@ -7,7 +7,7 @@ header("Content-Type: application/json");
 
 $db = new SQLite3('../data/downloads.db');
 
-// Tabulka pro celkové počty (stávající)
+// Table for total counts (existing)
 $db->exec("
     CREATE TABLE IF NOT EXISTS downloads (
         platform TEXT PRIMARY KEY,
@@ -15,7 +15,7 @@ $db->exec("
     )
 ");
 
-// Tabulka pro logy (pokud ještě neexistuje)
+// Table for logs (if it doesn't exist)
 $db->exec("
     CREATE TABLE IF NOT EXISTS download_logs (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -25,18 +25,18 @@ $db->exec("
     )
 ");
 
-// ── Celkové počty per platforma ──
+// ── Total counts per platform ──
 $result = $db->query("SELECT platform, count FROM downloads");
 
 $platforms = [];
 $total = 0;
 
 while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
-    $platforms[$row['platform']] = (int)$row['count'];
-    $total += (int)$row['count'];
+    $platforms[$row['platform']] = (int) $row['count'];
+    $total += (int) $row['count'];
 }
 
-// ── TOP 10 zemí z download_logs ──
+// ── TOP 10 countries from download_logs ──
 $countries = [];
 $result = $db->query("
     SELECT country, COUNT(*) as count
@@ -47,14 +47,14 @@ $result = $db->query("
 ");
 
 while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
-    $countries[$row['country']] = (int)$row['count'];
+    $countries[$row['country']] = (int) $row['count'];
 }
 
 $db->close();
 
 echo json_encode([
-    'total'     => $total,
+    'total' => $total,
     'platforms' => $platforms,
     'countries' => $countries,
-    'updated'   => date('c'),
+    'updated' => date('c'),
 ]);

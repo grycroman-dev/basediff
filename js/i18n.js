@@ -268,7 +268,7 @@
       f8_title: 'Query Tool',
       f8_desc: 'Build SQL queries including JOINs and use them directly in migration scripts.',
       f9_title: 'Themes & languages',
-      f9_desc: 'Light and dark mode. Interface in Czech and English.',
+      f9_desc: 'Light and dark mode. Interface in English.',
       objects_label: 'Tracked objects',
       objects_title_html: 'Complete coverage of <span class="gradient">database objects</span>',
       objects_sub: 'Choose which objects and properties to include in comparison.',
