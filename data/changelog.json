@@ -1,5 +1,16 @@
 [
   {
+    "version": "2.0.4",
+    "date": "2026-04-20",
+    "description": "Repair and optimization.",
+    "changes": [
+      "Auto update features",
+      "User interface optimalizations",
+      "Clipboard features",
+      "Opening BaseDiff projects features"
+    ]
+  },
+  {
     "version": "2.0.3",
     "date": "2026-04-08",
     "description": "Repair and optimization.",
