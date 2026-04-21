@@ -229,6 +229,25 @@
       opacity: 0.04;
     }
 
+    /* Technical Grid Overlay */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background-image:
+        linear-gradient(rgba(var(--primary-rgb), 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(var(--primary-rgb), 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+    }
+
+    [data-theme="light"] body::after {
+      background-image:
+        linear-gradient(rgba(var(--primary-rgb), 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(var(--primary-rgb), 0.05) 1px, transparent 1px);
+    }
+
     /* Scroll Progress Bar */
     .scroll-progress {
       position: fixed;
@@ -1020,6 +1039,128 @@
       font-size: 1rem;
       width: 20px;
       text-align: center;
+      transition: transform 0.3s var(--ease);
+    }
+
+    .object-item:hover i {
+      animation: icon-scan 0.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes icon-scan {
+      from {
+        transform: translateY(-2px);
+        opacity: 0.7;
+      }
+
+      to {
+        transform: translateY(2px);
+        opacity: 1;
+      }
+    }
+
+    /* ══════════════════════════════════════
+    SQL DIFF VIEWER
+    ══════════════════════════════════════ */
+    .sql-diff-viewer {
+      background: #0d1117;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-top: 3rem;
+      box-shadow: var(--shadow-lg);
+      font-family: var(--mono);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .sql-diff-header {
+      background: #161b22;
+      padding: 0.75rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--text3);
+    }
+
+    .sql-diff-file {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .sql-diff-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--green);
+    }
+
+    .sql-diff-body {
+      padding: 1.5rem;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .sql-diff-body pre {
+      margin: 0;
+    }
+
+    .diff-keyword {
+      color: #ff7b72;
+      font-weight: 700;
+    }
+
+    .diff-type {
+      color: #79c0ff;
+    }
+
+    .diff-number {
+      color: #d2a8ff;
+    }
+
+    .diff-comment {
+      color: #8b949e;
+      font-style: italic;
+    }
+
+    .diff-add {
+      color: #3fb950;
+      font-weight: 600;
+      display: block;
+      background: rgba(63, 185, 80, 0.1);
+    }
+
+    .diff-delete {
+      color: #f85149;
+      font-weight: 600;
+      display: block;
+      background: rgba(248, 81, 73, 0.1);
+    }
+
+    [data-theme="light"] .sql-diff-viewer {
+      background: #f6f8fa;
+      border-color: #d0d7de;
+    }
+
+    [data-theme="light"] .sql-diff-header {
+      background: #f3f4f6;
+      border-color: #d0d7de;
+    }
+
+    [data-theme="light"] .diff-keyword {
+      color: #cf222e;
+    }
+
+    [data-theme="light"] .diff-type {
+      color: #0550ae;
+    }
+
+    [data-theme="light"] .diff-comment {
+      color: #6e7781;
     }
 
     /* ══════════════════════════════════════
@@ -2628,6 +2769,44 @@
           <h3 data-i18n="why_c4_title">Visual schema diff tool</h3>
           <p data-i18n="why_c4_desc">Easily explore differences between source and target databases using a visual tree
             structure and detailed SQL previews.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SQL DIFF PREVIEW ═══ -->
+  <section class="alt-bg">
+    <div class="container">
+      <div class="section-center">
+        <div class="section-label" data-aos="fade-up"><i class="fa-solid fa-code" aria-hidden="true"></i> <span
+            data-i18n="diff_label">Live SQL Preview</span></div>
+        <h2 class="section-title" data-aos="fade-up" data-aos-delay="50" data-i18n="diff_title_html">Precise <span
+            class="gradient">Schema Diffing</span></h2>
+        <p class="section-sub" data-aos="fade-up" data-aos-delay="100" data-i18n="diff_sub">BaseDiff generates clean,
+          human-readable SQL. See how it handles a typical table modification.</p>
+      </div>
+
+      <div class="sql-diff-viewer" data-aos="fade-up" data-aos-delay="200">
+        <div class="sql-diff-header">
+          <div class="sql-diff-file"><i class="fa-solid fa-file-code"></i> update_schema.sql</div>
+          <div class="sql-diff-actions">
+            <span>SQL Server</span>
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+        </div>
+        <div class="sql-diff-body">
+          <pre><code><span class="diff-comment">-- BaseDiff generated script</span>
+<span class="diff-keyword">ALTER TABLE</span> [dbo].[users]
+<span class="diff-keyword">ADD</span> [avatar_url] <span class="diff-type">NVARCHAR</span>(<span class="diff-number">MAX</span>) <span class="diff-keyword">NULL</span>;
+<span class="diff-add">+ -- Added by BaseDiff comparison</span>
+
+<span class="diff-keyword">CREATE INDEX</span> [idx_users_email] 
+<span class="diff-keyword">ON</span> [dbo].[users] ([email]);
+<span class="diff-add">+ -- New optimization detected</span>
+
+<span class="diff-keyword">ALTER TABLE</span> [dbo].[orders] 
+<span class="diff-keyword">DROP COLUMN</span> [temp_id];
+<span class="diff-delete">- -- Cleanup legacy column</span></code></pre>
         </div>
       </div>
     </div>

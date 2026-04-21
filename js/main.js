@@ -218,4 +218,33 @@
         updateScroll();
     });
 
+    // 7. KEYBOARD SHORTCUTS
+    document.addEventListener('keydown', function (e) {
+        if (['INPUT', 'TEXTAREA'].includes(e.target.tagName)) return;
+
+        // Toggle theme (D)
+        if (e.key.toLowerCase() === 'd') {
+            if (themeToggle) themeToggle.click();
+        }
+        // Scroll to top (T)
+        if (e.key.toLowerCase() === 't') {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        // Escape (ESC) - generic close
+        if (e.key === 'Escape') {
+            if (window.closeLightbox) window.closeLightbox();
+        }
+    });
+
+    // 8. EASTER EGG
+    console.log(
+        "%cBasediff%c Developers Console \n" +
+        "%cSELECT * FROM basediff WHERE quality = 'premium'; %c\n\n" +
+        "Glad to see you here! If you like what you see, check out our GitHub or buy us a coffee. ☕",
+        "background: #8b5cf6; color: #fff; padding: 5px 10px; border-radius: 5px; font-weight: bold; font-family: sans-serif;",
+        "color: #8b5cf6; font-weight: bold; font-family: sans-serif;",
+        "color: #4ade80; font-family: monospace; font-size: 14px;",
+        "color: inherit; font-family: sans-serif;"
+    );
+
 })();
