@@ -1062,22 +1062,21 @@
     SQL DIFF VIEWER
     ══════════════════════════════════════ */
     .sql-diff-viewer {
-      background: #0d1117;
+      background: var(--bg3);
       border: 1px solid var(--border);
-      border-radius: var(--radius);
+      border-radius: var(--radius-lg);
       overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
       margin-top: 3rem;
-      box-shadow: var(--shadow-lg);
-      font-family: var(--mono);
       max-width: 800px;
       margin-left: auto;
       margin-right: auto;
     }
 
     .sql-diff-header {
-      background: #161b22;
-      padding: 0.75rem 1.25rem;
+      background: rgba(var(--primary-rgb), 0.05);
       border-bottom: 1px solid var(--border);
+      padding: 1rem 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -1099,14 +1098,23 @@
     }
 
     .sql-diff-body {
-      padding: 1.5rem;
+      padding: 1.5rem 2rem;
       overflow-x: auto;
-      font-size: 0.9rem;
-      line-height: 1.7;
+    }
+
+    @media (max-width: 640px) {
+      .sql-diff-body {
+        padding: 1rem 1.5rem;
+      }
     }
 
     .sql-diff-body pre {
       margin: 0;
+      line-height: 1.6;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      padding-right: 2.5rem;
+      white-space: pre;
     }
 
     .diff-keyword {
@@ -1149,6 +1157,10 @@
     [data-theme="light"] .sql-diff-header {
       background: #f3f4f6;
       border-color: #d0d7de;
+    }
+
+    [data-theme="light"] .sql-diff-actions {
+      color: #166534;
     }
 
     [data-theme="light"] .diff-keyword {
@@ -1628,18 +1640,31 @@
     }
 
     .comp-table-container {
-      width: 100%;
+      flex: 1;
       overflow-x: auto;
+      background: var(--card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    @media (max-width: 768px) {
+      .comp-table-container {
+        padding: 0;
+        background: transparent;
+        border: none;
+        backdrop-filter: none;
+        box-shadow: none;
+      }
     }
 
     .comp-table {
       width: 100%;
       border-collapse: collapse;
-      background: var(--card);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
+      border: none;
+      background: transparent;
     }
 
     .comp-table th,
@@ -2392,6 +2417,425 @@
       height: auto;
     }
 
+    /* ══════════════════════════════════════
+    MIGRATION PIPELINE
+    ══════════════════════════════════════ */
+    .pipeline {
+      padding: 8rem 0;
+      background: radial-gradient(circle at 10% 20%, rgba(var(--primary-rgb), 0.03) 0%, transparent 50%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Pipeline Wrapper (PC: 3 columns) */
+    .pipeline-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 40px 1fr 40px 1fr;
+      align-items: stretch;
+      gap: 1rem;
+      margin-top: 4rem;
+    }
+
+    .pipeline-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      background: var(--card);
+      backdrop-filter: blur(5px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      transition: all 0.4s var(--ease);
+      position: relative;
+      height: 100%;
+    }
+
+    .pipeline-step:hover {
+      border-color: var(--primary);
+      transform: translateY(-8px);
+      background: rgba(var(--primary-rgb), 0.05);
+    }
+
+    .pipeline-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 14px;
+      background: rgba(var(--primary-rgb), 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      color: var(--primary);
+      margin-bottom: 1.25rem;
+    }
+
+    .pipeline-step h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    .pipeline-step p {
+      font-size: 0.85rem;
+      color: var(--text2);
+      line-height: 1.5;
+    }
+
+    .pipeline-step-arrow {
+      color: var(--primary);
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.8;
+      filter: drop-shadow(0 0 8px var(--primary-glow));
+      animation: moveRight 2s infinite ease-in-out;
+    }
+
+    @keyframes moveRight {
+
+      0%,
+      100% {
+        transform: translateX(0);
+        opacity: 0.4;
+      }
+
+      50% {
+        transform: translateX(8px);
+        opacity: 0.8;
+      }
+    }
+
+    .pipeline-step-arrow.arrow-pc-hidden {
+      display: none;
+    }
+
+    @media (max-width: 1024px) {
+      .pipeline-step-arrow.arrow-pc-hidden {
+        display: flex;
+      }
+
+      .pipeline-wrapper {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .pipeline-step {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .pipeline-step-arrow {
+        transform: rotate(90deg);
+        height: 40px;
+        animation: moveDown 2s infinite ease-in-out;
+      }
+
+      @keyframes moveDown {
+
+        0%,
+        100% {
+          transform: rotate(90deg) translateX(0);
+          opacity: 0.4;
+        }
+
+        50% {
+          transform: rotate(90deg) translateX(8px);
+          opacity: 0.8;
+        }
+      }
+    }
+
+    /* ══════════════════════════════════════
+    PRIVACY
+    ══════════════════════════════════════ */
+    .privacy {
+      padding: 8rem 0;
+    }
+
+    .privacy-card {
+      background: var(--card);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 4rem;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 4rem;
+      align-items: center;
+      overflow: hidden;
+      margin-top: 3rem;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      position: relative;
+    }
+
+    .privacy-content h2 {
+      font-size: 2.22rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .privacy-content p {
+      font-size: 1.05rem;
+      color: var(--text2);
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+    }
+
+    .privacy-content ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .privacy-content li {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-weight: 700;
+      color: var(--text);
+      font-size: 0.9rem;
+    }
+
+    .privacy-content li i {
+      color: var(--green);
+    }
+
+    /* Privacy Visual (Icon Stack) */
+    .privacy-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .privacy-icon-stack {
+      position: relative;
+      font-size: 10rem;
+      color: var(--primary);
+      filter: drop-shadow(0 0 30px var(--primary-glow));
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .privacy-icon-sub {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 3.2rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    .offline-tag {
+      background: rgba(var(--green-rgb), 0.1);
+      border: 1px solid rgba(var(--green-rgb), 0.2);
+      color: var(--green);
+      padding: 0.5rem 1.25rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 1100px) {
+      .privacy-card {
+        grid-template-columns: 1fr;
+        padding: 4rem 2rem;
+        text-align: center;
+      }
+
+      .laptop-mockup {
+        order: -1;
+        margin-bottom: 3rem;
+      }
+
+      .privacy-content ul {
+        justify-content: center;
+        margin: 0 auto;
+        max-width: 450px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .privacy-content ul {
+        grid-template-columns: 1fr;
+        text-align: left;
+      }
+
+      .laptop-screen {
+        border-width: 10px;
+      }
+    }
+
+    .laptop-base::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background: #222;
+      border-radius: 0 0 4px 4px;
+    }
+
+    .no-cloud-ui {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .cloud-slash {
+      position: relative;
+      font-size: 5rem;
+      color: rgba(255, 255, 255, 0.2);
+    }
+
+    .cloud-slash::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: -10%;
+      width: 120%;
+      height: 4px;
+      background: var(--red);
+      transform: rotate(-45deg);
+      box-shadow: 0 0 15px var(--red);
+    }
+
+    .offline-tag {
+      background: rgba(var(--green-rgb), 0.1);
+      color: var(--green);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 1100px) {
+      .privacy-card {
+        grid-template-columns: 1fr;
+        padding: 4rem 2rem;
+        text-align: center;
+      }
+
+      .laptop-mockup {
+        order: -1;
+        margin-bottom: 3rem;
+      }
+
+      .privacy-content ul {
+        justify-content: center;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .privacy-visual {
+        margin-bottom: 0.5rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .privacy-content ul {
+        grid-template-columns: 1fr;
+        text-align: left;
+      }
+    }
+
+    .privacy-content h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .privacy-content ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .privacy-content li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 600;
+      color: var(--text2);
+      font-size: 0.95rem;
+    }
+
+    .privacy-content li i {
+      color: var(--green);
+    }
+
+    .privacy-visual {
+      display: flex;
+      justify-content: center;
+      position: relative;
+    }
+
+    .vault-icon {
+      font-size: 8rem;
+      color: var(--green);
+      filter: drop-shadow(0 0 30px rgba(var(--green-rgb), 0.3));
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-15px);
+      }
+    }
+
+    @media (max-width: 992px) {
+      .privacy-card {
+        grid-template-columns: 1fr;
+        padding: 3rem 1.5rem;
+        text-align: center;
+        gap: 2.5rem;
+      }
+
+      .privacy-visual {
+        order: -1;
+      }
+
+      .privacy-content ul {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+      }
+    }
+
     /* Definice animací */
     @keyframes fadeInUp {
       from {
@@ -2522,6 +2966,19 @@
       .feedback-tab i {
         transform: none;
       }
+    }
+
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 5rem 0;
+      position: relative;
+      z-index: 10;
+    }
+
+    [data-theme="light"] footer {
+      background: #f1f5f9;
+      /* Distinct from #f8fafc */
     }
   </style>
 </head>
@@ -2662,6 +3119,65 @@
     </div>
   </div>
 
+  <!-- ═══ PIPELINE ═══ -->
+  <section class="pipeline">
+    <div class="container">
+      <div class="section-center" style="margin-bottom: 4rem;">
+        <div class="section-label" data-aos="fade-up"><i class="fa-solid fa-route"></i> <span
+            data-i18n="pipeline_label">Migration Pipeline</span></div>
+        <h2 class="section-title" data-aos="fade-up" data-aos-delay="50" data-i18n="pipeline_title_html">Complete path
+          to
+          <span class="gradient">schema automation</span>
+        </h2>
+        <p class="section-sub" data-aos="fade-up" data-aos-delay="100" data-i18n="pipeline_sub">From analysis to
+          reporting. BaseDiff covers the entire migration lifecycle.</p>
+      </div>
+
+      <div class="pipeline-wrapper">
+        <!-- Row 1 -->
+        <div class="pipeline-step" data-aos="fade-up">
+          <div class="pipeline-icon"><i class="fa-solid fa-database"></i></div>
+          <h3 data-i18n="pipe_s1_t">Source & Target DB</h3>
+          <p data-i18n="pipe_s1_p">Process entry points.</p>
+        </div>
+        <div class="pipeline-step-arrow" data-aos="fade-in"><i class="fa-solid fa-chevron-right"></i></div>
+        <div class="pipeline-step" data-aos="fade-up" data-aos-delay="50">
+          <div class="pipeline-icon"><i class="fa-solid fa-microchip"></i></div>
+          <h3 data-i18n="pipe_s2_t">BaseDiff Engine</h3>
+          <p data-i18n="pipe_s2_p">Smart structure analysis.</p>
+        </div>
+        <div class="pipeline-step-arrow" data-aos="fade-in"><i class="fa-solid fa-chevron-right"></i></div>
+        <div class="pipeline-step" data-aos="fade-up" data-aos-delay="100">
+          <div class="pipeline-icon"><i class="fa-solid fa-floppy-disk"></i></div>
+          <h3 data-i18n="pipe_s3_t">Save/Load project (JSON)</h3>
+          <p data-i18n="pipe_s3_p">Persistence of your work.</p>
+        </div>
+
+        <div class="pipeline-step-arrow arrow-pc-hidden" data-aos="fade-in"><i class="fa-solid fa-chevron-right"></i>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="pipeline-step" data-aos="fade-up" data-aos-delay="150">
+          <div class="pipeline-icon"><i class="fa-solid fa-code-compare"></i></div>
+          <h3 data-i18n="pipe_s4_t">Visual Comparison</h3>
+          <p data-i18n="pipe_s4_p">Clear change visualization.</p>
+        </div>
+        <div class="pipeline-step-arrow" data-aos="fade-in"><i class="fa-solid fa-chevron-right"></i></div>
+        <div class="pipeline-step" data-aos="fade-up" data-aos-delay="200">
+          <div class="pipeline-icon"><i class="fa-solid fa-file-code"></i></div>
+          <h3 data-i18n="pipe_s5_t">Script Generation</h3>
+          <p data-i18n="pipe_s5_p">Automated SQL code.</p>
+        </div>
+        <div class="pipeline-step-arrow" data-aos="fade-in"><i class="fa-solid fa-chevron-right"></i></div>
+        <div class="pipeline-step" data-aos="fade-up" data-aos-delay="250">
+          <div class="pipeline-icon"><i class="fa-solid fa-clipboard-check"></i></div>
+          <h3 data-i18n="pipe_s6_t">Review & Report</h3>
+          <p data-i18n="pipe_s6_p">Validation before deployment.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══ FEATURES ═══ -->
   <section id="features" class="alt-bg">
     <div class="container section-center">
@@ -2725,50 +3241,41 @@
     </div>
   </section>
 
-  <!-- ═══ WHY BASEDIFF ═══ -->
-  <section class="why">
-    <div class="container section-center">
-
-      <div class="section-label" data-aos="fade-up">
-        <i class="fa-solid fa-circle-question"></i>
-        <span data-i18n="why_label">Why BaseDiff</span>
+  <!-- ═══ PRIVACY ═══ -->
+  <section class="privacy">
+    <div class="container">
+      <div class="section-center" style="margin-bottom: 2rem;">
+        <div class="section-label" data-aos="fade-up"><i class="fa-solid fa-shield-halved"></i> <span
+            data-i18n="privacy_label">Privacy</span></div>
+        <h2 class="section-title" data-aos="fade-up" data-aos-delay="50" data-i18n="privacy_title_html">Your data is in
+          <span class="gradient">absolute safety</span>
+        </h2>
+        <p class="section-sub" data-aos="fade-up" data-aos-delay="100" data-i18n="privacy_sub">BaseDiff operates
+          locally,
+          without cloud and without risk of metadata leakage.</p>
       </div>
 
-      <h2 class="section-title" data-aos="fade-up" data-aos-delay="50" data-i18n="why_title_html">
-        Why developers use <span class="gradient">BaseDiff</span>
-      </h2>
-
-      <p class="section-sub" data-aos="fade-up" data-aos-delay="100" data-i18n="why_sub">
-        BaseDiff is designed for developers and database administrators who
-        need a fast and reliable way to compare database schemas and generate
-        SQL migration scripts.
-      </p>
-
-      <div class="why-grid">
-        <div class="why-card" data-aos="fade-up" data-aos-delay="0">
-          <div class="why-icon"><i class="fa-solid fa-code-compare" aria-hidden="true"></i></div>
-          <h3 data-i18n="why_c1_title">Database schema comparison</h3>
-          <p data-i18n="why_c1_desc">Compare database schemas between environments such as development, staging and
-            production. BaseDiff quickly detects differences in tables, indexes, constraints, views, procedures and
-            triggers.</p>
+      <div class="privacy-card" data-aos="zoom-in">
+        <div class="privacy-content">
+          <ul>
+            <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="priv_l1">100% Offline operation</span></li>
+            <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="priv_l2">No cloud, no risk</span></li>
+            <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="priv_l3">Data never leaves your machine</span>
+            </li>
+            <li><i class="fa-solid fa-circle-check"></i> <span data-i18n="priv_l4">Safe even in isolated networks</span>
+            </li>
+          </ul>
         </div>
-        <div class="why-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="why-icon"><i class="fa-solid fa-file-code" aria-hidden="true"></i></div>
-          <h3 data-i18n="why_c2_title">Automatic SQL migration scripts</h3>
-          <p data-i18n="why_c2_desc">Generate SQL scripts to synchronize database structures. The tool automatically
-            produces CREATE, ALTER and DROP statements based on detected schema differences.</p>
-        </div>
-        <div class="why-card" data-aos="fade-up" data-aos-delay="0">
-          <div class="why-icon"><i class="fa-solid fa-server" aria-hidden="true"></i></div>
-          <h3 data-i18n="why_c3_title">Supports SQL Server and PostgreSQL</h3>
-          <p data-i18n="why_c3_desc">BaseDiff currently supports Microsoft SQL Server and PostgreSQL. Support for MySQL,
-            Oracle and SQLite is planned in future versions.</p>
-        </div>
-        <div class="why-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="why-icon"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i></div>
-          <h3 data-i18n="why_c4_title">Visual schema diff tool</h3>
-          <p data-i18n="why_c4_desc">Easily explore differences between source and target databases using a visual tree
-            structure and detailed SQL previews.</p>
+        <div class="privacy-visual">
+          <div class="privacy-icon-stack">
+            <i class="fa-solid fa-shield-halved"></i>
+            <div class="privacy-icon-sub">
+              <i class="fa-solid fa-cloud-arrow-up"></i>
+              <div
+                style="position: absolute; width: 100%; height: 4px; background: var(--red); transform: rotate(-45deg); box-shadow: 0 0 10px var(--red);">
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -2846,7 +3353,7 @@
 
   <!-- ═══ DATABASES ═══ -->
   <!-- ═══ COMPARISON ═══ -->
-  <section id="comparison">
+  <section id="comparison" class="alt-bg">
     <div class="container">
       <div class="section-center">
         <div class="section-label" data-aos="fade-up"><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i>
