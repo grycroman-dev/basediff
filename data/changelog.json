@@ -1,11 +1,26 @@
 [
   {
+    "version": "2.0.5",
+    "date": "2026-04-24",
+    "description": "Repair and optimization.",
+    "changes": [
+      "Added to options of MSSQL comparing version with query in EXEC('...')",
+      "To main added option for editing connection to source and destination databases",
+      "Optimizing generating DROP COLUMN for MSSQL database type",
+      "Added to windows installers registration BaseDiffConsole to PATH",
+      "Optimizing feedback page"
+    ]
+  },
+  {
     "version": "2.0.4",
     "date": "2026-04-20",
     "description": "Repair and optimization.",
     "changes": [
       "Auto update features",
       "User interface optimalizations",
+      "Moving Support us button to status bar",
+      "Optimize Dark theme colors",
+      "Sql query on boxes resizing features with CTRL+mouse wheel",
       "Clipboard features",
       "Opening BaseDiff projects features"
     ]
@@ -25,7 +40,8 @@
     "description": "Process optimization.",
     "changes": [
       "User interface optimization",
-      "Feedback page"
+      "Feedback page",
+      "Support us button"
     ]
   },
   {
