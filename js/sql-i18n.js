@@ -23,6 +23,7 @@
       sql_feat_export_title: 'Flexible Export',
       sql_feat_export_desc: 'Export to a single file or separate files for CREATE, ALTER, DROP and data migration scripts. Copy to clipboard or save to disk.',
 
+      nav_demo: 'Demo',
       nav_features: 'Features',
       nav_databases: 'Databases',
       nav_screenshots: 'Previews',
@@ -109,6 +110,7 @@
       sql_feat_export_title: 'Flexibilní export',
       sql_feat_export_desc: 'Export do jednoho souboru nebo oddělených souborů pro CREATE, ALTER, DROP a skripty datové migrace. Kopírování do schránky nebo uložení na disk.',
 
+      nav_demo: 'Ukázka',
       nav_features: 'Funkce',
       nav_databases: 'Databáze',
       nav_screenshots: 'Náhledy',

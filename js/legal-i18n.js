@@ -33,6 +33,7 @@
       cookie_accept: 'Přijmout',
       cookie_reject: 'Odmítnout',
 
+      nav_demo: 'Ukázka',
       nav_features: 'Funkce',
       nav_databases: 'Databáze',
       nav_screenshots: 'Náhledy',
@@ -150,6 +151,7 @@
       cookie_accept: 'Accept',
       cookie_reject: 'Reject',
 
+      nav_demo: 'Demo',
       nav_features: 'Features',
       nav_databases: 'Databases',
       nav_screenshots: 'Previews',
