@@ -70,6 +70,34 @@ while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
     $platforms[$row['os']] = (int)$row['cnt'];
 }
 
+// Per Type
+$types = [];
+// Check if app_type column exists first to avoid errors on legacy DBs
+$res = $db->query("PRAGMA table_info(telemetry)");
+$hasAppType = false;
+while ($row = $res->fetchArray(SQLITE3_ASSOC)) {
+    if ($row['name'] === 'app_type') {
+        $hasAppType = true;
+        break;
+    }
+}
+
+if ($hasAppType) {
+    $result = $db->query(
+        "SELECT app_type, COUNT(*) as cnt
+         FROM telemetry
+         WHERE date >= '$since'
+         GROUP BY app_type
+         ORDER BY cnt DESC"
+    );
+    while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
+        $types[$row['app_type']] = (int)$row['cnt'];
+    }
+} else {
+    // If column doesn't exist yet, all are desktop
+    $types['desktop'] = $total;
+}
+
 // Daily counts (last N days)
 $daily = [];
 $result = $db->query(
@@ -91,5 +119,6 @@ echo json_encode([
     'total_all_time' => $totalAllTime,
     'versions' => $versions,
     'platforms' => $platforms,
+    'types' => $types,
     'daily' => $daily
 ], JSON_PRETTY_PRINT);

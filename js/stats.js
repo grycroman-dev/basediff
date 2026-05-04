@@ -203,6 +203,12 @@
       el = document.getElementById('stats-tel-macos');
       if (el) animateValue(el, data.platforms.macos || 0);
 
+      el = document.getElementById('stats-tel-desktop');
+      if (el) animateValue(el, data.types.desktop || 0);
+
+      el = document.getElementById('stats-tel-console');
+      if (el) animateValue(el, data.types.console || 0);
+
       // Version chart
       buildBarChart('version-bar-chart', data.versions || {});
 

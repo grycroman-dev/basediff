@@ -21,6 +21,8 @@
       stats_by_version: 'Spuštění podle verze',
       stats_daily: 'Denní spuštění (posledních 30 dní)',
       stats_by_country: 'Stažení podle zemí',
+      stats_type_desktop: 'Desktop',
+      stats_type_console: 'Konzole',
 
       company_address_line1: 'Hasičská 930/53, Hrabůvka',
       company_address_line2: '700 30 Ostrava',
@@ -139,6 +141,8 @@
       stats_by_version: 'Launches by version',
       stats_daily: 'Daily launches (last 30 days)',
       stats_by_country: 'Downloads by country',
+      stats_type_desktop: 'Desktop',
+      stats_type_console: 'Console',
 
       company_address_line1: 'Hasičská 930/53, Hrabůvka',
       company_address_line2: '700 30 Ostrava',
