@@ -108,6 +108,14 @@ try {
             margin-bottom: 1.5rem;
         }
 
+        .header-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: inherit;
+        }
+
         h1 {
             font-size: 1.25rem;
             font-weight: 800;
@@ -126,7 +134,7 @@ try {
             gap: 1rem;
         }
 
-        .theme-toggle {
+        .theme-toggle, .btn-home {
             width: 36px;
             height: 36px;
             border-radius: 8px;
@@ -138,9 +146,10 @@ try {
             justify-content: center;
             cursor: pointer;
             transition: var(--transition);
+            text-decoration: none;
         }
 
-        .theme-toggle:hover {
+        .theme-toggle:hover, .btn-home:hover {
             border-color: var(--primary);
             color: var(--primary);
         }
@@ -233,6 +242,29 @@ try {
 
         .search-clear:hover { color: var(--text); }
         .search-wrapper.has-text .search-clear { display: block; }
+
+        .btn-reset {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            color: var(--text2);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-reset:hover {
+            border-color: #ef4444;
+            color: #ef4444;
+            background: rgba(239, 68, 68, 0.05);
+        }
 
         /* PAGINATION */
         .pagination-bar {
@@ -379,9 +411,14 @@ try {
 <body>
     <div class="container">
         <header>
-            <h1><i class="fa-solid fa-comment-dots"></i> Feedback Admin</h1>
+            <a href="/" class="header-title">
+                <h1><i class="fa-solid fa-comment-dots"></i> Feedback Admin</h1>
+            </a>
             <div class="header-actions">
-                <button class="theme-toggle" id="theme-toggle">
+                <a href="/" class="btn-home" title="Go back to website">
+                    <i class="fa-solid fa-house"></i>
+                </a>
+                <button class="theme-toggle" id="theme-toggle" title="Toggle theme">
                     <i class="fa-solid fa-sun"></i>
                     <i class="fa-solid fa-moon"></i>
                 </button>
@@ -435,6 +472,9 @@ try {
                         <?php endforeach; ?>
                     </select>
                 </div>
+                <button class="btn-reset" id="btn-reset" title="Reset all filters">
+                    <i class="fa-solid fa-filter-circle-xmark"></i> Reset
+                </button>
             </div>
 
             <div class="pagination-bar">
@@ -566,6 +606,7 @@ try {
         var verSelect = document.getElementById('filter-ver');
         var osSelect = document.getElementById('filter-os');
         var countrySelect = document.getElementById('filter-country');
+        var btnReset = document.getElementById('btn-reset');
         var pageSizeSelect = document.getElementById('page-size');
         var paginationEl = document.getElementById('pagination');
         var statsCount = document.getElementById('stats-count');
@@ -672,6 +713,15 @@ try {
             searchInput.value = '';
             filterRows();
             searchInput.focus();
+        });
+
+        btnReset.addEventListener('click', () => {
+            searchInput.value = '';
+            typeSelect.value = '';
+            verSelect.value = '';
+            osSelect.value = '';
+            countrySelect.value = '';
+            filterRows();
         });
 
         pageSizeSelect.addEventListener('change', () => { currentPage = 1; updateDisplay(); });

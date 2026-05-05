@@ -46,8 +46,8 @@ if (!in_array($type, $allowedTypes)) {
     exit;
 }
 
-// Date
-$date = date('Y-m-d');
+// Date (UTC)
+$date = gmdate('Y-m-d');
 
 // Database
 $dbPath = __DIR__ . '/../data/telemetry.db';

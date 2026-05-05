@@ -31,7 +31,7 @@ $db = new SQLite3($dbPath);
 $days = intval($_GET['days'] ?? 30);
 if ($days < 1 || $days > 365) $days = 30;
 
-$since = date('Y-m-d', strtotime("-{$days} days"));
+$since = gmdate('Y-m-d', strtotime("-{$days} days"));
 
 // Total launches
 $result = $db->querySingle(
